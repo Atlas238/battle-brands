@@ -1,0 +1,36 @@
+{
+  "name": "brand-collector",
+  "version": "1.0.0",
+  "description": "Collect different brands, take care of them, and battle against other ones",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atlas238/collect-brand.git"
+  },
+  "keywords": [
+    "brand",
+    "battle",
+    "brand",
+    "collecting"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Atlas238/collect-brand/issues"
+  },
+  "homepage": "https://github.com/Atlas238/collect-brand#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
