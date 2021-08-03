@@ -14,25 +14,17 @@ Boiler.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        happiness: {
+        HP: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            default: 1,
         },
-        hunger: {
+        ATK: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            default: 1,
         },
-        grooming: {
+        DEF: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            default: 1,
-        },
-        energy: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            default: 1,
         },
     },
     {
@@ -48,8 +40,7 @@ module.exports = Boiler;
 
 /**
  * id
- * happiness
- * hunger
- * grooming
- * energy
+ * HP
+ * ATK
+ * DEF
  */

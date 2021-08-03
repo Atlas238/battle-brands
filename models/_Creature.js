@@ -74,8 +74,6 @@ Creature.init(
 
 module.exports = Creature;
 
-/* Initialize the Table */
-
 /**
  * id
  * user_id (id)

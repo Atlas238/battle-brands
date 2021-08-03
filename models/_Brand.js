@@ -59,6 +59,7 @@ Brand.init(
 );
 
 module.exports = Brand;
+
 /**
  * id
  * name
