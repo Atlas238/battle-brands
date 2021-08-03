@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Internet Explorer",
+        "fa-id": "fa-internet-explorer"
+    },
+    {
+        "title": "Firefox",
+        "fa-id": "fa-firefox-browser"
+    },
+    {
+        "title": "Chrome",
+        "fa-id": "fa-chrome"
+    },
+    {
+        "title": "Edge",
+        "fa-id": "fa-edge"
+    },
+    {
+        "title": "Opera",
+        "fa-id": "fa-opera"
+    },
+    {
+        "title": "Safari",
+        "fa-id": "fa-safari"
+    }
+]

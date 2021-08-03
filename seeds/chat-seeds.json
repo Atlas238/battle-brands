@@ -1,0 +1,34 @@
+[
+    {
+        "title": "WhatsApp",
+        "fa-id": "fa-whatsapp"
+    },
+    {
+        "title": "Telegram",
+        "fa-id": "fa-telegram-plane"
+    },
+    {
+        "title": "Snapchat",
+        "fa-id": "fa-snapchat"
+    },
+    {
+        "title": "Discord",
+        "fa-id": "fa-discord"
+    },
+    {
+        "title": "Slack",
+        "fa-id": "fa-slack"
+    },
+    {
+        "title": "Discourse",
+        "fa-id": "fa-discourse"
+    },
+    {
+        "title": "Messenger",
+        "fa-id": "fa-facebook-messenger"
+    },
+    {
+        "title": "Skype",
+        "fa-id": "fa-skype"
+    }
+]
