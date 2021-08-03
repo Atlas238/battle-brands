@@ -4,5 +4,9 @@ const apiRoutes = require('./apiRoutes');
 
 router.use("/user",userRoutes);
 router.use("/api",apiRoutes);
-
+router.get("*",(req,res) => {
+    res.render('homepage',{
+        name: "Derek",
+    })
+})
 module.exports = router;
