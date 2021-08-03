@@ -18,10 +18,12 @@
       <div class="container-fluid">
         <a class="navbar-brand">Brand Collector</a>
         <form class="d-flex justify-content-end">
-          <a href="/sign-up" class="btn btn-outline-success me-2" type="button">
-            Sign-Up
-          </a>
+          {{#if user}}
+          <a href="/profile" class="btn btn-outline-secondary" type="button">Profile</a>
+          <a href="/logout" class="btn btn-outline-secondary" type="button">Logout</a>
+          {{else}}
           <a href="/login" class="btn btn-outline-secondary" type="button">Login</a>
+          {{/if}}
         </form>
       </div>
     </nav>
