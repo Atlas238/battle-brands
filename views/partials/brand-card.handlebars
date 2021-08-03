@@ -1,13 +1,13 @@
 <div id="card" class="card p-4">
-    <i id="icon" class="fab fa-instagram fa-10x"></i>
+    <i id="icon" class="fab {{creature_icon}} fa-10x"></i>
     <div class="card-body">
-        <h5 class="card-title h2">Instagram{{brand_name}}</h5>
+        <h5 class="card-title h2">Instagram{{creature_name}}</h5>
         <ul class="brand-stats card-text">
-            <li class="card-text m-2">Level: {{brand_level}} </li>
-            <li class="card-text m-2">Type: {{brand_type}} </li>
-            <li class="card-text m-2">Health: {{brand_health}} </li>
-            <li class="card-text m-2">Happiness: {{brand_happiness}} </li>
+            <li class="card-text m-2">Level: {{creature_level}} </li>
+            <li class="card-text m-2">Type: {{creature_type}} </li>
+            <li class="card-text m-2">Health: {{creature_health}} </li>
+            <li class="card-text m-2">Happiness: {{creature_happiness}} </li>
         </ul>
-        <a href="#" class="btn btn-info m-1">Visit Brand</a>
+        <a href="/creature/:id" class="btn btn-info m-1">Visit Brand</a>
     </div>
 </div>
