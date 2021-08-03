@@ -1,35 +1,82 @@
 /** IMPORT MODELS **/
 // LUCIOWARE TODO:
-const Product = require('./Product');
-const Category = require('./Category');
-const Tag = require('./Tag');
-const ProductTag = require('./ProductTag');
+const User = require('./_User');
+const Creature = require('./_Creature');
+const Brand = require('./_Brand');
+const Type = require('./_Type');
+const CareStats = require('./_CareStats');
+const CombatStats = require('./_CombatStats');
 
-// USER hasmany
-Product.belongsTo(Category, {
-  foreignKey: 'category_id',
+// User has many Creature
+// Creature belongs to User
+User.hasMany(Creature,{
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+Creature.belongsTo(User);
+
+
+// Creature has one Brand
+// Brand belongs to many Creature
+Creature.hasOne(Brand, {
+    onDelete: 'CASCADE',
+});
+Brand.belongsToMany(Creature, {
+    foreignKey: 'brand_id',
+    onDelete: "SET NULL",
 });
 
-// Categories have many Products
-Category.hasMany(Product, {
-  foreignKey: 'category_id',
-  onDelete: 'CASCADE',
+
+// Brand has one Type
+// Type belongs to many Brand
+Brand.hasOne(Type);
+Type.belongsToMany(Brand, {
+    foreignKey: 'type_id',
+    onDelete: "SET NULL",
 });
 
-// Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {
-  through: ProductTag
+
+// Creature has one CareStats
+// CareStats belongs to one Creature
+Creature.hasOne(CareStats, {
+    onDelete: 'CASCADE',
+});
+CareStats.hasOne(Creature,{
+    foreignKey: 'care_stats',
+    onDelete: 'SET NULL',
 });
 
-// Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
-  through: ProductTag
+
+// Creature has one CombatStats
+// CombatStats belongs to one Creature
+Creature.hasOne(CombatStats, {
+    onDelete: 'CASCADE',
 });
+CombatStats.hasOne(Creature,{
+    foreignKey: 'combat_stats',
+    onDelete: 'SET NULL',
+});
+
+
+// Creature has one Type through Brand
+// Type belongs to many Creature through Brand
+Creature.hasOne(Type,{
+    through: Brand,
+});
+Type.belongsToMany(Creature,{
+    through: Brand,
+});
+
+
+// LUCIOWARE TODO: INVENTORY!
+
 
 // Export
 module.exports = {
-  Product,
-  Category,
-  Tag,
-  ProductTag,
+  User,
+  Creature,
+  Brand,
+  Type,
+  CareStats,
+  CombatStats,
 };

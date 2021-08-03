@@ -4,9 +4,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 /* Establish Table as extension of Model class */
-class Boiler extends Model {}
+class CombatStats extends Model {}
 
-Boiler.init(
+CombatStats.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -32,11 +32,11 @@ Boiler.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'boiler_plate',
+        modelName: 'combat_stats',
     }
 );
 
-module.exports = Boiler;
+module.exports = CombatStats;
 
 /**
  * id

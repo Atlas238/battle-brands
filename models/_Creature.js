@@ -62,6 +62,11 @@ Creature.init(
             type: DataTypes.INTEGER,
             default: 0,
         },
+        Health: 
+        {
+            type: DataTypes.INTEGER,
+            default: 0,
+        },
     },
     {
         sequelize,
@@ -83,4 +88,5 @@ module.exports = Creature;
  * combat_stats (id)
  * care_stats (id)
  * EXP
+ * Health
 **/
