@@ -1,0 +1,42 @@
+[
+    {
+        "user_id" : 1,
+        "name" : "AngelBB",
+        "brand_id" : 1,
+        "screenname" : "God",
+        "combat_stats" : 1,
+        "care_stats" : 1,
+        "EXP" : 0,
+        "Health" : 10
+    },
+    {
+        "user_id" : 2,
+        "name" : "AdminBB",
+        "brand_id" : 1,
+        "screenname" : "Admin",
+        "combat_stats" : 2,
+        "care_stats" : 2,
+        "EXP" : 0,
+        "Health" : 10
+    },
+    {
+        "user_id" : 2,
+        "name" : "AdminTwitter",
+        "brand_id" : 2,
+        "screenname" : "davidlucio",
+        "combat_stats" : 3,
+        "care_stats" : 3,
+        "EXP" : 0,
+        "Health" : 10
+    },
+    {
+        "user_id" : 2,
+        "name" : "AdminLinkedin",
+        "brand_id" : 3,
+        "screenname" : "davidlucio",
+        "combat_stats" : 4,
+        "care_stats" : 4,
+        "EXP" : 0,
+        "Health" : 10
+    }
+]
