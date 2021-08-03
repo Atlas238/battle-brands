@@ -6,7 +6,6 @@
     --c-secondary: #eedb88;
     --c-accent-heavy: #ffff;
     --c-accent-light: #ffff;
-    --font-family: 'Teko', sans-serif;
 
     /* Setting standard rem */
     font-size: 16px;
@@ -19,6 +18,7 @@ html {
     overflow-x: hidden;
     color: var(--c-primary);
     user-select: none;
+    font-family: 'Teko', sans-serif !important;
 }
 
 /* Scrollbar Style */
