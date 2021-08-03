@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Instagram",
+        "fa-id": "fa-instagram"
+    },
+    {
+        "title": "Pinterest",
+        "fa-id": "fa-pinterest"
+    },
+    {
+        "title": "Flickr",
+        "fa-id": "fa-flickr"
+    },
+    {
+        "title": "Vine",
+        "fa-id": "fa-vine"
+    },
+    {
+        "title": "TikTok",
+        "fa-id": "fa-tiktok"
+    }
+]
