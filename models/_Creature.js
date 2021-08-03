@@ -61,14 +61,18 @@ Creature.init(
         EXP: {
             type: DataTypes.INTEGER,
             default: 0,
-        }
+        },
     },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'boiler_plate',
-)
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'creature',
+    },
+);
+
+module.exports = Creature;
 
 /* Initialize the Table */
 

@@ -10,12 +10,16 @@ Boiler.init(
     {
 
     },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'boiler_plate',
-)
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'boiler_plate',
+    }
+);
+
+module.exports = Boiler;
 
 /**
  * id
