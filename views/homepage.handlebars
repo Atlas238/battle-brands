@@ -1,1 +1,10 @@
-<h1>This is a test made by {{name}}</h1>
+<h1 class="display-3"> Welcome back {{user-name}}!</h1>
+
+<h4 class="display-5">Your Creatures: </h4>
+<div class="container">
+
+    {{#each creatures as |creature|}}
+      {{> brand-card}}
+    {{/each}}
+
+</div>
