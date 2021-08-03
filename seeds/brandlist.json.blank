@@ -1,0 +1,156 @@
+// [
+//     {
+//         "title": "Amazon",
+//         "fa-id": "fa-amazon"
+//     },
+//     {
+//         "title": "Apple",
+//         "fa-id": "fa-apple"
+//     },
+//     {
+//         "title": "Google",
+//         "fa-id": "fa-google"
+//     },
+//     {
+//         "title": "Microsoft",
+//         "fa-id": "fa-microsoft"
+//     },
+//     {
+//         "title": "Stripe",
+//         "fa-id": "fa-stripe"
+//     },
+//     {
+//         "title": "PayPal",
+//         "fa-id": "fa-paypal"
+//     }
+
+// ]    {
+//     "title": "social",
+//     "fa-id": "fa-whatsapp"
+// },
+// {
+//     "title": "Telegram",
+//     "fa-id": "fa-telegram-plane"
+// },
+// {
+//     "title": "Snapchat",
+//     "fa-id": "fa-snapchat"
+// },
+// {
+//     "title": "Discord",
+//     "fa-id": "fa-discord"
+// },
+// {
+//     "title": "Slack",
+//     "fa-id": "fa-slack"
+// },
+// {
+//     "title": "Discourse",
+//     "fa-id": "fa-discourse"
+// },
+// {
+//     "title": "Messenger",
+//     "fa-id": "fa-facebook-messenger"
+// },
+// {
+//     "title": "Skype",
+//     "fa-id": "fa-skype"
+// }
+// ]
+
+// [
+//     {
+//         "title": "Internet Explorer",
+//         "fa-id": "fa-internet-explorer"
+//     },
+//     {
+//         "title": "Firefox",
+//         "fa-id": "fa-firefox-browser"
+//     },
+//     {
+//         "title": "Chrome",
+//         "fa-id": "fa-chrome"
+//     },
+//     {
+//         "title": "Edge",
+//         "fa-id": "fa-edge"
+//     },
+//     {
+//         "title": "Opera",
+//         "fa-id": "fa-opera"
+//     },
+//     {
+//         "title": "Safari",
+//         "fa-id": "fa-safari"
+//     }
+// ]
+// [
+//     {
+//         "title": "Instagram",
+//         "fa-id": "fa-instagram"
+//     },
+//     {
+//         "title": "Pinterest",
+//         "fa-id": "fa-pinterest"
+//     },
+//     {
+//         "title": "Flickr",
+//         "fa-id": "fa-flickr"
+//     },
+//     {
+//         "title": "Vine",
+//         "fa-id": "fa-vine"
+//     },
+//     {
+//         "title": "TikTok",
+//         "fa-id": "fa-tiktok"
+//     }
+// ]
+
+// // 
+// [
+//     {
+//         "title": "Blogger",
+//         "fa-id": "fa-blogger"
+//     },
+//     {
+//         "title": "Google+",
+//         "fa-id": "fa-google-plus"
+//     },
+//     {
+//         "title": "LinkedIn",
+//         "fa-id": "fa-linkedin"
+//     },
+//     {
+//         "title": "Reddit",
+//         "fa-id": "fa-reddit"
+//     },
+//     {
+//         "title": "Tumblr",
+//         "fa-id": "fa-tumblr"
+//     }
+// ]
+
+// // OS
+// [
+//     {
+//         "title": "Android",
+//         "fa-id": "fa-android"
+//     },
+//     {
+//         "title": "IOS",
+//         "fa-id": "fa-app-store-ios"
+//     },
+//     {
+//         "title": "Ubuntu",
+//         "fa-id": "fa-ubuntu"
+//     },
+//     {
+//         "title": "Windows",
+//         "fa-id": "fa-windows"
+//     },
+//     {
+//         "title": "Blackberry",
+//         "fa-id": "fa-blackberry"
+//     }
+// ]

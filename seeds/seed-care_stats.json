@@ -1,0 +1,26 @@
+[
+    {
+        "happiness" : 2,
+        "hunger" : 0,
+        "grooming" : 1,
+        "energy" : 4
+    },
+    {
+        "happiness" : 2,
+        "hunger" : 2,
+        "grooming" : 2,
+        "energy" : 2
+    },
+    {
+        "happiness" : 4,
+        "hunger" : 4,
+        "grooming" : 4,
+        "energy" : 0
+    },
+    {
+        "happiness" : 0,
+        "hunger" : 1,
+        "grooming" : 0,
+        "energy" : 0
+    }
+]
