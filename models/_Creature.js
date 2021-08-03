@@ -40,7 +40,7 @@ Creature.init(
         screenname: {
             // Optional
             type: DataTypes.STRING,
-            allowNull: TRUE,
+            allowNull: true,
         },
         combat_stats:{
             type: DataTypes.INTEGER,
