@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const {User} = require("../models");
+const testData = require('../seeds/test-data.json');
 
 router.post("/", async (req, res) => {
-    console.log(req.body);
   try {
     const userData = await User.create(req.body);
 
@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      res.status(200).render('homepage',testData);
     });
   } catch (err) {
       console.log(err);
