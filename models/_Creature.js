@@ -32,6 +32,7 @@ Creature.init(
         },
         brand_id: {
             type: DataTypes.INTEGER,
+            allowNull: true,
             references: {
                 model: 'brand',
                 key: 'id',

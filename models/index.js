@@ -18,12 +18,9 @@ Creature.belongsTo(User);
 
 // Creature has one Brand
 // Brand belongs to many Creature
-Brand.hasMany(Creature, {
+Brand.hasMany(Creature);
+Creature.hasOne(Brand, {
     foreignKey: 'brand_id',
-    onDelete: "SET NULL",
-});
-
-Creature.belongsTo(Brand, {
     onDelete: 'CASCADE',
 });
 
