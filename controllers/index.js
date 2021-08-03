@@ -6,9 +6,7 @@ router.use("/user",userRoutes);
 router.use("/api",apiRoutes);
 
 router.get('/', async (req, res) => {
-    res.render("homepage",{
-        name:"Derek",
-    });
+    res.render("homepage");
   });
 
 module.exports = router;
