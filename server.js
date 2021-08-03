@@ -4,7 +4,7 @@ const sequelize = require("./config/connection")
 // Sets up the Express App
 // =============================================================
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const allRoutes = require('./controllers');
 
 
@@ -36,7 +36,7 @@ app.use(session({
       })
 }))
 
-app.use('/',allRoutes);
+app.use(allRoutes);
 
 sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
