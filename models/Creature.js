@@ -39,11 +39,11 @@ Creature.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        combat_stats:{
+        combatstat_id:{
             type: DataTypes.INTEGER,
             // One-to-one
         },
-        care_stats:{
+        carestat_id:{
             type: DataTypes.INTEGER,
             // One-to-one
         },

@@ -4,9 +4,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 /* Establish Table as extension of Model class */
-class Type extends Model {}
+class CombatStats extends Model {}
 
-Type.init(
+CombatStats.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -14,16 +14,17 @@ Type.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [16],
-            }
-        },
-        weakness_id: {
-            // Points at self. Junction Table
+        hp: {
             type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        atk: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        def: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
     },
     {
@@ -31,14 +32,15 @@ Type.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'type',
+        modelName: 'combatstat',
     }
 );
 
-module.exports = Type;
+module.exports = CombatStats;
 
 /**
  * id
- * name
- * weakness_id (self)
+ * HP
+ * ATK
+ * DEF
  */
