@@ -6,7 +6,6 @@ homeRouter.get('/',(req,res) => {
     } else {
         res.render("homepage",{user:false});
     }
-    res.send('Hello from your server!');
 });
 
 homeRouter.get('*',(req,res) => {
