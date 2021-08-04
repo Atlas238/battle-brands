@@ -1,0 +1,47 @@
+{
+    "user": true,
+    "creatures": [
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        },
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        },
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        },
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        },
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        },
+        {
+            "creature_name":"Instagram",
+            "creature_level":47,
+            "creature_type": "Chat",
+            "creature_health": 400,
+            "creature_happiness": 3
+        }
+    ]
+}
