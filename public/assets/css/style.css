@@ -37,6 +37,49 @@ html {
     color: var(--c-primary-hover);
 }
 
+/* CREATURE CARE/INTERACTION */
+/* Custom Utility Classes */
+.w-fit {
+    width: fit-content;
+}
+
+/* Creature at rest (default) */
+.card {
+    position: relative;
+    top:50%;
+    left:50%;
+    max-width:fit-content;
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+  
+/* Creature happy! */
+.card-happy {
+    animation: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Sad :( */
+.card-sad {
+    animation: headShake;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Hungry */
+.card-hungry {
+    animation: rubberBand;
+    animation-duration: 1.5s;
+    animation-iteration-count:infinite;
+    transition: animation 500ms ease;
+}
+
 /* Main Layout Styling */
 #card {
    max-width: fit-content; 
@@ -45,8 +88,6 @@ html {
 #icon {
     align-self: center;
 }
-
-/* CREATURE CARE/INTERACTION */
 
 /* login and signup info */
 
