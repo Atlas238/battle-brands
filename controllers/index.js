@@ -7,4 +7,9 @@ router.use("/user",userRoutes);
 router.use("/api",apiRoutes);
 router.use(homeRoutes);
 
+  router.get('/login', async (req, res) => {
+    res.render("login",{
+        name:"test",
+    });
+  }); 
 module.exports = router;
