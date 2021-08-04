@@ -38,6 +38,14 @@ Creature.init(
                 key: 'id',
             },
         },
+        type_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'type',
+                key: 'id',
+            },
+        },
         screenname: {
             // Optional
             type: DataTypes.STRING,
@@ -85,6 +93,7 @@ module.exports = Creature;
  * user_id (id)
  * name
  * brand_id (id)
+ * type_id (id)
  * screenname (optional)
  * combat_stats (id)
  * care_stats (id)

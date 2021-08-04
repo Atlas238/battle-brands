@@ -7,58 +7,74 @@ const Type = require('./_Type');
 const CareStats = require('./_CareStats');
 const CombatStats = require('./_CombatStats');
 
-// User has many Creature
-// Creature belongs to User
-User.hasMany(Creature,{
+
+// User has MANY Creature
+// Creature belongs to ONE User
+User.hasMany(Creature, {
+    sourceKey: 'id',
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
-Creature.belongsTo(User);
+Creature.belongsTo(User, {
+    sourceKey: 'user_id',
+    foreignKey: 'id',
+});
 
 
-// Creature has one Brand
-// Brand belongs to many Creature
-Brand.hasMany(Creature);
+// Creature has ONE Brand
+// Brand has MANY Creature
 Creature.hasOne(Brand, {
-    foreignKey: 'brand_id',
+    sourceKey: 'brand_id',
+    foreignKey: 'id',
     onDelete: 'CASCADE',
 });
-
-// Brand has one Type
-// Type belongs to many Brand
-Type.hasMany(Brand, {
-    foreignKey: 'type_id',
-    onDelete: "SET NULL",
+Brand.hasMany(Creature, {
+    sourceKey: 'id',
+    foreignKey: 'brand_id',
+    onDelete: 'SET NULL',
 });
-Brand.belongsTo(Type);
 
 
-// Creature has one CareStats
-// CareStats belongs to one Creature
-CareStats.hasOne(Creature,{
+// Creature has ONE Type (Type and Brand are separate)
+// Type has MANY Creature
+Creature.hasOne(Type, {
+    sourceKey: 'type_id',
+    foreignKey: 'id',
+    onDelete: 'CASCADE',
+});
+Type.hasMany(Creature, {
+    sourceKey: 'id',
+    foreignKey: 'type_id',
+    onDelete: 'SET NULL',
+});
+
+
+// Creature has ONE CareStats
+// CareStats belongs to ONE Creature
+Creature.hasOne(CareStats, {
+    sourceKey: 'care_stats',
+    foreignKey: 'id',
+    onDelete: 'CASCADE',
+});
+CareStats.belongsTo(Creature, {
+    sourceKey: 'id',
     foreignKey: 'care_stats',
     onDelete: 'SET NULL',
 });
-Creature.belongsTo(CareStats, {
+
+
+// Creature has ONE CombatStats
+// CombatStats belongs to ONE Creature
+Creature.hasOne(CombatStats, {
+    sourceKey: 'combat_stats',
+    foreignKey: 'id',
     onDelete: 'CASCADE',
 });
-
-
-// Creature has one CombatStats
-// CombatStats belongs to one Creature
-CombatStats.hasOne(Creature,{
+CombatStats.belongsTo(Creature, {
+    sourceKey: 'id',
     foreignKey: 'combat_stats',
     onDelete: 'SET NULL',
 });
-Creature.belongsTo(CombatStats, {
-    onDelete: 'CASCADE',
-});
-
-
-// Creature has one Type through Brand
-// Type belongs to many Creature through Brand
-Type.hasMany(Creature);
-Creature.belongsTo(Type);
 
 
 // LUCIOWARE TODO: INVENTORY!

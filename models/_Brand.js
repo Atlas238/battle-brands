@@ -25,14 +25,6 @@ Brand.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        type_id: {
-            // Brand has one Type
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'type',
-                key: 'id',
-            },
-        },
         base_HP: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -64,7 +56,6 @@ module.exports = Brand;
  * id
  * name
  * icon (image?)
- * type_id (id)
  * base_HP
  * base_ATK
  * base_DEF
