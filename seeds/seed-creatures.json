@@ -7,8 +7,8 @@
         "screenname" : "God",
         "combat_stats" : 1,
         "care_stats" : 1,
-        "EXP" : 0,
-        "Health" : 10
+        "exp" : 0,
+        "health" : 10
     },
     {
         "user_id" : 2,
@@ -18,8 +18,8 @@
         "screenname" : "Admin",
         "combat_stats" : 2,
         "care_stats" : 2,
-        "EXP" : 0,
-        "Health" : 10
+        "exp" : 0,
+        "health" : 10
     },
     {
         "user_id" : 2,
@@ -29,8 +29,8 @@
         "screenname" : "davidlucio",
         "combat_stats" : 3,
         "care_stats" : 3,
-        "EXP" : 10,
-        "Health" : 10
+        "exp" : 10,
+        "health" : 10
     },
     {
         "user_id" : 2,
@@ -40,7 +40,7 @@
         "screenname" : "davidlucio",
         "combat_stats" : 4,
         "care_stats" : 4,
-        "EXP" : 0,
-        "Health" : 10
+        "exp" : 0,
+        "health" : 10
     }
 ]

@@ -25,17 +25,17 @@ Brand.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        base_HP: {
+        base_hp: {
             type: DataTypes.INTEGER,
             allowNull: false,
             default: 10,
         },
-        base_ATK: {
+        base_atk: {
             type: DataTypes.INTEGER,
             allowNull: false,
             default: 0,
         },
-        base_DEF: {
+        base_def: {
             type: DataTypes.INTEGER,
             allowNull: false,
             default: 0,

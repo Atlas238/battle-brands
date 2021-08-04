@@ -14,15 +14,15 @@ CombatStats.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        HP: {
+        hp: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        ATK: {
+        atk: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        DEF: {
+        def: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

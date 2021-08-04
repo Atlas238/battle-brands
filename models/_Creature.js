@@ -17,10 +17,6 @@ Creature.init(
         user_id: {
             // User has many Creature
             type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
         },
         name: {
             type: DataTypes.STRING,
@@ -33,18 +29,10 @@ Creature.init(
         brand_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            references: {
-                model: 'brand',
-                key: 'id',
-            },
         },
         type_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            references: {
-                model: 'type',
-                key: 'id',
-            },
         },
         screenname: {
             // Optional
@@ -54,24 +42,16 @@ Creature.init(
         combat_stats:{
             type: DataTypes.INTEGER,
             // One-to-one
-            references: {
-                model: 'combat_stats',
-                key: 'id',
-            },
         },
         care_stats:{
             type: DataTypes.INTEGER,
             // One-to-one
-            references: {
-                model: 'care_stats',
-                key: 'id',
-            },
         },
-        EXP: {
+        exp: {
             type: DataTypes.INTEGER,
             default: 0,
         },
-        Health: 
+        health: 
         {
             type: DataTypes.INTEGER,
             default: 0,

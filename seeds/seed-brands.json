@@ -2,29 +2,29 @@
     {
         "name" : "BattleBrands",
         "icon" : "fa-battlebrands",
-        "base_HP" : 10,
-        "base_ATK" : 2,
-        "base_DEF" : 2
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
     },
     {
         "name" : "Facebook",
         "icon" : "fa-facebook",
-        "base_HP" : 10,
-        "base_ATK" : 2,
-        "base_DEF" : 2
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
     },
     {
         "name" : "LinkedIn",
         "icon" : "fa-linkedin",
-        "base_HP" : 10,
-        "base_ATK" : 1,
-        "base_DEF" : 3
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
     },
     {
         "name" : "Twitter",
         "icon" : "fa-twitter",
-        "base_HP" : 10,
-        "base_ATK" : 4,
-        "base_DEF" : 0
+        "base_hp" : 10,
+        "base_atk" : 4,
+        "base_def" : 0
     }
 ]
