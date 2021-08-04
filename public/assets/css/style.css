@@ -46,4 +46,46 @@ html {
     align-self: center;
 }
 
+/* Custom Utility Classes */
+.w-fit {
+    width: fit-content;
+}
+
 /* CREATURE CARE/INTERACTION */
+
+/* Creature at rest (default) */
+.card {
+    position: relative;
+    top:50%;
+    left:50%;
+    max-width:fit-content;
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+  
+/* Creature happy! */
+.card-happy {
+    animation: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Sad :( */
+.card-sad {
+    animation: headShake;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Hungry */
+.card-hungry {
+    animation: rubberBand;
+    animation-duration: 1.5s;
+    animation-iteration-count:infinite;
+    transition: animation 500ms ease;
+}
