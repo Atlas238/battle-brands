@@ -10,23 +10,14 @@ router.get("/profile", async (req,res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).render('profile',testData);
-    });
-  } catch (err) {
-      console.log(err);
-    res.status(400).json(err);
+router.get("/pet-page", async (req,res) => {
+  if(req.session.logged_in){
+    res.status(200).render('petPage');
   }
 });
 
 router.post("/login", async (req, res) => {
+  console.log(req.body);
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
     console.log(userData);
@@ -50,7 +41,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.render('profile',testData);
+      res.json({message: true,});
     });
   } catch (err) {
     console.log(err);
@@ -67,5 +58,22 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
+
+router.post("/", async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).render('profile',testData);
+    });
+  } catch (err) {
+      console.log(err);
+    res.status(400).json(err);
+  }
+});
+
 
 module.exports = router;
