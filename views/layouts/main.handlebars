@@ -11,9 +11,13 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/reset.css"/>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script defer src="https://kit.fontawesome.com/812ecae711.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
   <body>
     <nav id="nav"class="navbar navbar-light bg-info">
@@ -21,10 +25,10 @@
         <a class="navbar-brand fs-1">Brand Collector</a>
         <form class="d-flex justify-content-end">
           {{#if user}}
-          <a href="/profile" class="btn btn-outline-primary" type="button">Profile</a>
-          <a href="/logout" class="btn btn-outline-primary" type="button">Logout</a>
+          <a href="/profile" class="btn btn-outline-primary fs-5" type="button">Profile</a>
+          <a href="/logout" class="btn btn-outline-primary fs-5" type="button">Logout</a>
           {{else}}
-          <a href="/" class="btn btn-outline-primary" type="button">Login</a>
+          <a href="/" class="btn btn-outline-primary fs-5" type="button">Login</a>
           {{/if}}
         </form>
       </div>
