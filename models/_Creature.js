@@ -43,30 +43,28 @@ Creature.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        combat_stats:{
-            type: DataTypes.INTEGER,
-            // One-to-one
-            references: {
-                model: 'combat_stats',
-                key: 'id',
-            },
-        },
-        care_stats:{
-            type: DataTypes.INTEGER,
-            // One-to-one
-            references: {
-                model: 'care_stats',
-                key: 'id',
-            },
-        },
-        EXP: {
+        exp: {
             type: DataTypes.INTEGER,
             default: 0,
         },
-        Health: 
+        health:
         {
             type: DataTypes.INTEGER,
             default: 0,
+        },
+        type_id: {
+            type: DataTypes.INTEGER,
+            references:{
+                model:'type',
+                key:'id',
+            },
+        },
+        baseStats_id: {
+            type: DataTypes.INTEGER,
+            references:{
+                model:'base_stats',
+                key:'id',
+            },
         },
     },
     {

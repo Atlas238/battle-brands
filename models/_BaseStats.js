@@ -4,9 +4,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 /* Establish Table as extension of Model class */
-class Brand extends Model {}
+class BaseStats extends Model {}
 
-Brand.init(
+BaseStats.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -24,14 +24,6 @@ Brand.init(
         icon: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        type_id: {
-            // Brand has one Type
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'type',
-                key: 'id',
-            },
         },
         base_HP: {
             type: DataTypes.INTEGER,
@@ -54,11 +46,11 @@ Brand.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'brand',
+        modelName: 'base_stats',
     }
 );
 
-module.exports = Brand;
+module.exports = BaseStats;
 
 /**
  * id
