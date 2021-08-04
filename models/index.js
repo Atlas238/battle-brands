@@ -1,46 +1,42 @@
 /** IMPORT MODELS **/
-// LUCIOWARE TODO:
-const User = require('./_User');
-const Creature = require('./_Creature');
-const Brand = require('./_Brand');
-const Type = require('./_Type');
-const CareStats = require('./_CareStats');
-const CombatStats = require('./_CombatStats');
+const User = require('./User');
+const Creature = require('./Creature');
+const Brand = require('./Brand');
+const Type = require('./Type');
+const CareStats = require('./CareStats');
+const CombatStats = require('./CombatStats');
 
 
-// User has MANY Creature
-// Creature belongs to ONE User
+// User <--> Creature
 User.hasMany(Creature);
 Creature.belongsTo(User);
 
 
-// Creature has ONE Brand
-// Brand has MANY Creature
-Creature.hasOne(Brand);
-Brand.belongsTo(Creature);
+// Creature <--> Brand
+Creature.belongsTo(Brand);
+Brand.hasMany(Creature);
 
 
-// Creature has ONE Type (Type and Brand are separate)
-// Type has MANY Creature
-Creature.hasOne(Type);
-Type.belongsTo(Creature);
+// Creature <--> Type
+Creature.belongsTo(Type);
+Type.hasMany(Creature);
 
 
-// Creature has ONE CareStats
-// CareStats belongs to ONE Creature
-Creature.hasOne(CareStats);
-CareStats.belongsTo(Creature);
+// Creature <--> CareStat
+Creature.belongsTo(CareStats);
+CareStats.hasOne(Creature);
 
 
-// Creature has ONE CombatStats
-// CombatStats belongs to ONE Creature
-Creature.hasOne(CombatStats);
-CombatStats.belongsTo(Creature);
+// Creature <--> CombatStats
+Creature.belongsTo(CombatStats);
+CombatStats.hasOne(Creature);
 
 
-// Types can pull from many Types as Weaknesses?
+// Types <--> Types as Weaknesses
 Type.hasMany(Type, {
-    as: 'weakness'
+    as: 'weakness_id',
+    foreignKey: "weakness",
+    useJunctionTable: false
 });
 
 

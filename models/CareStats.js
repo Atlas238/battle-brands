@@ -34,13 +34,18 @@ CareStats.init(
             allowNull: false,
             default: 1,
         },
+        lastinteraction: {
+            type: DataTypes.DATE,
+            allowNull: true,
+            defaultValue: DataTypes.NOW
+        }
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'care_stats',
+        modelName: 'carestat',
     }
 );
 

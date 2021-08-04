@@ -1,9 +1,9 @@
-const apiRouter = require('express').Router();
-const {User} = require("../models");
+const userRouter = require('express').Router();
+const {User,Creature} = require("../../models");
 
-apiRouter.get('/users',async (req,res) => {
+userRouter.get('/users',async (req,res) => {
     try{
-        const users = await User.findAll();
+        const users = await User.findAll({include: [{model:Creature}],});
         if(users){
             res.status(200).json(users);
         } else {
@@ -15,12 +15,13 @@ apiRouter.get('/users',async (req,res) => {
     }
 });
 
-apiRouter.get('/user/:id',async (req,res) => {
+userRouter.get('/user/:id',async (req,res) => {
     try{
         const user = await User.findOne({
             where: {
                 id: req.params.id,
             },
+            include: [{model:Creature},],
         });
         if(user){
             res.status(200).json(user);
@@ -33,13 +34,15 @@ apiRouter.get('/user/:id',async (req,res) => {
     }
 });
 
-apiRouter.post('/',(req,res) => {
+// Give Creature to user
+
+userRouter.post('/',(req,res) => {
     console.log('req.baseurl');
     res.send(`${req.method} request received`);
 });
 
-apiRouter.delete('/',(req,res) => {
+userRouter.delete('/',(req,res) => {
     res.send('Message from delete');
 });
 
-module.exports = apiRouter;
+module.exports = userRouter;
