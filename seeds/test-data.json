@@ -1,5 +1,5 @@
 {
-    "user": false,
+    "user": true,
     "creatures": [
         {
             "creature_name":"Instagram",
