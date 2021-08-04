@@ -37,6 +37,49 @@ html {
     color: var(--c-primary-hover);
 }
 
+/* CREATURE CARE/INTERACTION */
+/* Custom Utility Classes */
+.w-fit {
+    width: fit-content;
+}
+
+/* Creature at rest (default) */
+.card {
+    position: relative;
+    top:50%;
+    left:50%;
+    max-width:fit-content;
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+  
+/* Creature happy! */
+.card-happy {
+    animation: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Sad :( */
+.card-sad {
+    animation: headShake;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Hungry */
+.card-hungry {
+    animation: rubberBand;
+    animation-duration: 1.5s;
+    animation-iteration-count:infinite;
+    transition: animation 500ms ease;
+}
+
 /* Main Layout Styling */
 #card {
    max-width: fit-content; 
@@ -46,4 +89,45 @@ html {
     align-self: center;
 }
 
-/* CREATURE CARE/INTERACTION */
+/* login and signup info */
+
+#signUp{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-between;
+}
+input {
+    width: 75%;
+    height: 25px;
+}
+#signUp button {
+    width: 75%;
+}
+#loginForm button {
+    width: 75%;
+}
+#loginBox {
+    display: flex;
+    width: 75%;
+    height: 400px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: plum;
+    align-items: center;
+    flex:auto;
+}
+/* form {
+    width: 550px;
+    height: 450px;
+    margin: auto;
+    position: relative;
+} */

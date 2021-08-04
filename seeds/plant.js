@@ -1,10 +1,18 @@
 /** MVP **/
+
+// Independent
 const seedUsersData = require('./seed-users');
+
+// Independent
 const seedBrandsData = require('./seed-brands');
-const seedCreaturesData = require('./seed-creatures');
 const seedTypesData = require('./seed-types');
+
+// LUCIOWARE NOTE: Might change later dependency direction?
 const seedCareStatsData = require('./seed-care_stats');
 const seedCombatStatsData = require('./seed-combat_stats');
+
+// Dependent on Brand, Type, CareStats, CombatStats
+const seedCreaturesData = require('./seed-creatures');
 
 /** LUCIOWARE TODO: FEATURES **/
 // const seedItems = require('./seed-items');
@@ -12,11 +20,14 @@ const seedCombatStatsData = require('./seed-combat_stats');
 
 const {
   User,
-  Creature,
+
   Brand,
   Type,
+
   CareStats,
   CombatStats,
+
+  Creature,
 } = require('../models');
 
 
@@ -28,23 +39,23 @@ const seedSampleDB = async () => {
   console.log('\n----- DATABASE SYNCED -----\n');
 
   await User.bulkCreate(seedUsersData);
-  console.log('Users planted\n');
+  console.log('1) Users planted\n');
   
-  await Creature.bulkCreate(seedCreaturesData);
-  console.log('Creatures planted\n');
-
   await Brand.bulkCreate(seedBrandsData);
-  console.log('Brands planted\n');
+  console.log('2-A) Brands planted\n');
   
   await Type.bulkCreate(seedTypesData);
-  console.log('Types planted\n');
-  
+  console.log('2-B) Types planted\n');
+
   await CareStats.bulkCreate(seedCareStatsData);
-  console.log('Care stats planted\n');
+  console.log('3-A) Care stats planted\n');
   
   await CombatStats.bulkCreate(seedCombatStatsData);
-  console.log('Combat stats planted\n');
-  
+  console.log('3-B) Combat stats planted\n');
+
+  await Creature.bulkCreate(seedCreaturesData);
+  console.log('4) Creatures planted\n');
+
   // await seedItems();
   // console.log('Items planted\n');
   

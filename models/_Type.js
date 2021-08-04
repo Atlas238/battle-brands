@@ -22,12 +22,8 @@ Type.init(
             }
         },
         weakness_id: {
-            // Points at self. Every Type has one weakness (Type)
+            // Points at self. Junction Table
             type: DataTypes.INTEGER,
-            references: {
-                model: 'type',
-                key: 'id',
-            },
         },
     },
     {
