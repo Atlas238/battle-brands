@@ -4,9 +4,9 @@ const testData = require('../seeds/test-data.json');
 
 router.get("/profile", async (req,res) => {
   if(req.session.logged_in){
-    res.status(200).render('homepage',{user: true,});
+    res.status(200).render('profile',testData);
   } else {
-    res.status(404).render("404");
+    res.status(300).render('login');
   }
 });
 
@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).render('homepage',testData);
+      res.status(200).render('profile',testData);
     });
   } catch (err) {
       console.log(err);
@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.render('homepage',testData);
+      res.render('profile',testData);
     });
   } catch (err) {
     console.log(err);
