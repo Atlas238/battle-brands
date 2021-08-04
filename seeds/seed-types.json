@@ -4,15 +4,15 @@
         "weakness_id" : 0
     },
     {
-        "name" : "Social",
-        "weakness_id" : 3
-    },
-    {
         "name" : "Business",
         "weakness_id" : 1
     },
     {
         "name" : "Corporate",
         "weakness_id" : 2
+    },
+    {
+        "name" : "Social",
+        "weakness_id" : 3
     }
 ]

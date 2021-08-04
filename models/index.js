@@ -2,7 +2,7 @@
 // LUCIOWARE TODO:
 const User = require('./_User');
 const Creature = require('./_Creature');
-const Brand = require('./_BaseStats');
+const BaseStats = require('./_BaseStats');
 const Type = require('./_Type');
 const CareStats = require('./_CareStats');
 const CombatStats = require('./_CombatStats');
@@ -18,6 +18,11 @@ Creature.belongsTo(User,{
     foreignKey:'user_id',
 });
 
+Creature.hasOne(BaseStats,{
+    foreignKey: 'baseStats_id',
+    onDelete: 'SET NULL',
+})
+
 
 
 // LUCIOWARE TODO: INVENTORY!
@@ -27,7 +32,7 @@ Creature.belongsTo(User,{
 module.exports = {
   User,
   Creature,
-  Brand,
+  BaseStats,
   Type,
   CareStats,
   CombatStats,

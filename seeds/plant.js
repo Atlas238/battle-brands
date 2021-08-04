@@ -1,6 +1,6 @@
 /** MVP **/
 const seedUsersData = require('./seed-users');
-const seedBrandsData = require('./seed-brands');
+const seedBrandsData = require('./seed-base_stats');
 const seedCreaturesData = require('./seed-creatures');
 const seedTypesData = require('./seed-types');
 const seedCareStatsData = require('./seed-care_stats');
@@ -13,7 +13,7 @@ const seedCombatStatsData = require('./seed-combat_stats');
 const {
   User,
   Creature,
-  Brand,
+  BaseStats,
   Type,
   CareStats,
   CombatStats,
@@ -33,7 +33,7 @@ const seedSampleDB = async () => {
   await Creature.bulkCreate(seedCreaturesData);
   console.log('Creatures planted\n');
 
-  await Brand.bulkCreate(seedBrandsData);
+  await BaseStats.bulkCreate(seedBrandsData);
   console.log('Brands planted\n');
   
   await Type.bulkCreate(seedTypesData);
