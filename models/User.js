@@ -44,13 +44,14 @@ User.init(
         }
     },
     // FEATURE 
-    // funds: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: true,
-    //     validate: {
-    //         isInt: true,
-    //     }
-    // }
+    funds: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        default: 5,
+        validate: {
+            isInt: true,
+        }
+    }
   },
   {
     hooks:{
