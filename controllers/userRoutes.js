@@ -68,4 +68,8 @@ router.post("/logout", (req, res) => {
   }
 });
 
+router.get('/petPage', (req, res) => {
+  res.status(200).render('petPage', testData);
+})
+
 module.exports = router;
