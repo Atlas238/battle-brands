@@ -10,6 +10,12 @@ router.get("/profile", async (req,res) => {
   }
 });
 
+router.get("/pet-page", async (req,res) => {
+  if(req.session.logged_in){
+    res.status(200).render('petPage');
+  }
+});
+
 router.post("/login", async (req, res) => {
   console.log(req.body);
   try {
