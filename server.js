@@ -29,7 +29,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie:{
-        maxAge:1000*60*60*2
+        maxAge:1000*60*60*2,
+        sameSite: 'none',
     },
     store: new SequelizeStore({
         db: sequelize,
