@@ -47,3 +47,46 @@ html {
 }
 
 /* CREATURE CARE/INTERACTION */
+
+/* login and signup info */
+
+#signUp{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-between;
+}
+input {
+    width: 75%;
+    height: 25px;
+}
+#signUp button {
+    width: 75%;
+}
+#loginForm button {
+    width: 75%;
+}
+#loginBox {
+    display: flex;
+    width: 75%;
+    height: 400px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: plum;
+    align-items: center;
+    flex:auto;
+}
+/* form {
+    width: 550px;
+    height: 450px;
+    margin: auto;
+    position: relative;
+} */
