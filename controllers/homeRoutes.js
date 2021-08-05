@@ -29,7 +29,11 @@ router.get('/privacy', async (req,res) => {
 
 /** 404 PAGE **/
 router.get('*',(req,res) => {
-    res.status(404).render('pageNotFound',{layout:'404'});
+    if(req.session){
+        res.render('pageNotFound',{layout:'404', user:req.session.logged_in,});
+    } else{
+        res.render('pageNotFound',{layout:'404', user:false,});
+    }
 });
 
 

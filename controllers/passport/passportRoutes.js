@@ -3,7 +3,7 @@ const socialLinkRouter = require('express').Router();
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
-const passportTwitter = require('passport-twitter');
+// const passportTwitter = require('passport-twitter');
 
 // PASSPORT-FACEBOOK SETUP
 const FacebookStrategy = passportFacebook.Strategy;
@@ -29,15 +29,15 @@ passport.use(new LinkedInStrategy({
     });
 }));
 // TWITTER SETUP
-const TwitterStrategy = passportTwitter.Strategy;
-passport.use(new TwitterStrategy({
-    consumerKey: process.env.TWITTER_CONSUMER_KEY,
-    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/twitter/callback"
-},
-function(token, tokenSecret, profile, cb) {
-    return cb(null, profile);
-}));
+// const TwitterStrategy = passportTwitter.Strategy;
+// passport.use(new TwitterStrategy({
+//     consumerKey: process.env.TWITTER_CONSUMER_KEY,
+//     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+//     callbackURL: "http://battle-brands.herokuapp.com/passport/auth/twitter/callback"
+// },
+// function(token, tokenSecret, profile, cb) {
+//     return cb(null, profile);
+// }));
 
 // User Serialize Setps...
 passport.serializeUser(function(user, done) {
@@ -61,10 +61,10 @@ socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'
 socialLinkRouter.get('/passport/auth/linkedin/callback',
   passport.authenticate('linkedin', { successRedirect: '/profile', failureRedirect: '/login' }));
 
-// Twitter Route
-socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'));
-// Callback
-socialLinkRouter.get('/passport/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: '/login', successRedirect: '/profile'}));
+// // Twitter Route
+// socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'));
+// // Callback
+// socialLinkRouter.get('/passport/auth/twitter/callback',
+//   passport.authenticate('twitter', { failureRedirect: '/login', successRedirect: '/profile'}));
 
 module.exports = socialLinkRouter;
