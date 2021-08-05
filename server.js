@@ -6,7 +6,6 @@ const sequelize = require("./config/connection")
 const app = express();
 const PORT = process.env.PORT || 3001;
 const allRoutes = require('./controllers');
-const passportfb = require('passport-facebook');
 
 
 // Sets up the Express app to handle data parsing
@@ -38,17 +37,6 @@ app.use(session({
       })
 }))
 
-// FB Link Set-up...
-passportfb.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: 'http://localhost:3001/auth/facebook/callback'
-}, function(accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
-}   
-));
 
 app.use(allRoutes);
 
