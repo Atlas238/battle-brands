@@ -2,6 +2,7 @@
 const numHoursHunger = 1;
 const numHoursHappiness = 3;
 const numHoursGrooming = 5;
+const numHoursEnergy = 1;
 
 // // for testing in node
 // const fetch = require('node-fetch');
@@ -29,6 +30,9 @@ const updateCreatureStats = () => {
             };
             if (diffInTime > numHoursGrooming) {
                 updatedCareStat.grooming = data[0].carestat.grooming--;
+            };
+            if (diffInTime > numHoursEnergy) {
+                updatedCareStat.energy = data[0].carestat.energy++;
             };
             try {
                 // Post request to update creature stats
