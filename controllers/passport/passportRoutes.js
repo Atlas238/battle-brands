@@ -20,6 +20,7 @@ passport.use(new LinkedInStrategy({
     clientID: process.env.LINKEDIN_API_KEY,
     clientSecret: process.env.LINKEDIN_SECRET_KEY,
     callbackURL: "http://localhost:3001/passport/auth/linkedin/callback",
+    scope: ['r_emailaddress', 'r_liteprofile'],
     state: true
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
