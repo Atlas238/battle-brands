@@ -16,6 +16,7 @@ loginForm.addEventListener("submit", async (event) =>{
         }
     });
     const jsonData = await fetchResp.json();
+    console.log("login complete");
     if(jsonData.message){
         location.assign('./profile');
     }
