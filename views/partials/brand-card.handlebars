@@ -1,12 +1,10 @@
 <div id="card" class="card p-4">
-    <i id="icon" class="fab {{creature_icon}} fa-10x"></i>
+    <i id="icon" class="fab {{brand.icon}} fa-10x"></i>
     <div class="card-body">
-        <h5 class="card-title h2">{{creature_name}}</h5>
+        <h5 class="card-title h2">{{name}}</h5>
         <ul class="brand-stats card-text">
-            <li class="card-text m-2">Level: {{creature_level}} </li>
-            <li class="card-text m-2">Type: {{creature_type}} </li>
-            <li class="card-text m-2">Health: {{creature_health}} </li>
-            <li class="card-text m-2">Happiness: {{creature_happiness}} </li>
+            <li class="card-text m-2" data-type="level" data-experience="{{exp}}">Level: <span></span></li>
+            <li class="card-text m-2">Health: {{health}} </li>
         </ul>
         <a href="/creature/:id" class="btn btn-info m-1">Visit Brand</a>
     </div>
