@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 
+
 :root {
     /* Numbered from lightest to darkest (1-9) */
     --c-1: #ECCAFF;
@@ -184,5 +185,14 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#D8C2FF ;
+    background-color:#AFB1FF;
+}
+
+#card{
+    background-color:#ECCAFF ;
+}
+
+#profileCards{
+    display: flex;
+    justify-content: space-evenly;
 }
