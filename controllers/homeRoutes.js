@@ -2,7 +2,7 @@ const homeRouter = require('express').Router();
 
 homeRouter.get('/',(req,res) => {
     if(req.session.logged_in){
-        res.redirect("/user/profile");
+        res.redirect("/profile");
     } else {
         res.render("login");
     }
