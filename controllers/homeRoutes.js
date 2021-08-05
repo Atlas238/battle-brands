@@ -2,7 +2,7 @@ const homeRouter = require('express').Router();
 
 homeRouter.get('/about-us', async (req,res) => {
     if(req.session){
-        res.render('about',{user:req.logged_in,});
+        res.render('about',{user:req.session.logged_in,});
     } else{
         res.render('about',{user:false,});
     }
