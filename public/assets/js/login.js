@@ -16,8 +16,9 @@ loginForm.addEventListener("submit", async (event) =>{
         }
     });
     const jsonData = await fetchResp.json();
+    console.log("login complete");
     if(jsonData.message){
-        location.assign('./user/profile');
+        location.assign('./profile');
     }
 });
 
@@ -37,6 +38,6 @@ signupForm.addEventListener("submit", async event=>{
     });
     const jsonData = await fetchResp.json();
     if(jsonData.message){
-        location.assign('./user/profile');
+        location.assign('./profile');
     }
 });

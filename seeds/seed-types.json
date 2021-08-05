@@ -1,7 +1,7 @@
 [
     {
         "name" : "Game",
-        "weakness" : 0
+        "weakness" : 1
     },
     {
         "name" : "Social",

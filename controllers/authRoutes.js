@@ -2,20 +2,6 @@ const router = require("express").Router();
 const {User} = require("../models");
 const testData = require('../seeds/test-data.json');
 
-router.get("/profile", async (req,res) => {
-  if(req.session.logged_in){
-    res.render('collectionpage',testData);
-  } else {
-    res.status(300).redirect('/');
-  }
-});
-
-router.get("/pet-page", async (req,res) => {
-  if(req.session.logged_in){
-    res.status(200).render('petPage');
-  }
-});
-
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -50,9 +36,11 @@ router.post("/login", async (req, res) => {
 
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).redirect("/");
-    });
+    req.session.logged_in = false;
+    req.session.email = '';
+    req.session.username = '';
+    req.session.password = '';
+    res.status(200).json({message: true,});
   } else {
     res.status(404).end();
   }

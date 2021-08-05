@@ -1,13 +1,5 @@
 const homeRouter = require('express').Router();
 
-homeRouter.get('/about-us', async (req,res) => {
-    if(req.session){
-        res.render('about',{user:req.logged_in,});
-    } else{
-        res.render('about',{user:false,});
-    }
-});
-
 homeRouter.get('/',(req,res) => {
     if(req.session.logged_in){
         res.redirect("/user/profile");
