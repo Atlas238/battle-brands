@@ -1,6 +1,7 @@
-const homeRouter = require('express').Router();
+const router = require('express').Router();
 
-homeRouter.get('/',(req,res) => {
+/** LANDING PAGE **/
+router.get('/',(req,res) => {
     if(req.session.logged_in){
         res.redirect("/profile");
     } else {
@@ -8,8 +9,28 @@ homeRouter.get('/',(req,res) => {
     }
 });
 
-homeRouter.get('*',(req,res) => {
+/** ABOUT PAGE **/
+router.get('/about', async (req,res) => {
+    if(req.session){
+        res.render('about',{user:req.session.logged_in,});
+    } else{
+        res.render('about',{user:false,});
+    }
+});
+
+/** LUCIOWARE TODO: PRIVACY POLICY **/
+router.get('/privacy', async (req,res) => {
+    if(req.session){
+        res.render('privacy',{user:req.session.logged_in,});
+    } else{
+        res.render('privacy',{user:false,});
+    }
+});
+
+/** 404 PAGE **/
+router.get('*',(req,res) => {
     res.status(404).render('pageNotFound',{layout:'404'});
 });
 
-module.exports = homeRouter;
+
+module.exports = router;

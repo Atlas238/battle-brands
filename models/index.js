@@ -34,8 +34,8 @@ CombatStats.hasOne(Creature);
 
 // Types <--> Types as Weaknesses
 Type.hasMany(Type, {
-    as: 'weakness_id',
-    // foreignKey: "weakness",
+    as: 'weakness',
+    sourceKey: "id",
     useJunctionTable: false,
     onDelete: "NO ACTION",
     onUpdate: "NO ACTION",
