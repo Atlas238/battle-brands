@@ -37,6 +37,7 @@ app.use(session({
       })
 }))
 
+
 app.use(allRoutes);
 
 sequelize.sync({ force: false }).then(function() {
