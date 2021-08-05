@@ -17,7 +17,12 @@ router.get("/profile", async (req,res) => {
                     return creature.get({plain:true});
                 })
                 console.log(userCreatures);
-                res.render("collectionpage", {userCreatures} );
+                const handleObj = {
+                    user: req.session.logged_in,
+                    username: req.session.username,
+                    userCreatures,
+                }
+                res.render("collectionpage", handleObj );
             }
         } catch (error) {
             console.log(error);
@@ -33,5 +38,13 @@ router.get("/profile", async (req,res) => {
       res.status(200).render('petPage');
     }
   });
+
+  router.get('/about-us', async (req,res) => {
+    if(req.session){
+        res.render('about',{user:req.session.logged_in,});
+    } else{
+        res.render('about',{user:false,});
+    }
+});
 
 module.exports = router;
