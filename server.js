@@ -1,5 +1,6 @@
 const express = require('express');
-const sequelize = require("./config/connection")
+const sequelize = require("./config/connection");
+const passport = require('passport');
 
 // Sets up the Express App
 // =============================================================
@@ -7,10 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const allRoutes = require('./controllers');
 
-
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Passport init...
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Static directory
 app.use(express.static('public'));

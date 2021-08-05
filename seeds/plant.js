@@ -43,9 +43,12 @@ const seedSampleDB = async () => {
   
   await Brand.bulkCreate(seedBrandsData);
   console.log('2-A) Brands planted\n');
-  
-  await Type.bulkCreate(seedTypesData);
-  console.log('2-B) Types planted\n');
+  try {
+    await Type.bulkCreate(seedTypesData);
+    console.log('2-B) Types planted\n');
+  } catch (error) {
+    console.log(error);
+  }
 
   await CareStats.bulkCreate(seedCareStatsData);
   console.log('3-A) Care stats planted\n');

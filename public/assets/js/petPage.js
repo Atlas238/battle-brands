@@ -5,54 +5,54 @@ const catchBtn = document.getElementById('catch');
 const icon = document.getElementById('icon');
 const iconDiv = document.getElementById('icon-holder');
 
+const { catchCreature, feedCreature, petCreature, updateCreature } = require('./creature');
+
 // Creature State Check... (dummy vars)
 const checkState = () => {
-
-    if (creature_happiness > 5) {
-
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x`);
-        iconDiv.setAttribute('class', '');
-        void icon.offsetWidth;
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x happy`);
-
-    } else if (creature_hunger < 5) {
-
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x`);
-        iconDiv.setAttribute('class', '');
-        void icon.offsetWidth;
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x hungry`);
-
-    } else if (creature_groomed > 5) {
-
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x`);
-        iconDiv.setAttribute('class', '');
-        void icon.offsetWidth;
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x groomed`);
-        iconDiv.setAttribute('class', 'creature-groomed');
-
-    } else {
-
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x`);
-        iconDiv.setAttribute('class', '');
-        void icon.offsetWidth;
-        icon.setAttribute('class', `fab ${creature_icon} fa-10x rest`);
-
-    }
+    fetch('http://localhost:3001/api/stats/1', {
+        method: 'GET',
+    }).then((response) => {
+        response.json();
+    }).then((data) => {
+        if (data[0].carestat.happiness > 3) {
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x`);
+            iconDiv.setAttribute('class', '');
+            // Might need to move this statement to AFTER the animation class add (eg: happy)
+            void icon.offsetWidth;
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x happy`);
+        } else if (data[0].carestat.hunger > 4) {
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x`);
+            iconDiv.setAttribute('class', '');
+            void icon.offsetWidth;
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x hungry`);
+        } else if (data[0].carestat.grooming = 5) {
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x`);
+            iconDiv.setAttribute('class', '');
+            void icon.offsetWidth;
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x groomed`);
+            iconDiv.setAttribute('class', 'creature-groomed');
+        } else {
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x`);
+            iconDiv.setAttribute('class', '');
+            void icon.offsetWidth;
+            icon.setAttribute('class', `fab ${data[0].brand.icon} fa-10x rest`);
+        }
+    })
 
 }
-// checkState();
-const playCatch = () => {
-    
-}
+
 // Button Events...
 feedBtn.addEventListener('click', (event) => {
-    // Run food animation? throwing little brick at icon, icon "eats", hunger stat goes up
+    event.preventDefault();
+    feedCreature();
 });
 
 petBtn.addEventListener('click', (event) => {
-    // Run pet animation? little hand on top of icon, icon squish, happiness stat goes up
+    event.preventDefault();
+    petCreature();
 });
 
 catchBtn.addEventListener('click', (event) => {
-    // Run catch script, timing based 1-click game with ball going back and forth? just toss (same animation as food?)
+    event.preventDefault();
+    catchCreature();
 });
