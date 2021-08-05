@@ -14,7 +14,7 @@ router.get("/profile", async (req,res) => {
                 }
             });
 
-            if(creatureList != null){
+            if(creatureList){
                 const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
                 });
@@ -25,7 +25,7 @@ router.get("/profile", async (req,res) => {
                     username: req.session.username,
                     userCreatures,
                 }
-                res.render("profile", handleObj );
+                res.render("profile", handleObj);
             }
             else {
                 res.status(404).send("You don't have any creatures");
