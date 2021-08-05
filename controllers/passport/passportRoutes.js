@@ -28,7 +28,11 @@ passport.use(new LinkedInStrategy({
         return done(null, profile);
     });
 }));
+<<<<<<< HEAD
 // TWITTER SETUP
+=======
+// // TWITTER SETUP
+>>>>>>> develop
 // const TwitterStrategy = passportTwitter.Strategy;
 // passport.use(new TwitterStrategy({
 //     consumerKey: process.env.TWITTER_CONSUMER_KEY,
