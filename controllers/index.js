@@ -10,8 +10,8 @@ const homeRoutes = require('./homeRoutes');
 router.use("/api",apiRoutes);
 router.use("/user",authRoutes);
 router.use(frontEndRoutes);
-router.use(homeRoutes);
 // Passport Router
 router.use(socialLinkRoutes);
+router.use(homeRoutes);
 
 module.exports = router;
