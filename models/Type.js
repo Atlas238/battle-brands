@@ -21,7 +21,7 @@ Type.init(
                 len: [16],
             }
         },
-        weakness: {
+        weakness_id: {
             // Points at self. Junction Table?
             type: DataTypes.INTEGER,
         },
