@@ -2,7 +2,7 @@ console.log("Logging in");
 const loginForm = document.querySelector("#loginForm");
 const signupForm = document.querySelector("#signUp");
 
-loginForm.addEventListener("submit", async event=>{
+loginForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
     console.log("Login submitted!");
     const fetchResp = await fetch("./user/login",{

@@ -1,7 +1,7 @@
 [
     {
         "name" : "BattleBrands",
-        "icon" : "fa-battlebrands",
+        "icon" : "fa-drupal",
         "base_hp" : 10,
         "base_atk" : 2,
         "base_def" : 2
