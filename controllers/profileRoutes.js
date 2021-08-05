@@ -4,10 +4,7 @@ const router = require("express").Router();
 /** MODEL INCLUSION **/
 const {Creature, Brand} = require("../models");
 
-router.get("/profile", async (req,res) => {
-
-    console.log("Trying to access profile page...")
-    
+router.get("/profile", async (req,res) => {    
     if(req.session.logged_in){
         try {
             const creatureList = await Creature.findAll({
@@ -17,12 +14,11 @@ router.get("/profile", async (req,res) => {
                 }
             });
 
-            if(!creatureList){
-                res.status(404).send("You don't have any creatures");
-            } else {
+            if(creatureList != null){
                 const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
-                })
+                });
+                
                 console.log(userCreatures);
                 const handleObj = {
                     user: req.session.logged_in,
@@ -30,6 +26,9 @@ router.get("/profile", async (req,res) => {
                     userCreatures,
                 }
                 res.render("profile", handleObj );
+            }
+            else {
+                res.status(404).send("You don't have any creatures");
             }
         } catch (error) {
             console.log(error);
