@@ -1,0 +1,13 @@
+{{!-- <nav id="nav" class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-1">Brand Collector</a>
+      <form class="d-flex justify-content-end">
+        {{#if user}}
+        <a href="/user/profile" class="btn btn-outline-primary fs-5" type="button">Profile</a>
+        <button id="logout" class="btn btn-outline-primary fs-5" type="button">Logout</button>
+        {{else}}
+        <a href="/" class="btn btn-outline-primary fs-5" type="button">Login</a>
+        {{/if}}
+      </form>
+    </div>
+  </nav>  --}}
