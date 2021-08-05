@@ -17,7 +17,7 @@ creatureRouter.post("/stats/:userId", async (req, res) => {
     if (creatureList) {
       res.status(200).json(creatureList);
     } else {
-      res.status(404).send("Coiuld not find that user's creatures");
+      res.status(404).send("Could not find that user's creatures");
     }
   } catch (err) {
       console.log(err);

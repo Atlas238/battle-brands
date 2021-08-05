@@ -1,7 +1,7 @@
 console.log("Logging in");
 const loginForm = document.querySelector("#loginForm");
 
-loginForm.addEventListener("submit", async event=>{
+loginForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
     console.log("Login submitted!");
     const fetchResp = await fetch("./user/login",{
@@ -14,5 +14,9 @@ loginForm.addEventListener("submit", async event=>{
             "Content-Type":"application/json"
         }
     });
+    // IF email correct
+        // IF password correct
+            // Redirect user to profile
+            // ELSE incorrect pass
     console.log(fetchResp.JSON());
 })
