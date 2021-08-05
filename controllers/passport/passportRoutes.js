@@ -1,7 +1,7 @@
 const socialLinkRouter = require('express').Router();
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
-const passportLinkedIn = require('passport-linkedin');
+const passportLinkedIn = require('passport-linkedin-oauth2');
 
 // PASSPORT-FACEBOOK SETUP
 const FacebookStrategy = passportFacebook.Strategy;
