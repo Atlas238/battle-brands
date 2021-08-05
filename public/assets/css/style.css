@@ -164,9 +164,11 @@ input {
 }
 #signUp button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginForm button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginBox {
     display: flex;
@@ -174,7 +176,7 @@ input {
     height: 400px;
     margin: auto;
     margin-top: 20px;
-    background-color: plum;
+    background-color: #ECCAFF;
     align-items: center;
     flex:auto;
 }
@@ -195,4 +197,11 @@ input {
 #profileCards{
     display: flex;
     justify-content: space-evenly;
+}
+
+#loginNav{
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    justify-content: center;
 }
