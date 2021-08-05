@@ -1,18 +1,18 @@
 [
     {
         "name" : "Game",
-        "weakness_id" : 0
+        "weakness" : 0
     },
     {
         "name" : "Social",
-        "weakness_id" : 3
+        "weakness" : 3
     },
     {
         "name" : "Business",
-        "weakness_id" : 1
+        "weakness" : 1
     },
     {
         "name" : "Corporate",
-        "weakness_id" : 2
+        "weakness" : 2
     }
 ]

@@ -14,5 +14,5 @@ loginForm.addEventListener("submit", async event=>{
             "Content-Type":"application/json"
         }
     });
-    console.log(fetchResp.JSON());
+    console.log( fetchResp.JSON() );
 })
