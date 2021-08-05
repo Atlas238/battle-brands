@@ -1,29 +1,34 @@
 /** ROUTER INCLUSION */
-const router = require('express').Router();
+const router = require("express").Router();
 
 /** MODEL INCLUSION **/
 const {Creature, Brand} = require("../models");
 
-router.get("/profile", async (req,res) => {
+router.get("/profile", async (req,res) => {    
     if(req.session.logged_in){
         try {
-            const creatList = await Creature.findAll({
-                include: Brand
+            const creatureList = await Creature.findAll({
+                include: Brand,
+                where: {
+                    user_id : req.session.user_id,
+                }
             });
 
-            if(!creatList){
-                res.status(404).send("You don't have any creatures");
-            } else {
-                const userCreatures = creatList.map(creature=>{
+            if(creatureList != null){
+                const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
-                })
+                });
+                
                 console.log(userCreatures);
                 const handleObj = {
                     user: req.session.logged_in,
                     username: req.session.username,
                     userCreatures,
                 }
-                res.render("collectionpage", handleObj );
+                res.render("profile", handleObj );
+            }
+            else {
+                res.status(404).send("You don't have any creatures");
             }
         } catch (error) {
             console.log(error);
@@ -34,11 +39,4 @@ router.get("/profile", async (req,res) => {
     }
   });
 
-  router.get("/pet-page", async (req,res) => {
-    if(req.session.logged_in){
-      res.status(200).render('petPage');
-    }
-  });
-
-
-module.exports = router;
+  module.exports = router;
