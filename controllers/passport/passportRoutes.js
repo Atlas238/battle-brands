@@ -3,8 +3,8 @@ const socialLinkRouter = require('express').Router();
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
+const passportTwitter = require('passport-twitter');
 const { Creature } = require('../../models');
-// const passportTwitter = require('passport-twitter');
 
 // PASSPORT-FACEBOOK SETUP
 const FacebookStrategy = passportFacebook.Strategy;
