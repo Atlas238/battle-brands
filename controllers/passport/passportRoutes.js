@@ -28,18 +28,6 @@ passport.use(new LinkedInStrategy({
         return done(null, profile);
     });
 }));
-<<<<<<< HEAD
-// TWITTER SETUP
-const TwitterStrategy = passportTwitter.Strategy;
-passport.use(new TwitterStrategy({
-    consumerKey: process.env.TWITTER_CONSUMER_KEY,
-    consumerSecret: process.env.TWITTER_CONSUMER_SERCRET,
-    callbackURL: "https://battle-brands.herokuapp.com/passport/auth/twitter/callback"
-},
-function(token, tokenSecret, profile, cb) {
-    return cb(null, profile);
-}));
-=======
 // // TWITTER SETUP
 // const TwitterStrategy = passportTwitter.Strategy;
 // passport.use(new TwitterStrategy({
@@ -50,7 +38,6 @@ function(token, tokenSecret, profile, cb) {
 // function(token, tokenSecret, profile, cb) {
 //     return cb(null, profile);
 // }));
->>>>>>> develop
 
 // User Serialize Setps...
 passport.serializeUser(function(user, done) {
