@@ -1,9 +1,14 @@
+#creatureBox{
+    margin-top:50px;
+}
+
 .active-creature-block{
     margin: 5px;
     padding:15px;
     width: 400px;
-    border: 2px solid #E2C6FF;
+    border: 3px solid var(--digital-dark);
     border-radius: 10px;
+    box-shadow: 10px 10px 10px -3px rgba(0,0,0, .5);
     align-self: center;
 }
 
@@ -11,18 +16,30 @@
     display: flex;
     position: relative;
     margin: 0px;
-    padding: 10px;
+    padding: 15px;
     height: 200px;
-    border: 1px solid black;
+    border: 3px solid black;
+    border-radius: 3px;
     background: #aaaaaa;
-
     align-content: center;
     justify-content: center;
 }
 
+.creature-pen.bg-sky-day{
+    background-image: -webkit-radial-gradient(50% 100%, 60% 90%, #9fd1c8 10%, #55d4d4 30%, #1e95cf);
+}
+
+.creature-pen h1,
+.creature-pen h2,
+.creature-pen h3 {
+    position: absolute;
+    top: 10px;
+    margin: 0px auto;
+}
+
 .creature-pen #icon{
     display: block;
-    /* align-self: flex-end; */
+    align-self: flex-end;
 }
 
 .care-stats-bar p{
@@ -34,7 +51,69 @@
     font-size: 150%;
 }
 
-.creature-care-actions{
+#interaction-box {
     padding-top: 20px;
     width: 100%;
+}
+
+
+
+
+
+
+
+
+/** **/
+.animate-bounce {
+
+}
+
+
+/* Creature at rest (default) */
+.animate-rest {
+    max-width:fit-content;
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature happy! */
+.creature-happy {
+    animation: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Sad :( */
+.creature-sad {
+    animation: headShake;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Hungry */
+    /* Icon animations... */
+.creature-hungry {
+    animation: rubberBand;
+    animation-duration: 1.5s;
+    animation-iteration-count:infinite;
+    transition: animation 500ms ease;
+}
+    /* After animations... */
+
+#icon-holder.creature-groomed::after {
+    content: "🎇";
+    position: absolute;
+    float: inline-end;
+    top:25%;
+    left:52%;
+    z-index:3 !important;
+    width:fit-content;
+    animation: fadeIn;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
