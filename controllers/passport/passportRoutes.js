@@ -32,15 +32,15 @@ passport.use(new LinkedInStrategy({
 }));
 
 // // TWITTER SETUP
-// const TwitterStrategy = passportTwitter.Strategy;
-// passport.use(new TwitterStrategy({
-//     consumerKey: process.env.TWITTER_CONSUMER_KEY,
-//     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-//     callbackURL: "http://battle-brands.herokuapp.com/passport/auth/twitter/callback"
-// },
-// function(token, tokenSecret, profile, cb) {
-//     return cb(null, profile);
-// }));
+const TwitterStrategy = passportTwitter.Strategy;
+passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/twitter/callback"
+},
+function(token, tokenSecret, profile, cb) {
+    return cb(null, profile);
+}));
 
 // // User Serialize Setps...
 passport.serializeUser(function(user, done) {
@@ -59,33 +59,23 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
     try {
         if (req.user) {
-            console.log(`HEY LOOK AT ME IM USER ${req.session.user_id}`);
-            let newCreature = {
-                id: 'DEFAULT',
-                user_id: req.session.user_id,
-                name: `newPet${req.session.user_id}`,
-                // FB BrandID
-                brand_id: 2,
-                type_id: 2,
-                combatstat_id: 3,
-                carestat_id: 1,
-                exp: 0,
-                currenthealth: 10,
-            };
 
-            let testCreature = {
-                user_id: 3,
-                name: `newPet3`,
-                // FB BrandID
-                brand_id: 2,
-                type_id: 2,
-                combatstat_id: 3,
-                carestat_id: 1,
-                exp: 0,
-                currenthealth: 10,
-            }
+            console.log('You made it!')
 
             try {
+
+                let newCreature = {
+                    user_id: req.session.user_id,
+                    name: `newPet${req.session.user_id}`,
+                    // FB BrandID
+                    brand_id: 2,
+                    type_id: 2,
+                    combatstat_id: 3,
+                    carestat_id: 1,
+                    exp: 0,
+                    currenthealth: 10,
+                };
+
                 const creature = await Creature.create(newCreature);
                 console.log(creature);
                 res.status(200).send(creature);
@@ -107,6 +97,7 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
     // CREATE LINKEDIN CREATURE FOR USER WITH GIVEN ID
     console.log(req);
     try {
+
         if (req.user) {
             console.log('You made it!');
             let newCreature = {
@@ -128,8 +119,9 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);
-            }
-        }
+            };
+        };
+
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
@@ -141,11 +133,8 @@ socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'))
 // Callback
 socialLinkRouter.get('/passport/auth/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }), async (req, res) => {
-
     console.log(req);
-
     try {
-
         if (req.user) {
             console.log('You made it!');
             let newCreature = {
@@ -167,8 +156,8 @@ socialLinkRouter.get('/passport/auth/twitter/callback',
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);
-            }
-        }
+            };
+        };
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
