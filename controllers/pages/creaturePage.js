@@ -50,7 +50,7 @@ router.get("/creature/:id", async (req,res) => {
         }
     }
     else {
-        res.status(300).redirect('/');
+        res.status(300).redirect('/profile');
     }
 });
 
