@@ -26,5 +26,124 @@
         "base_hp" : 10,
         "base_atk" : 4,
         "base_def" : 0
+    },
+    {
+        "name": "Amazon",
+        "icon": "fa-amazon",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
+    },
+    {
+        "name": "Apple",
+        "icon": "fa-apple",
+        "base_hp" : 10,
+        "base_atk" : 0,
+        "base_def" : 4
+    },
+    {
+        "name": "Google",
+        "icon": "fa-google",
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
+    },
+    {
+        "name": "Microsoft",
+        "icon": "fa-microsoft",
+        "base_hp" : 10,
+        "base_atk" : 3,
+        "base_def" : 1
+    },
+    {
+        "name": "Stripe",
+        "icon": "fa-stripe",
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
+    },
+    {
+        "name": "PayPal",
+        "icon": "fa-paypal",
+        "base_hp" : 10,
+        "base_atk" : 4,
+        "base_def" : 0
+    },
+    {
+        "name": "Vine",
+        "fa-id": "fa-vine",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
+    },
+    {
+        "name" : "Reddit",
+        "fa-id" : "fa-reddit",
+        "base_hp" : 10,
+        "base_atk" : 4,
+        "base_def" : 0
+    },
+    {
+        "name": "Android",
+        "fa-id": "fa-android",
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
+    },
+    {
+        "name": "IOS",
+        "fa-id": "fa-app-store-ios",
+        "base_hp" : 10,
+        "base_atk" : 3,
+        "base_def" : 1
+    },
+    {
+        "name": "Windows",
+        "fa-id": "fa-windows",
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
+    },
+    {
+        "name": "Internet Explorer",
+        "fa-id": "fa-internet-explorer",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 0
+    },
+    {
+        "name": "Firefox",
+        "fa-id": "fa-firefox-browser",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
+    },
+    {
+        "name": "Chrome",
+        "fa-id": "fa-chrome",
+        "base_hp" : 10,
+        "base_atk" : 4,
+        "base_def" : 0
+    },
+    {
+        "name": "Youtube",
+        "fa-id" : "fa-youtube",
+        "base_hp" : 10,
+        "base_atk" : 2,
+        "base_def" : 2
+    },
+    {
+        "name": "Twitch",
+        "fa-id": "fa-twitch",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
+    },
+    {
+        "name": "Reddit",
+        "fa-id": "fa-reddit",
+        "base_hp" : 10,
+        "base_atk" : 1,
+        "base_def" : 3
     }
 ]
