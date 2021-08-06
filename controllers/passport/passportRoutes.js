@@ -39,13 +39,13 @@ passport.use(new LinkedInStrategy({
 //     return cb(null, profile);
 // }));
 
-// User Serialize Setps...
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-    done(null, user);
-});
+// // User Serialize Setps...
+// passport.serializeUser(function(user, done) {
+//     done(null, user);
+// });
+// passport.deserializeUser(function(user, done) {
+//     done(null, user);
+// });
 
 // ROUTES
 // Facebook Routes
@@ -54,11 +54,11 @@ socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'
 socialLinkRouter.get('/passport/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect:'/profile', failureRedirect: '/login'}));
 
-// // Linkedin Route
-socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
-// Callback
-socialLinkRouter.get('/passport/auth/linkedin/callback',
-  passport.authenticate('linkedin', { successRedirect: '/profile', failureRedirect: '/login' }));
+// // // Linkedin Route
+// socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
+// // Callback
+// socialLinkRouter.get('/passport/auth/linkedin/callback',
+//   passport.authenticate('linkedin', { successRedirect: '/profile', failureRedirect: '/login' }));
 
 // // Twitter Route
 // socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'));
