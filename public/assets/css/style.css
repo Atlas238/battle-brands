@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 
+
 :root {
     /* Numbered from lightest to darkest (1-9) */
     --c-1: #ECCAFF;
@@ -42,7 +43,9 @@ html {
     color: var(--c-primary-hover);
 }
 
-
+body{
+    background-color: #C4BAFF;
+}
 /* Custom Utility Classes */
 .w-fit {
     width: fit-content;
@@ -78,9 +81,6 @@ html {
 
 /* Creature at rest (default) */
 .rest {
-    position: relative;
-    top:50%;
-    left:50%;
     max-width:fit-content;
     animation: pulse;
     animation-duration: 2s;
@@ -113,19 +113,15 @@ html {
     transition: animation 500ms ease;
 }
     /* After animations... */
-#icon-holder {
-    visibility: hidden;
-}
+
 #icon-holder.creature-groomed::after {
-    content: "\f005";
+    content: "🎇";
     position: absolute;
-    visibility: visible;
-    top:0;
-    left: 60%;
+    float: inline-end;
+    top:25%;
+    left:52%;
     z-index:3 !important;
-    display: block;
-    width: 255px;
-    height: 255px;
+    width:fit-content;
     animation: fadeIn;
     animation-direction: alternate;
     animation-duration: 1.5s;
@@ -163,9 +159,11 @@ input {
 }
 #signUp button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginForm button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginBox {
     display: flex;
@@ -173,7 +171,7 @@ input {
     height: 400px;
     margin: auto;
     margin-top: 20px;
-    background-color: plum;
+    background-color: #ECCAFF;
     align-items: center;
     flex:auto;
 }
@@ -184,5 +182,261 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#D8C2FF ;
+    background-color:#ECCAFF;
+    text-align: center;
+    color: #646e68;
+}
+
+#card{
+    background-color:#E2C6FF ;
+}
+
+#profileCards{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#cardButton{
+    background-color:tan;
+}
+
+#loginNav{
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    justify-content: center;
+    color: #646e68;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
+}
+
+#body {
+  margin: 0;
+  padding: 0;
+  background: #C4BAFF;
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 400px;
+  background: #ECCAFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid tan;
+  color: tan;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: tan;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 40px;
+  height: 40px;
+  background: #baacbd;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #222;
+  text-align: center;
+}
+
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+#login-button:hover,
+#login-button:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+#login-button:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+
+#login-button{
+margin-top: 28px;
+width: 120px;
+height: 32px;
+background: tan;
+border: none;
+border-radius: 2px;
+color: #FFF;
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
+text-transform: uppercase;
+transition: 0.1s ease;
+}
+
+/* SOCIAL LINKS/CREATE PAGE STYLING */
+#fbBtn {
+    text-decoration: none;
+    color: black;
+    transition: border-bottom 500ms ease;
+}
+
+#fbBtn:hover {
+    opacity: 0.7;
+    border-bottom: 1px solid black;
+}
+
+#twBtn {
+    text-decoration: none;
+    color: black;
+    transition: border-bottom 500ms ease;
+}
+
+#twBtn:hover {
+    opacity: 0.7;
+    border-bottom: 1px solid black;
+}
+
+#lkBtn {
+    text-decoration: none;
+    color: black;
+    transition: border-bottom 500ms ease;
+}
+
+#lkBtn:hover {
+    opacity: 0.7;
+    border-bottom: 1px solid black;
+
+#logout{
+    color: tan;
+}
+
+#logout:hover,
+#logout:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+  background-color: tan;
+  color: white;
+}
+
+#frontendBox{
+    background-color: #ECCAFF;
+}
+#backendBox{
+    background-color: #ECCAFF;
+}
+#aboutBox{
+    background-color: #ECCAFF;
+}
+#simBox{
+    background-color: tan;
+}
+#jackBox{
+    background-color: tan;
+}
+#derekBox{
+    background-color: tan;
+}
+#lucioBox{
+    background-color: tan;
 }

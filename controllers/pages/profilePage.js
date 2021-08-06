@@ -14,7 +14,7 @@ router.get("/profile", async (req,res) => {
                 }
             });
 
-            if(creatureList != null){
+            if(creatureList){
                 const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
                 });
@@ -39,5 +39,17 @@ router.get("/profile", async (req,res) => {
       res.status(300).redirect('/');
     }
   });
+
+//   ADDING IN CREATE PAGE RENDER - NO DATA NEEDED
+  router.get('/create', async (req, res) => {
+      if (req.session.logged_in) {
+          try {
+              res.render('createPage');
+          } catch (err) {
+              console.log(err);
+              res.status(500).json(err);
+          }
+      }
+  })
 
   module.exports = router;

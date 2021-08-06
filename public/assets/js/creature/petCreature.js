@@ -1,24 +1,23 @@
-const petCreature = async () => {
+const petCreatureId = document.getElementById('icon').getAttribute('data-id');
+const petBtn = document.getElementById('petBtn');
+
+const petCreature = (id) => {
     try {
-        fetch('http://localhost:3001/api/stats/1', {
+        fetch(`http://localhost:3001/creature/care/${id}`, {
             method: 'GET'
         }).then((response) => {
             response.json();
-        }).then((data) => {
-
+        }).then((carestats) => {
             // Now have carestat obj...
-            
-            if (data[0].carestat.energy > 0) {
-                let updatedGroomingVal = data[0].carestat.grooming++;
-                let updatedEnergyVal = data[0].carestat.energy--;
+            if (carestats.energy > 0) {
+                let updatedGroomingVal = carestats.grooming++;
+                let updatedEnergyVal = carestats.energy--;
                 try {
-                    fetch('http://localhost:3001/api/stats/1', {
+                    fetch(`http://localhost:3001/creature/care/${id}`, {
                         method: 'PUT',
                         body: {
-                            carestat: {
-                                grooming: updatedGroomingVal,
-                                energy: updatedEnergyVal,
-                            },
+                            grooming: updatedGroomingVal,
+                            energy: updatedEnergyVal,
                         },
                     }).then((response) => {
                         response.json();
@@ -29,4 +28,7 @@ const petCreature = async () => {
     } catch (error) { console.log(error) };
 };
 
-module.exports = petCreature;
+petBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    petCreature(petCreatureId);
+});

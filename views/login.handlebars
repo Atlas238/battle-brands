@@ -1,17 +1,51 @@
-<div id="loginBox">
+{{!-- <nav id="loginNav">
+    Welcome to Battle Brands!
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+        </li>
+    </ul>
+</nav> --}}
+<nav id="nav" class="navbar navbar-expand-lg navbar-light" class="text-reset">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-1" href="#">Welcome to Battle Brands!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="body" class="w-100 vh-100 d-flex justify-content-center align-items-start">
+    <div id="login-box">
+      <div class="left">
+        <h1>Sign up</h1>
+        <form id="signUp">
+        <input type="text" id="signUpUsername" name="username" placeholder="Username" />
+        <input type="text" id="signUpEmail" name="email" placeholder="E-mail" />
+        <input type="password" id="signUpPassword" name="password" placeholder="Password" />
+        <input type="submit" name="signup_submit" value="Sign me up" />
+        <span id="signUp-error" class="my-3"></span>
+        </form>
+      </div>
 
-<form id="signUp">
-    Username: <input type="text" name="username" id="signUpUsername">
-    Email: <input type="email" name="email" id="signUpEmail">
-    Password: <input type="password" name="password" id="signUpPassword">
-    <button>Sign Up!</button>
-</form>
-
-<form id="loginForm">
-    Email: <input type="text" name="loginEmail" id="loginEmail">
-    Password: <input type="password" name="password" id="loginPassword">
-    <button>Login!</button>
-</form>
-</div>
+      <div class="right">
+          <span class="loginwith">Sign in </span>
+          <form id="loginForm">
+          <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mail">
+          <input type="password" name="password" id="loginPassword" placeholder="Password">
+          <button id="login-button">Login!</button>
+          <span id="login-error" class="my-3"></span>
+        </form>
+      </div>
+      <div class="or">OR</div>
+    </div>
+  </div>
 
 <script src="../assets/js/login.js"></script>

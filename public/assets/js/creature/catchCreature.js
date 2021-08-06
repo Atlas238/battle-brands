@@ -1,25 +1,25 @@
-// USE 1 Energy to raise happiness
-const catchCreature = async () => {
+const catchCreatureId = document.getElementById('icon').getAttribute('data-id');
+const catchBtn = document.getElementById('catchBtn');
+
+const catchCreature = (id) => {
     try {
-        fetch('http://localhost:3001/api/stats/1', {
+        fetch(`http://localhost:3001/creature/care/${id}`, {
             method: 'GET',
         }).then((response) => {
             response.json();
-        }).then((data) => {
+        }).then((carestats) => {
 
             // Now have our carestat obj...
 
-            if (data[0].carestat.energy > 0) {
-                let updatedHappinessVal = data[0].carestat.happiness++;
-                let updatedEnergyVal = data[0].carestat.energy--;
+            if (carestats.energy > 0) {
+                let updatedHappinessVal = carestats.happiness++;
+                let updatedEnergyVal = carestats.energy--;
                 try {
-                    fetch('http://localhost:3001/api/stats/1', {
+                    fetch(`http://localhost:3001/creature/care/${id}`, {
                         method: 'PUT',
                         body: {
-                            carestat: {
-                                happiness: updatedHappinessVal,
-                                energy: updatedEnergyVal,
-                            },
+                            happiness: updatedHappinessVal,
+                            energy: updatedEnergyVal,
                         }
                     }).then((response) => {
                         response.json();
@@ -32,4 +32,7 @@ const catchCreature = async () => {
     } catch (error) {console.log(error)};
 };
 
-module.exports = catchCreature;
+catchBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    catchCreature(catchCreatureId);
+});
