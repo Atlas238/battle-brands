@@ -61,6 +61,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
         if (req.user) {
             console.log(`HEY LOOK AT ME IM USER ${req.session.user_id}`);
             let newCreature = {
+                id: 'DEFAULT',
                 user_id: req.session.user_id,
                 name: `newPet${req.session.user_id}`,
                 // FB BrandID
