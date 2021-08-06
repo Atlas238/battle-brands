@@ -40,4 +40,16 @@ router.get("/profile", async (req,res) => {
     }
   });
 
+//   ADDING IN CREATE PAGE RENDER - NO DATA NEEDED
+  router.get('/create', async (req, res) => {
+      if (req.session.logged_in) {
+          try {
+              res.render('createPage');
+          } catch (err) {
+              console.log(err);
+              res.status(500).json(err);
+          }
+      }
+  })
+
   module.exports = router;

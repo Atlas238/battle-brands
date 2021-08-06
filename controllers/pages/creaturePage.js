@@ -25,6 +25,7 @@ router.get("/:id", async (req,res) => {
 
                 const handleObj = {
                     user: req.session.logged_in,
+                    userId: req.session.user_id,
                     username: req.session.username,
                     myCreature,
                 }

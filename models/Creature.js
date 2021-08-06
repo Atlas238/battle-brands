@@ -51,10 +51,10 @@ Creature.init(
             type: DataTypes.INTEGER,
             default: 0,
         },
-        health: 
+        currenthealth: 
         {
             type: DataTypes.INTEGER,
-            default: 0,
+            default: 10,
         },
     },
     {
