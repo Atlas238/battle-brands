@@ -2,9 +2,11 @@
 
 <h2 id="greeting" class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
 
-<div class="d-flex flex-wrap flex-md-row flex-sm-column container">
+<div class="d-flex flex-wrap flex-md-row flex-sm-column justify-content-center container">
   <div class="active-creature-block">
+    <div class=" text-center">
       {{ myCreature.name }}
-      <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
+    </div>
+      <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x rest"></i>
   </div>
 </div>
