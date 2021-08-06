@@ -2,7 +2,7 @@
 
 <h2 id="greeting" class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
 
-<div class="d-flex flex-wrap flex-md-row flex-sm-column justify-content-center container">
+<div id="creatureBox" class="d-flex flex-wrap flex-md-row flex-sm-column justify-content-center container">
   <div class="active-creature-block">
     <div class="d-flex flex-column justify-content-space-evenly p-2">
       <div class=" text-center pb-3">
@@ -10,9 +10,7 @@
         <div class="p-4">
           <i id="icon" data-id="{{ myCreature.id }}" data-user="{{ userId }}" class="fab {{ myCreature.brand.icon }} fa-8x rest"></i>
         </div>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="{{myCreature.exp}}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+       
         {{!-- <p>{{ myCreature.exp }}</p> --}}
         <div class="container testing">
           <h3>Stats for testing...</h3>
@@ -22,6 +20,9 @@
             <li>Grooming: {{myCreature.carestat.grooming}}</li>
             <li>Energy: {{myCreature.carestat.energy}}</li>
           </ul>
+        </div>
+         <div class="progress">
+          <div id="progress"class="progress-bar" role="progressbar" aria-valuenow="{{myCreature.exp}}" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div id="interactionbox" class="container">
           <button id="feedBtn" class="button btn-primary p-1">Feed</button>
