@@ -1,3 +1,5 @@
+const updateCreatureStats = require("./creature/updateCreature");
+
 const creatureCards = document.querySelectorAll("#card");
 const logoutBtn = document.querySelector("#logout");
 
@@ -38,3 +40,34 @@ function checkLevels(){
 }
 
 checkLevels();
+
+// Event Listener for when CreaturePage is in view (Feel free to reuse the event listener by creating a dom node and feeding that to the visHandler function)
+const greeting = document.getElementById('greeting');
+
+const isElementInView = (element) => {
+    let rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) 
+    );
+};
+
+const onVisibilityChange = (element, callback) => {
+    let oldVisible;
+    return function() {
+        let newVisible = isElementInView(element);
+        if (newVisible != oldVisible) {
+            oldVisible = newVisible;
+            if (typeof callback == 'function') {
+                callback();
+            }
+        }
+    }
+}
+ 
+const visHanlder = onVisibilityChange(element, function() {
+    updateCreatureStats();
+});
+visHanlder(greeting);

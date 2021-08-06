@@ -1,14 +1,11 @@
 <div>{{> navbar}}</div>
 
-<h2 class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
+<h2 id="greeting" class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
 
 <div class="d-flex flex-wrap flex-md-row flex-sm-column container">
-  {{ myCreature.name }}
-
   <div class="active-creature-block">
-
-        <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
-
+      {{ myCreature.name }}
+      <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
+      <p>{{ myCreature }}</p>
   </div>
-
 </div>

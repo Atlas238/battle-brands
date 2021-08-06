@@ -10,7 +10,7 @@ const FacebookStrategy = passportFacebook.Strategy;
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/facebook/callback"
+    callbackURL: "https://battle-brands.herokuapp.com/passport/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
@@ -20,7 +20,7 @@ const LinkedInStrategy = passportLinkedIn.Strategy;
 passport.use(new LinkedInStrategy({
     clientID: process.env.LINKEDIN_API_KEY,
     clientSecret: process.env.LINKEDIN_SECRET_KEY,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/linkedin/callback",
+    callbackURL: "https://battle-brands.herokuapp.com/passport/auth/linkedin/callback",
     scope: ['r_emailaddress', 'r_liteprofile'],
     state: true
 }, function(accessToken, refreshToken, profile, done) {
@@ -48,7 +48,6 @@ passport.deserializeUser(function(user, done) {
 });
 
 // ROUTES
-
 // Facebook Routes
 socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'));
 // Callback
