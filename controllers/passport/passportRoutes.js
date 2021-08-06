@@ -86,7 +86,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
             }
 
             try {
-                const creature = await Creature.create(testCreature);
+                const creature = await Creature.create(newCreature);
                 console.log(creature);
                 res.status(200).send(creature);
             } catch (error) {
