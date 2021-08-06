@@ -22,15 +22,7 @@
     </div>
   </div>
 </nav>
-
-
-
-
-
-
-
-
-    <div id="body">
+<div id="body" class="w-100 vh-100 d-flex justify-content-center align-items-start">
     <div id="login-box">
       <div class="left">
         <h1>Sign up</h1>
@@ -38,22 +30,18 @@
         <input type="text" id="signUpUsername" name="username" placeholder="Username" />
         <input type="text" id="signUpEmail" name="email" placeholder="E-mail" />
         <input type="password" id="signUpPassword" name="password" placeholder="Password" />
-        
-        
         <input type="submit" name="signup_submit" value="Sign me up" />
+        <span id="signUp-error" class="my-3"></span>
         </form>
       </div>
-      
-
-
 
       <div class="right">
           <span class="loginwith">Sign in </span>
-          
           <form id="loginForm">
           <input type="text" name="loginEmail" id="loginEmail" placeholder="E-mail">
           <input type="password" name="password" id="loginPassword" placeholder="Password">
-            <button id="login-button">Login!</button>
+          <button id="login-button">Login!</button>
+          <span id="login-error" class="my-3"></span>
         </form>
       </div>
       <div class="or">OR</div>
