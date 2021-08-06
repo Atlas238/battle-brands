@@ -1,4 +1,4 @@
-const updateCreatureStats = require("./creature/updateCreature");
+// const updateCreatureStats = require("./creature/updateCreature");
 
 const creatureCards = document.querySelectorAll("#card");
 const logoutBtn = document.querySelector("#logout");
