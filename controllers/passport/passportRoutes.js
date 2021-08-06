@@ -15,6 +15,7 @@ passport.use(new FacebookStrategy({
 function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
 }));
+
 // LINKEDIN SETUP
 const LinkedInStrategy = passportLinkedIn.Strategy;
 passport.use(new LinkedInStrategy({
@@ -50,7 +51,7 @@ passport.use(new LinkedInStrategy({
 // ROUTES
 // Facebook Routes
 socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'));
-socialLinkRouter.get('/passport/auth/facebook/callback',
+socialLinkRouter.get('https:/battle-brands.herokuapp.com/passport/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/create'}), (req, res) => {
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
     try {
@@ -90,7 +91,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
 
 // // Linkedin Route
 socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
-socialLinkRouter.get('/passport/auth/linkedin/callback',
+socialLinkRouter.get('https:/battle-brands.herokuapp.com/passport/auth/linkedin/callback',
   passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
     // CREATE LINKEDIN CREATURE FOR USER WITH GIVEN ID
     try {
@@ -112,15 +113,21 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
                 care_stat: 2,
                 combat_stat: 4
             };
-            fetch('http://battle-brands.herokuapp.com/creature/create', {
-                method: 'POST',
-                body: newCreature
-            }).then((response) => {
-                response.json();
-            }).then((data) => {
-                console.log(data);
-                res.redirect('/profile');
-            });
+
+            try {
+                fetch('http://battle-brands.herokuapp.com/creature/create', {
+                    method: 'POST',
+                    body: newCreature
+                }).then((response) => {
+                    response.json();
+                }).then((data) => {
+                    console.log(data);
+                    res.redirect('/profile');
+                });
+            } catch (error) {
+                console.log(error);
+                res.status(500).json(error);
+            }
         }
     } catch (error) {
         console.log(error);
