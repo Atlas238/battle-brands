@@ -111,19 +111,15 @@ html {
     transition: animation 500ms ease;
 }
     /* After animations... */
-#icon-holder {
-    visibility: hidden;
-}
+
 #icon-holder.creature-groomed::after {
-    content: "\f005";
+    content: "🎇";
     position: absolute;
-    visibility: visible;
-    top:0;
-    left: 60%;
+    float: inline-end;
+    top:25%;
+    left:52%;
     z-index:3 !important;
-    display: block;
-    width: 255px;
-    height: 255px;
+    width:fit-content;
     animation: fadeIn;
     animation-direction: alternate;
     animation-duration: 1.5s;
