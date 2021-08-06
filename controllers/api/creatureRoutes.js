@@ -15,7 +15,7 @@ creatureRouter.get("/creatures", async (req, res) => {
   }
 });
 
-creatureRouter.get('/types', async (req,res) => {
+creatureRouter.get('/creature/types', async (req,res) => {
   try {
     const typeList = await Type.findAll();
     if(typeList){
@@ -29,7 +29,7 @@ creatureRouter.get('/types', async (req,res) => {
   }
 });
 
-creatureRouter.post('/creature',async (req,res) => {
+creatureRouter.get('/creature',async (req,res) => {
   if(req.query && req.query.user && req.query.creature){
     try {
       const creature = await Creature.findOne({where: { user_id: req.query.user, id: req.query.creature}});
@@ -45,7 +45,7 @@ creatureRouter.post('/creature',async (req,res) => {
   }
 })
 
-creatureRouter.get("/stats/:userId", async (req, res) => {
+creatureRouter.get("/creature/stats/:userId", async (req, res) => {
   try {
     const creatureList = await Creature.findOne({
       where: {
