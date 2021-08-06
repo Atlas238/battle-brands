@@ -14,7 +14,7 @@ router.get("/profile", async (req,res) => {
                 }
             });
 
-            if(creatureList != null){
+            if(creatureList){
                 const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
                 });

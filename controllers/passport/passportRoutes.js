@@ -10,7 +10,7 @@ const FacebookStrategy = passportFacebook.Strategy;
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/facebook/callback"
+    callbackURL: "https://battle-brands.herokuapp.com/passport/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
@@ -20,7 +20,7 @@ const LinkedInStrategy = passportLinkedIn.Strategy;
 passport.use(new LinkedInStrategy({
     clientID: process.env.LINKEDIN_API_KEY,
     clientSecret: process.env.LINKEDIN_SECRET_KEY,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/linkedin/callback",
+    callbackURL: "https://battle-brands.herokuapp.com/passport/auth/linkedin/callback",
     scope: ['r_emailaddress', 'r_liteprofile'],
     state: true
 }, function(accessToken, refreshToken, profile, done) {
@@ -39,27 +39,26 @@ passport.use(new LinkedInStrategy({
 //     return cb(null, profile);
 // }));
 
-// User Serialize Setps...
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-passport.deserializeUser(function(user, done) {
-    done(null, user);
-});
+// // User Serialize Setps...
+// passport.serializeUser(function(user, done) {
+//     done(null, user);
+// });
+// passport.deserializeUser(function(user, done) {
+//     done(null, user);
+// });
 
 // ROUTES
-
 // Facebook Routes
 socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'));
 // Callback
 socialLinkRouter.get('/passport/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect:'/profile', failureRedirect: '/login'}));
 
-// // Linkedin Route
-socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
-// Callback
-socialLinkRouter.get('/passport/auth/linkedin/callback',
-  passport.authenticate('linkedin', { successRedirect: '/profile', failureRedirect: '/login' }));
+// // // Linkedin Route
+// socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
+// // Callback
+// socialLinkRouter.get('/passport/auth/linkedin/callback',
+//   passport.authenticate('linkedin', { successRedirect: '/profile', failureRedirect: '/login' }));
 
 // // Twitter Route
 // socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'));
