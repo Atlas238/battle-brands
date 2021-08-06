@@ -73,8 +73,20 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                 currenthealth: 10,
             };
 
+            let testCreature = {
+                user_id: 3,
+                name: `newPet3`,
+                // FB BrandID
+                brand_id: 2,
+                type_id: 2,
+                combatstat_id: 3,
+                carestat_id: 1,
+                exp: 0,
+                currenthealth: 10,
+            }
+
             try {
-                const creature = await Creature.create(newCreature);
+                const creature = await Creature.create(testCreature);
                 console.log(creature);
                 res.status(200).send(creature);
             } catch (error) {
