@@ -69,13 +69,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                 combatstat_id: 3,
                 carestat_id: 1,
                 exp: 0,
-                health: 10,
-                // Isnt this just brand_id again?
-                brand: 2,
-                type: 2,
-                // Isnt this just care/combat id again?
-                care_stat: 1,
-                combat_stat: 3
+                currenthealth: 10,
             };
 
             try {
@@ -111,7 +105,7 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
                 combatstat_id: 4,
                 carestat_id: 2,
                 exp: 0,
-                health: 10,
+                currenthealth: 10,
             };
 
             try {
@@ -150,7 +144,7 @@ socialLinkRouter.get('/passport/auth/twitter/callback',
                 combatstat_id: 4,
                 carestat_id: 2,
                 exp: 0,
-                health: 10,
+                currenthealth: 10,
             };
 
             try {
