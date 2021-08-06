@@ -72,7 +72,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                 care_stat: 1,
                 combat_stat: 3
             };
-            fetch('http://localhost:3001/creature/create', {
+            fetch('http://battle-brands.heroukapp.com/creature/create', {
                 method: 'POST',
                 body: newCreature
             }).then((response) => {
@@ -112,7 +112,7 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
                 care_stat: 2,
                 combat_stat: 4
             };
-            fetch('http://localhost:3001/creature/create', {
+            fetch('http://battle-brands.herokuapp.com/creature/create', {
                 method: 'POST',
                 body: newCreature
             }).then((response) => {
