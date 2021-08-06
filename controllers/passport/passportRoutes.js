@@ -59,7 +59,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
     try {
         if (req.user) {
-            console.log('You made it!')
+            console.log(`HEY LOOK AT ME IM USER ${req.session.user_id}`);
             let newCreature = {
                 user_id: req.session.user_id,
                 name: `newPet${req.session.user_id}`,
