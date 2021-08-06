@@ -4,9 +4,9 @@ const numHoursHappiness = 3;
 const numHoursGrooming = 5;
 const numHoursEnergy = 1;
 
-// // For testing in node
-// const fetch = require('node-fetch');
+const updateCreatureId = document.getElementById('icon').getAttribute('data-id')
 
+// TODO: change to carestat routes
 const updateCreatureStats = (id) => {
     // Get our data from the server
     try {
@@ -20,6 +20,7 @@ const updateCreatureStats = (id) => {
             // Hunger...
             const updatedCareStat = { 
                 id: data[0].carestat.id,
+                lastinteraction: new Date(),
             };
             // Check and degrade values...
             // Dete
@@ -50,4 +51,4 @@ const updateCreatureStats = (id) => {
     };
 }
 
-module.exports = updateCreatureStats
+// updateCreatureStats(updateCreatureId);
