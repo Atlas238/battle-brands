@@ -38,7 +38,7 @@ const updateCreatureStats = (id) => {
             };
             try {
                 // Post request to update creature stats
-                fetch(`http://localhost:3001/creature/${id}`, {
+                fetch(`http://localhost:3001/api/stats/${id}`, {
                     method: 'PUT',
                     body: updatedCareStat
                 });
