@@ -7,10 +7,10 @@ const numHoursEnergy = 1;
 // // For testing in node
 // const fetch = require('node-fetch');
 
-const updateCreatureStats = () => {
+const updateCreatureStats = (id) => {
     // Get our data from the server
     try {
-        fetch('http://localhost:3001/api/stats/1', { method: 'GET' })
+        fetch(`http://localhost:3001/creature/${id}`, { method: 'POST' })
         .then((response) => response.json())
         .then((data) => {
             const dbTime = new Date(Date.parse(data[0].carestat.lastinteraction)).getTime();
@@ -37,7 +37,7 @@ const updateCreatureStats = () => {
             };
             try {
                 // Post request to update creature stats
-                fetch('http://localhost:3001/api/stats/1', {
+                fetch(`http://localhost:3001/creature/${id}`, {
                     method: 'PUT',
                     body: updatedCareStat
                 });

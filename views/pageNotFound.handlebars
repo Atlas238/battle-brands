@@ -1,3 +1,12 @@
+<div>
+        {{#if user}}
+        {{>navbar}}
+        {{/if}}
+        {{#unless user}}
+        <a href="/" class="btn btn-outline-primary fs-5" type="button">Login</a>
+        {{/unless}}
+        
+</div>
 <div class="d-flex vw-100 vh-100 justify-content-center align-items-center">
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>Page Not Found</h1>
@@ -8,3 +17,6 @@
         />
       </div>
     </div>
+       
+       
+
