@@ -3,6 +3,7 @@ const socialLinkRouter = require('express').Router();
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
+const { Creature } = require('../../models');
 // const passportTwitter = require('passport-twitter');
 
 // PASSPORT-FACEBOOK SETUP
@@ -76,21 +77,15 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                 care_stat: 1,
                 combat_stat: 3
             };
-            res.status(200).json(newCreature);
-            // try {
-            //     // fetch('http://battle-brands.heroukapp.com/creature/create', {
-            //     //     method: 'POST',
-            //     //     body: newCreature
-            //     // }).then((response) => {
-            //     //     response.json();
-            //     // }).then((data) => {
-            //     //     console.log(data);
-            //     //     res.redirect('/profile');
-            //     // });
-            // } catch (error) {
-            //     res.status(500).json(error);
-            //     console.log(error);
-            // }
+
+            try {
+                const creature = await Creature.create(newCreature);
+                console.log(creature);
+                res.status(200).send(creature);
+            } catch (error) {
+                res.status(500).json(error);
+                console.log(error);
+            }
         };
     } catch (error) {
         console.log(error);
