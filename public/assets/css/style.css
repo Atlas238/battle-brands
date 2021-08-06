@@ -43,7 +43,9 @@ html {
     color: var(--c-primary-hover);
 }
 
-
+body{
+    background-color: #C4BAFF;
+}
 /* Custom Utility Classes */
 .w-fit {
     width: fit-content;
@@ -180,11 +182,13 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#AFB1FF;
+    background-color:#ECCAFF;
+    text-align: center;
+    color: #646e68;
 }
 
 #card{
-    background-color:#ECCAFF ;
+    background-color:#E2C6FF ;
 }
 
 #profileCards{
@@ -192,11 +196,16 @@ input {
     justify-content: space-evenly;
 }
 
+#cardButton{
+    background-color:tan;
+}
+
 #loginNav{
     display: flex;
     align-items: center;
     font-size: 50px;
     justify-content: center;
+    color: #646e68;
 }
 
 
@@ -208,7 +217,7 @@ input {
 #body {
   margin: 0;
   padding: 0;
-  background: #D8C2FF;
+  background: #C4BAFF;
   font-size: 16px;
   color: #222;
   font-family: 'Roboto', sans-serif;
@@ -298,7 +307,7 @@ input[type="submit"]:active {
   left: 280px;
   width: 40px;
   height: 40px;
-  background: #DDD;
+  background: #baacbd;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   line-height: 40px;
@@ -397,4 +406,37 @@ transition: 0.1s ease;
 #lkBtn:hover {
     opacity: 0.7;
     border-bottom: 1px solid black;
+
+#logout{
+    color: tan;
+}
+
+#logout:hover,
+#logout:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+  background-color: tan;
+  color: white;
+}
+
+#frontendBox{
+    background-color: #ECCAFF;
+}
+#backendBox{
+    background-color: #ECCAFF;
+}
+#aboutBox{
+    background-color: #ECCAFF;
+}
+#simBox{
+    background-color: tan;
+}
+#jackBox{
+    background-color: tan;
+}
+#derekBox{
+    background-color: tan;
+}
+#lucioBox{
+    background-color: tan;
 }
