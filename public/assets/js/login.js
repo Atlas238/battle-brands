@@ -19,6 +19,8 @@ loginForm.addEventListener("submit", async (event) =>{
     console.log("login complete");
     if(jsonData.message){
         location.assign('./profile');
+    } else {
+        document.querySelector("#login-error").textContent = "Incorrect email or password";
     }
 });
 
@@ -39,5 +41,7 @@ signupForm.addEventListener("submit", async event=>{
     const jsonData = await fetchResp.json();
     if(jsonData.message){
         location.assign('./profile');
+    } else {
+        document.querySelector("#signUp-error").textContent = "Sign-up fields have invalid data";
     }
 });
