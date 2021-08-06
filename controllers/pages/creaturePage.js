@@ -8,12 +8,6 @@ const { Creature, Brand, CareStats } = require("../../models");
 router.get("/creature/:id", async (req,res) => {
 
     if(req.session.logged_in){
-        // res.status(200).render('creature');
-
-        // if(req.params.id){
-
-        // }
-
         try{
 
             const singleCreature = await Creature.findOne({
@@ -51,6 +45,32 @@ router.get("/creature/:id", async (req,res) => {
     }
     else {
         res.status(300).redirect('/');
+    }
+});
+
+router.get('creature/care/:id', async (req,res) => {
+    if(req.session.logged_in){
+        try {
+            const creatUpdate = await Creature.findOne({ 
+                where: { 
+                    user_id: req.session.user_id,
+                    id: req.params.id,
+                } 
+            });
+            if(creatUpdate){
+                const statUpdate = await CareStats.findOne(req.body,{where:{id:creatUpdate.carestatId,}});
+                res.status(200).json(statUpdate);
+            } else {
+                console.log("They don't own this creature");
+                res.status(404).json({message:false,description:"User does not own creature"});
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(500).send("Something happened on our end");
+        }
+    } else {
+        console.log('User has not logged in');
+        res.status(404).send("User is not logged in");
     }
 });
 
