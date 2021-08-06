@@ -1,18 +1,20 @@
-const petCreature = async () => {
+const petCreatureId = document.getElementById('icon').getAttribute('data-id');
+const petBtn = document.getElementById('petBtn');
+
+// TODO: change routes to carestat routes
+const petCreature = (id) => {
     try {
-        fetch('http://localhost:3001/api/stats/1', {
+        fetch(`http://localhost:3001/creature/${id}`, {
             method: 'GET'
         }).then((response) => {
             response.json();
         }).then((data) => {
-
             // Now have carestat obj...
-            
             if (data[0].carestat.energy > 0) {
                 let updatedGroomingVal = data[0].carestat.grooming++;
                 let updatedEnergyVal = data[0].carestat.energy--;
                 try {
-                    fetch('http://localhost:3001/api/stats/1', {
+                    fetch(`http://localhost:3001/creature/${id}`, {
                         method: 'PUT',
                         body: {
                             carestat: {
@@ -29,4 +31,7 @@ const petCreature = async () => {
     } catch (error) { console.log(error) };
 };
 
-module.exports = petCreature;
+// petBtn.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     petCreature(petCreatureId);
+// });
