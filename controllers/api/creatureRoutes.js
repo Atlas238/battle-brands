@@ -15,6 +15,7 @@ creatureRouter.get("/creatures", async (req, res) => {
   }
 });
 
+// TODO: GOT ERROR 'Unknown column "weakness_id" in "field list"'
 creatureRouter.get('/creature/types', async (req,res) => {
   try {
     const typeList = await Type.findAll();
