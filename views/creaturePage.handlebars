@@ -4,9 +4,21 @@
 
 <div class="d-flex flex-wrap flex-md-row flex-sm-column justify-content-center container">
   <div class="active-creature-block">
-    <div class=" text-center">
-      {{ myCreature.name }}
-      <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
-      <p>{{ myCreature }}</p>
+    <div class="d-flex flex-column justify-content-space-evenly p-2">
+      <div class=" text-center pb-3">
+        <h3 class="display-5">{{ myCreature.name }}</h3>
+        <div class="p-4">
+          <i id="icon" data-id="{{ myCreature.id }}" class="fab {{ myCreature.brand.icon }} fa-8x rest"></i>
+        </div>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{myCreature.exp}}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        {{!-- <p>{{ myCreature.exp }}</p> --}}
+      </div>
   </div>
 </div>
+
+<script src="../assets/js/creature/updateCreature.js"></script>
+<script src="../assets/js/creature/catchCreature.js"></script>
+<script src="../assets/js/creature/feedCreature.js"></script>
+<script src="../assets/js/creature/petCreature.js"></script>
