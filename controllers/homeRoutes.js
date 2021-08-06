@@ -18,7 +18,7 @@ router.get('/about', async (req,res) => {
     }
 });
 
-/** LUCIOWARE TODO: PRIVACY POLICY **/
+/** PRIVACY POLICY **/
 router.get('/privacy', async (req,res) => {
     if(req.session){
         res.render('privacy',{user:req.session.logged_in,});

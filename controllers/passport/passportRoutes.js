@@ -3,7 +3,6 @@ const socialLinkRouter = require('express').Router();
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
-const passportTwitter = require('passport-twitter');
 const { Creature } = require('../../models');
 
 // PASSPORT-FACEBOOK SETUP
@@ -29,17 +28,6 @@ passport.use(new LinkedInStrategy({
     process.nextTick(function () {
         return done(null, profile);
     });
-}));
-
-// // TWITTER SETUP
-const TwitterStrategy = passportTwitter.Strategy;
-passport.use(new TwitterStrategy({
-    consumerKey: process.env.TWITTER_CONSUMER_KEY,
-    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: "http://battle-brands.herokuapp.com/passport/auth/twitter/callback"
-},
-function(token, tokenSecret, profile, cb) {
-    return cb(null, profile);
 }));
 
 // // User Serialize Setps...
@@ -78,7 +66,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
 
                 const creature = await Creature.create(newCreature);
                 console.log(creature);
-                res.status(200).send(creature);
+                res.status(200).redirect('/profile');
             } catch (error) {
                 res.status(500).json(error);
                 console.log(error);
@@ -115,7 +103,7 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             try {
                 const creature = await Creature.create(newCreature);
                 console.log(creature);
-                res.status(200).send(creature);
+                res.status(200).redirect('/profile');
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);
@@ -126,43 +114,6 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
         console.log(error);
         res.status(500).json(error);
     };
-  });
-
-// // Twitter Route
-socialLinkRouter.get('/passport/auth/twitter', passport.authenticate('twitter'));
-// Callback
-socialLinkRouter.get('/passport/auth/twitter/callback',
-  passport.authenticate('twitter', { failureRedirect: '/login' }), async (req, res) => {
-    console.log(req);
-    try {
-        if (req.user) {
-            console.log('You made it!');
-            let newCreature = {
-                user_id: req.session.user_id,
-                name: `newPet${req.session.user_id}`,
-                // FB BrandID
-                brand_id: 3,
-                type_id: 2,
-                combatstat_id: 4,
-                carestat_id: 2,
-                exp: 0,
-                currenthealth: 10,
-            };
-
-            try {
-                const creature = await Creature.create(newCreature);
-                console.log(creature);
-                res.status(200).send(creature);
-            } catch (error) {
-                console.log(error);
-                res.status(500).json(error);
-            };
-        };
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    };
-
   });
 
 module.exports = socialLinkRouter;
