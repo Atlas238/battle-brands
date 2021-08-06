@@ -2,10 +2,10 @@
 const router = require('express').Router();
 
 /** MODEL INCLUSION **/
-const { Creature, Brand, CareStats } = require("../../models");
+const { Creature, Brand, CareStats, CombatStats } = require("../../models");
 
 
-router.get("/creature/:id", async (req,res) => {
+router.get("/:id", async (req,res) => {
 
     if(req.session.logged_in){
         try{
@@ -48,7 +48,9 @@ router.get("/creature/:id", async (req,res) => {
     }
 });
 
-router.get('creature/care/:id', async (req,res) => {
+
+
+router.get('/care/:id', async (req,res) => {
     if(req.session.logged_in){
         try {
             const creatUpdate = await Creature.findOne({ 
@@ -74,7 +76,33 @@ router.get('creature/care/:id', async (req,res) => {
     }
 });
 
-router.post('/creature/create', async (req,res) => {
+router.get('/combat/:id', async (req,res) => {
+    if(req.session.logged_in){
+        try {
+            const creatUpdate = await Creature.findOne({ 
+                where: { 
+                    user_id: req.session.user_id,
+                    id: req.params.id,
+                } 
+            });
+            if(creatUpdate){
+                const statUpdate = await CombatStats.findOne(req.body,{where:{id:creatUpdate.combatstatId,}});
+                res.status(200).json(statUpdate);
+            } else {
+                console.log("They don't own this creature");
+                res.status(404).json({message:false,description:"User does not own creature"});
+            }
+        } catch (err) {
+            console.log(err);
+            res.status(500).send("Something happened on our end");
+        }
+    } else {
+        console.log('User has not logged in');
+        res.status(404).send("User is not logged in");
+    }
+});
+
+router.post('/create', async (req,res) => {
     try {
         const newCreature = await Creature.create(req.body);
         if(newCreature){
@@ -88,7 +116,7 @@ router.post('/creature/create', async (req,res) => {
     }
 });
 
-router.put('/creature/:id', async (req,res) => {
+router.put('/:id', async (req,res) => {
     if(req.session.logged_in){
         try {
             const creatUpdate = await Creature.findOne({ 
@@ -114,7 +142,7 @@ router.put('/creature/:id', async (req,res) => {
     }
 });
 
-router.put('creature/combat/:id', async (req,res) => {
+router.put('/combat/:id', async (req,res) => {
     if(req.session.logged_in){
         try {
             const creature = await Creature.findOne({where: {id: req.params.id}});
@@ -130,7 +158,7 @@ router.put('creature/combat/:id', async (req,res) => {
 }
 });
 
-router.put('creature/care/:id', async (req,res) => {
+router.put('/care/:id', async (req,res) => {
     if(req.session.logged_in){
         try {
             const creatUpdate = await Creature.update(req.body,{where: {id: req.params.id,user_id: req.session.user_id,}});
