@@ -96,16 +96,21 @@ body{
 #signUp{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     height: auto;
     justify-content: space-between;
-    
+    align-items: center;
+    margin: auto;
 }
+
 #loginForm{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
+    height: auto;
     justify-content: space-between;
+    align-items: center;
+    margin: auto;
 }
 input {
     width: 75%;
@@ -115,12 +120,14 @@ input {
     width: 75%;
     margin-top: 10px;
 }
-#loginForm button {
+#login-button {
     width: 75%;
     margin-top: 10px;
+    position: relative;
 }
 #loginBox {
     display: flex;
+    flex-wrap: wrap;
     width: 75%;
     height: 400px;
     margin: auto;
@@ -193,9 +200,11 @@ input {
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding: 40px;
-  width: 300px;
-  height: 400px;
+  padding: 10px;
+  padding-top: 40px;
+  width: 50%;
+  height: 100%;
+  border-right: #646e68 solid 2px;
 }
 
 h1 {
@@ -218,7 +227,7 @@ input[type="password"] {
   box-sizing: border-box;
   margin-bottom: 20px;
   padding: 4px;
-  width: 220px;
+  width: 100%;
   height: 32px;
   border: none;
   border-bottom: 1px solid #AAA;
@@ -263,27 +272,24 @@ input[type="submit"]:active {
   transition: 0.1s ease;
 }
 
-.or {
-  position: absolute;
-  top: 180px;
-  left: 280px;
-  width: 40px;
-  height: 40px;
-  background: #baacbd;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  line-height: 40px;
-  text-align: center;
-}
+
+.digital-background {
+    background-color: var(--digital-light);
+    background-image: 
+    linear-gradient(transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px),
+    linear-gradient(90deg, transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px);
+    background-size: 100% 12px, 12px 100%;
+  }
 
 .right {
   position: absolute;
   top: 0;
   right: 0;
   box-sizing: border-box;
-  padding: 40px;
-  width: 300px;
-  height: 400px;
+  padding: 10px;
+  padding-top: 40px;
+  width: 50%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   border-radius: 0 2px 2px 0;
@@ -383,9 +389,12 @@ transition: 0.1s ease;
 
 #frontendBox{
     background-color: #ECCAFF;
+    width: 50%;
 }
 #backendBox{
     background-color: #ECCAFF;
+    width: fit-content;
+    height: fit-content;
 }
 #aboutBox{
     background-color: #ECCAFF;
@@ -401,16 +410,23 @@ transition: 0.1s ease;
 }
 #lucioBox{
     background-color: tan;
+    width: fit-content;
+    height: fit-content;
 }
 
 #linkBox{
     background-color: tan;
 }
 
-.digital-background {
-    background-color: var(--digital-light);
-    background-image: 
-    linear-gradient(transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px),
-    linear-gradient(90deg, transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px);
-    background-size: 100% 12px, 12px 100%;
-  }
+#interactionbox{
+    padding-top:10px;
+}
+
+#lucioPic{
+    width: fit-content;
+}
+
+#aboutPage{
+    display: flex;
+    flex-direction: row;
+}
