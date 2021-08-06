@@ -1,0 +1,40 @@
+.active-creature-block{
+    margin: 5px;
+    padding:15px;
+    width: 400px;
+    border: 2px solid green;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.creature-pen{
+    display: flex;
+    position: relative;
+    margin: 0px;
+    padding: 10px;
+    height: 200px;
+    border: 1px solid black;
+    background: #aaaaaa;
+
+    align-content: center;
+    justify-content: center;
+}
+
+.creature-pen #icon{
+    display: block;
+    /* align-self: flex-end; */
+}
+
+.care-stats-bar p{
+    font-size: 120%;
+}
+
+.care-stats-car p span{
+    display: block;
+    font-size: 150%;
+}
+
+.creature-care-actions{
+    padding-top: 20px;
+    width: 100%;
+}

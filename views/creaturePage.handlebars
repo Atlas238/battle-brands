@@ -1,14 +1,28 @@
 <div>{{> navbar}}</div>
 
-<h2 class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
+<h3 class="display-3 text-center mt-5 mb-5"> Hi {{ username }}, I'm {{ myCreature.name }}!</h1>
 
-<div class="d-flex flex-wrap flex-md-row flex-sm-column container">
-  {{ myCreature.name }}
+<div class="d-flex flex-wrap flex-md-row flex-sm-column container justify-content-center">
+    
+    <div class="active-creature-block container d-flex flex-wrap">
+      <div class="care-stats-bar col-4">
+      <p id="creature-happiness">Happiness<span></span></p>
+      <p id="creature-hunger">Hunger<span></span></p>
+      <p id="creature-grooming">Grooming<span></span></p>
+      <p id="creature-energy">Energy<span></span></p>
+    </div>
 
-  <div class="active-creature-block">
-
-        <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
-
-  </div>
+    <div class="creature-pen col-8">
+      <i id="icon" class="fab {{ myCreature.brand.icon }} fa-5x"></i>
+    </div>
+    
+    <div class="creature-care-actions col-12">
+      <button class="interaction" id="feed">Feed</button>
+      <button class="interaction" id="groom">Groom</button>
+      <button class="interaction" id="play">Play</button>
+      <button class="interaction" id="train" disabled>Train!</button>
+    </div>
+    </div>
+    
 
 </div>
