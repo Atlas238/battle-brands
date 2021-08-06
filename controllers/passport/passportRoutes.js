@@ -55,46 +55,47 @@ socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'
 socialLinkRouter.get('/passport/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/create'}), (req, res) => {
       console.log(req);
-      console.log(res);
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
-    // try {
-    //     if (req.session.user_id) {
-    //         let newCreature = {
-    //             user_id: req.session.user_id,
-    //             name: `newPet${req.session.user_id}`,
-    //             // FB BrandID
-    //             brand_id: 2,
-    //             type_id: 2,
-    //             combatstat_id: 3,
-    //             carestat_id: 1,
-    //             exp: 0,
-    //             health: 10,
-    //             // Isnt this just brand_id again?
-    //             brand: 2,
-    //             type: 2,
-    //             // Isnt this just care/combat id again?
-    //             care_stat: 1,
-    //             combat_stat: 3
-    //         };
-    //         try {
-    //             fetch('http://battle-brands.heroukapp.com/creature/create', {
-    //                 method: 'POST',
-    //                 body: newCreature
-    //             }).then((response) => {
-    //                 response.json();
-    //             }).then((data) => {
-    //                 console.log(data);
-    //                 res.redirect('/profile');
-    //             });
-    //         } catch (error) {
-    //             res.status(500).json(error);
-    //             console.log(error);
-    //         }
-    //     };
-    // } catch (error) {
-    //     console.log(error);
-    //     res.status(500).json(error);
-    // };
+    try {
+        if (req.user) {
+            console.log('You made it!')
+            let newCreature = {
+                user_id: req.session.user_id,
+                name: `newPet${req.session.user_id}`,
+                // FB BrandID
+                brand_id: 2,
+                type_id: 2,
+                combatstat_id: 3,
+                carestat_id: 1,
+                exp: 0,
+                health: 10,
+                // Isnt this just brand_id again?
+                brand: 2,
+                type: 2,
+                // Isnt this just care/combat id again?
+                care_stat: 1,
+                combat_stat: 3
+            };
+            res.status(200).json(newCreature);
+            // try {
+            //     // fetch('http://battle-brands.heroukapp.com/creature/create', {
+            //     //     method: 'POST',
+            //     //     body: newCreature
+            //     // }).then((response) => {
+            //     //     response.json();
+            //     // }).then((data) => {
+            //     //     console.log(data);
+            //     //     res.redirect('/profile');
+            //     // });
+            // } catch (error) {
+            //     res.status(500).json(error);
+            //     console.log(error);
+            // }
+        };
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    };
   });
 
 // // Linkedin Route
