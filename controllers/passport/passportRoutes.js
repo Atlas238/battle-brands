@@ -54,7 +54,7 @@ passport.deserializeUser(function(user, done) {
 // Facebook Routes
 socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'));
 socialLinkRouter.get('/passport/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/create'}), (req, res) => {
+  passport.authenticate('facebook', { failureRedirect: '/create'}), async (req, res) => {
       console.log(req);
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
     try {
