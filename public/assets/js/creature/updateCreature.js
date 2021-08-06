@@ -38,7 +38,7 @@ const updateCreatureStats = () => {
                 // Post request to update creature stats
                 fetch('http://localhost:3001/api/stats/1', {
                     method: 'PUT',
-                    body: updateCreatureStats
+                    body: updatedCareStat
                 });
             } catch (error) {
                 console.log('Error when updating stats to database');
