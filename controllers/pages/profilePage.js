@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 /** MODEL INCLUSION **/
-const {Creature, Brand} = require("../models");
+const {Creature, Brand} = require("../../models");
 
 router.get("/profile", async (req,res) => {    
     if(req.session.logged_in){
@@ -25,7 +25,7 @@ router.get("/profile", async (req,res) => {
                     username: req.session.username,
                     userCreatures,
                 }
-                res.render("profile", handleObj);
+                res.render("profilePage", handleObj );
             }
             else {
                 res.status(404).send("You don't have any creatures");
@@ -34,7 +34,8 @@ router.get("/profile", async (req,res) => {
             console.log(error);
             res.status(500).json(error);
         }
-    } else {
+    }
+    else {
       res.status(300).redirect('/');
     }
   });

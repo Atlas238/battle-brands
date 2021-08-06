@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
 
+
 :root {
     /* Numbered from lightest to darkest (1-9) */
     --c-1: #ECCAFF;
@@ -163,9 +164,11 @@ input {
 }
 #signUp button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginForm button {
     width: 75%;
+    margin-top: 10px;
 }
 #loginBox {
     display: flex;
@@ -173,7 +176,7 @@ input {
     height: 400px;
     margin: auto;
     margin-top: 20px;
-    background-color: plum;
+    background-color: #ECCAFF;
     align-items: center;
     flex:auto;
 }
@@ -184,5 +187,21 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#D8C2FF ;
+    background-color:#AFB1FF;
+}
+
+#card{
+    background-color:#ECCAFF ;
+}
+
+#profileCards{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#loginNav{
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    justify-content: center;
 }
