@@ -10,7 +10,7 @@ const numHoursEnergy = 1;
 const updateCreatureStats = (id) => {
     // Get our data from the server
     try {
-        fetch(`http://localhost:3001/creature/${id}`, { method: 'POST' })
+        fetch(`http://localhost:3001/creature/${id}`, { method: 'GET' })
         .then((response) => response.json())
         .then((data) => {
             const dbTime = new Date(Date.parse(data[0].carestat.lastinteraction)).getTime();
