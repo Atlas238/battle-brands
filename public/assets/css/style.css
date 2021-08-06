@@ -13,6 +13,9 @@
     --c-8: #A5ADFF;
     --c-9: #9BA9FF;
 
+    --digital-dark: #445963;
+    --digital-light: #05879f;
+
     /* Setting standard rem */
     font-size: 16px;
 }
@@ -77,55 +80,6 @@ body{
 }
 .bg-color-9 {
     background-color: var(--c-9);
-}
-
-/* Creature at rest (default) */
-.rest {
-    max-width:fit-content;
-    animation: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
-}
-  
-/* Creature happy! */
-.creature-happy {
-    animation: bounce;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
-}
-  
-/* Creature Sad :( */
-.creature-sad {
-    animation: headShake;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
-}
-  
-/* Creature Hungry */
-    /* Icon animations... */
-.creature-hungry {
-    animation: rubberBand;
-    animation-duration: 1.5s;
-    animation-iteration-count:infinite;
-    transition: animation 500ms ease;
-}
-    /* After animations... */
-
-#icon-holder.creature-groomed::after {
-    content: "🎇";
-    position: absolute;
-    float: inline-end;
-    top:25%;
-    left:52%;
-    z-index:3 !important;
-    width:fit-content;
-    animation: fadeIn;
-    animation-direction: alternate;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
 }
 
     /* PAGES STYLING */
@@ -256,7 +210,15 @@ input {
 h1 {
   margin: 0 0 20px 0;
   font-weight: 300;
-  font-size: 28px;
+  font-size: 200%;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+h3{
+    font-size: 125%;
 }
 
 input[type="text"],
@@ -311,6 +273,13 @@ input[type="submit"]:active {
 }
 
 
+.digital-background {
+    background-color: var(--digital-light);
+    background-image: 
+    linear-gradient(transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px),
+    linear-gradient(90deg, transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px);
+    background-size: 100% 12px, 12px 100%;
+  }
 
 .right {
   position: absolute;
@@ -445,21 +414,12 @@ transition: 0.1s ease;
     height: fit-content;
 }
 
-#creatureBox{
+#linkBox{
     background-color: tan;
-    width: fit-content;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
 }
 
 #interactionbox{
     padding-top:10px;
-}
-
-#linkBox{
-    background-color: tan;
 }
 
 #lucioPic{
