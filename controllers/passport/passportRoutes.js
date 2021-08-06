@@ -29,6 +29,7 @@ passport.use(new LinkedInStrategy({
         return done(null, profile);
     });
 }));
+
 // // TWITTER SETUP
 // const TwitterStrategy = passportTwitter.Strategy;
 // passport.use(new TwitterStrategy({
@@ -41,12 +42,12 @@ passport.use(new LinkedInStrategy({
 // }));
 
 // // User Serialize Setps...
-// passport.serializeUser(function(user, done) {
-//     done(null, user);
-// });
-// passport.deserializeUser(function(user, done) {
-//     done(null, user);
-// });
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 
 // ROUTES
 // Facebook Routes
