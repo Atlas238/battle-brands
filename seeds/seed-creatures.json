@@ -8,55 +8,39 @@
         "combatstat_id" : 1,
         "carestat_id" : 1,
         "exp" : 0,
-        "health" : 10,
-        "brand" : 1,
-        "type" : 1,
-        "care_stat" : 1,
-        "combat_stat":1
+        "currenthealth" : 10
     },
     {
         "user_id" : 2,
-        "name" : "AdminBB",
+        "name" : "Battler",
         "brand_id" : 1,
         "type_id" : 1,
         "screenname" : "Admin",
         "combatstat_id" : 2,
         "carestat_id" : 2,
         "exp" : 0,
-        "health" : 10,
-        "brand" : 1,
-        "type" : 1,
-        "care_stat" : 1,
-        "combat_stat":1
+        "currenthealth" : 10
     },
     {
         "user_id" : 2,
-        "name" : "AdminTwitter",
+        "name" : "Tweetlydee",
         "brand_id" : 2,
         "type_id" : 2,
-        "screenname" : "davidlucio",
+        "screenname" : "Admin",
         "combatstat_id" : 3,
         "carestat_id" : 3,
         "exp" : 10,
-        "health" : 10,
-        "brand" : 1,
-        "type" : 1,
-        "care_stat" : 1,
-        "combat_stat":1
+        "currenthealth" : 10
     },
     {
         "user_id" : 2,
-        "name" : "AdminLinkedin",
+        "name" : "Inklen",
         "brand_id" : 3,
         "type_id" : 3,
         "screenname" : "davidlucio",
         "combatstat_id" : 4,
         "carestat_id" : 4,
         "exp" : 0,
-        "health" : 10,
-        "brand" : 1,
-        "type" : 1,
-        "care_stat" : 1,
-        "combat_stat":1
+        "currenthealth" : 10
     }
 ]
