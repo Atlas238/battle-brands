@@ -27,6 +27,7 @@
 
 .creature-pen.bg-sky-day{
     background-image: -webkit-radial-gradient(50% 100%, 60% 90%, #9fd1c8 10%, #55d4d4 30%, #1e95cf);
+    box-shadow: inset green 0px -35px 5px -5px;
 }
 
 .creature-pen h1,
