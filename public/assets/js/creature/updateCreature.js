@@ -18,6 +18,7 @@ const petBtn = document.getElementById('petBtn');
 // UPDATE ON PAGELOAD
 const updateCreatureStats = async (creatureID, userID) => {
     // Get our data from the server
+    console.log('Updating creature...');
     try {
         const currentCare = await fetch(`http://localhost:3001/creature/care/${creatureID}`, { method: 'GET' }).then((response) => response.json());
             console.log(currentCare);
@@ -67,29 +68,41 @@ const updateCreatureStats = async (creatureID, userID) => {
                 console.log(error);
                 console.log('Error when updating stats to database');
             };
-        
+
+            console.log('Carestats updated successfully');
             // ANIMATIONS...
+            console.log('Setting animation class...');
+
             try {
             const newPull = await fetch(`http://localhost:3001/creature/care/${creatureID}`, {
                 method: 'GET',
             });
-            console.log(newPull.json());
-            const brandPull = await fetch(`http://localhost:3001/creature/?user=${userID}&creature=${creatureID}`, {
+            let newPullData = await newPull.json()
+            console.log(newPullData);
+            const brandPull = await fetch(`http://localhost:3001/api/creature/?user=${userID}&creature=${creatureID}`, {
                 method: 'GET',
             });
-            console.log(brandPull.json());
+            let brandPullData = await brandPull.json()
+            console.log(brandPullData.brand);
             if (newPull.happiness > 3) {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x`);
+                void icon.offsetWidth;
                 // Might need to move this statement to AFTER the animation class add (eg: happy)
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x creature-happy`);
                 void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x happy`);
-            } else if (newPull.hunger > 4) {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
-                void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x hungry`);
+                console.log('Happy Animation Applied');
 
+            } else if (newPull.happiness <3) {
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x`);
+                void icon.offsetWidth;
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x creature-sad`)
+            }
+            else if (newPull.hunger > 4) {
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x`);
+                void icon.offsetWidth;
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x creature-hungry`);
+                void icon.offsetWidth;
+                console.log('Hungry Animation Applied');
                 // COMMENTING OUT GROOMING FOR NOW (COMPLICATED ANIMATION CURRENTLY)
 
                 // } else if (newPull.grooming = 5) {
@@ -100,10 +113,11 @@ const updateCreatureStats = async (creatureID, userID) => {
                 //     iconDiv.setAttribute('class', 'creature-groomed');
 
             } else {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x`);
                 void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x rest`);
+                icon.setAttribute('class', `fab ${brandPullData.brand.icon} fa-6x animate-rest`);
+                void icon.offsetWidth;
+                console.log('Resting Animation Applied');
             }
         } catch (error) {
             console.log(error);
