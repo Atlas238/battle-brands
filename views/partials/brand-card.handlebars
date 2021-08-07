@@ -7,23 +7,26 @@
             <h5 class="card-title h2 text-center" data-type="level" data-experience="{{exp}}"> {{ name }}  Level:<span ></span></h5>
             <ul class="brand-stats card-text">
                 <li class="card-text m-2 fs-3 text-center">Health: {{currenthealth}} </li>
-                <li class="card-text m-2 fs-3 text-center">Energy: {{carestat.energy}} </li>
+                <li class="card-text m-2 fs-2 text-center">
+                    {{#if (energyFull carestat.energy)}}<i class="fab fa-battery-full" style="transform: rotate(90deg);"></i>{{/if}}
+                    {{#if (energyHalf carestat.energy)}}<i class="fab fa-battery-half" style="transform: rotate(90deg);"></i>{{/if}}
+                    {{#if (energyEmpty carestat.energy)}}<i class="fab fa-battery-empty" style="transform: rotate(90deg);"></i>{{/if}}</li>
             </ul>
-            <div class="d-flex">
+            <div class="d-flex justify-content-evenly fs-4 p-2">
                 {{#if (threshold carestat.happiness)}}
-                <i class="fab fa-smiley fa-2x"></i>
+                <i class="fab fa-grin"></i>
                 {{else}}
-                <i class="fab fa-sadface fa-2x"></i>
+                <i class="fab fa-sad-cry"></i>
                 {{/if}}
                 {{#if (threshold carestat.hunger)}}
-                <i class="fab fa-full fa-2x"></i>
+                <i class="fab fa-drumstick-bite"></i>
                 {{else}}
-                <i class="fab fa-hungry fa-2x"></i>
+                <i class="fab fa-utensils"></i>
                 {{/if}}
                 {{#if (threshold carestat.grooming)}}
-                <i class="fab fa-clean fa-2x"></i>
+                <i class="fab fa-hand-sparkles"></i>
                 {{else}}
-                <i class="fab fa-dirty fa-2x"></i>
+                <i class="fab fa-soap"></i>
                 {{/if}}
                 {{!-- <span class="fs-4 text-center p-1">Happiness {{carestat.happiness}}</span>
                 <span class="fs-4 text-center p-1">Grooming {{carestat.grooming}}</span>
