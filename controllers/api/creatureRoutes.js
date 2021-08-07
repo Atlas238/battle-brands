@@ -1,5 +1,5 @@
 const creatureRouter = require("express").Router();
-const { User, Creature, CareStats, CombatStats, Type } = require("../../models");
+const { User, Creature, CareStats, CombatStats, Type, Brand } = require("../../models");
 
 creatureRouter.get("/creatures", async (req, res) => {
   try {
@@ -33,7 +33,13 @@ creatureRouter.get('/creature/types', async (req,res) => {
 creatureRouter.get('/creature',async (req,res) => {
   if(req.query && req.query.user && req.query.creature){
     try {
-      const creature = await Creature.findOne({where: { user_id: req.query.user, id: req.query.creature}});
+      const creature = await Creature.findOne(
+        {
+          include: Brand,
+          where: { 
+            user_id: req.query.user, id: req.query.creature
+          }
+        });
       if(creature){
         res.status(200).json(creature);
       } else {
