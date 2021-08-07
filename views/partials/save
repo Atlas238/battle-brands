@@ -11,3 +11,27 @@
       </form>
     </div>
   </nav>  --}}
+
+
+stats for profile-page card
+
+  <div class="d-flex justify-content-evenly fs-4 p-2">
+          {{#if (threshold carestat.happiness)}}
+          <i class="fab fa-grin"></i>
+          {{else}}
+          <i class="fab fa-sad-cry"></i>
+          {{/if}}
+            {{#if (threshold carestat.hunger)}}
+            <i class="fab fa-drumstick-bite"></i>
+            {{else}}
+            <i class="fab fa-utensils"></i>
+            {{/if}}
+              {{#if (threshold carestat.grooming)}}
+              <i class="fab fa-hand-sparkles"></i>
+              {{else}}
+              <i class="fab fa-soap"></i>
+              {{/if}}
+          <span class="fs-4 text-center p-1">Happiness {{carestat.happiness}}</span>
+          <span class="fs-4 text-center p-1">Grooming {{carestat.grooming}}</span>
+          <span class="fs-4 text-center p-1">Hunger {{carestat.hunger}}</span> 
+    </div>

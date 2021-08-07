@@ -2,7 +2,7 @@
     <div class="p-3 h-fit text-center">
         <i id="icon" class="fab {{brand.icon}} fa-10x"></i>
     </div>
-    <div>
+    <div id="card-text">
         <div id="cardbody"class="card-body bg-color-9">
             <h5 class="card-title h2 text-center" data-type="level" data-experience="{{exp}}"> {{ name }}  Level:<span ></span></h5>
             <ul class="brand-stats card-text">
@@ -12,26 +12,6 @@
                     {{#if (energyHalf carestat.energy)}}<i class="fab fa-battery-half" style="transform: rotate(90deg);"></i>{{/if}}
                     {{#if (energyEmpty carestat.energy)}}<i class="fab fa-battery-empty" style="transform: rotate(90deg);"></i>{{/if}}</li>
             </ul>
-            <div class="d-flex justify-content-evenly fs-4 p-2">
-                {{#if (threshold carestat.happiness)}}
-                <i class="fab fa-grin"></i>
-                {{else}}
-                <i class="fab fa-sad-cry"></i>
-                {{/if}}
-                {{#if (threshold carestat.hunger)}}
-                <i class="fab fa-drumstick-bite"></i>
-                {{else}}
-                <i class="fab fa-utensils"></i>
-                {{/if}}
-                {{#if (threshold carestat.grooming)}}
-                <i class="fab fa-hand-sparkles"></i>
-                {{else}}
-                <i class="fab fa-soap"></i>
-                {{/if}}
-                {{!-- <span class="fs-4 text-center p-1">Happiness {{carestat.happiness}}</span>
-                <span class="fs-4 text-center p-1">Grooming {{carestat.grooming}}</span>
-                <span class="fs-4 text-center p-1">Hunger {{carestat.hunger}}</span> --}}
-            </div>
             <div class="button-holder text-center">
                 <a href="/creature/{{ id }}" id="cardButton" class="btn m-1">Visit Brand</a>
             </div>
