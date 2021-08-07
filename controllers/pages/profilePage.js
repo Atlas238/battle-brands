@@ -2,13 +2,13 @@
 const router = require("express").Router();
 
 /** MODEL INCLUSION **/
-const {Creature, Brand} = require("../../models");
+const {Creature, Brand, CareStats} = require("../../models");
 
 router.get("/profile", async (req,res) => {    
     if(req.session.logged_in){
         try {
             const creatureList = await Creature.findAll({
-                include: Brand,
+                include: [Brand, CareStats],
                 where: {
                     user_id : req.session.user_id,
                 }
