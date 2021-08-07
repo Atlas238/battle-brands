@@ -12,6 +12,8 @@
     --c-7: #AFB1FF;
     --c-8: #A5ADFF;
     --c-9: #9BA9FF;
+    --c-10: #b970e9;
+    --c-11: #8c70bd;
 
     --digital-dark: #445963;
     --digital-light: #05879f;
@@ -53,6 +55,11 @@ body{
 .w-fit {
     width: fit-content;
 }
+
+.h-fit {
+    height: fit-content;
+}
+
 /* Color classes */
 .bg-color-1 {
     background-color: var(--c-1);
@@ -81,11 +88,20 @@ body{
 .bg-color-9 {
     background-color: var(--c-9);
 }
+.bg-color-10 {
+    background-color: var(--c-10);
+}
+.bg-color-11 {
+    background-color: var(--c-11);
+}
 
     /* PAGES STYLING */
 /* Main Layout Styling */
 #card {
-   max-width: fit-content; 
+   max-width: fit-content;
+   border: 2px inset var(--c-7);
+   border-radius: 10px; 
+   box-shadow: 0px 5px 8px 0px #444444;
 }
 
 #icon {
@@ -132,7 +148,7 @@ input {
     height: 400px;
     margin: auto;
     margin-top: 20px;
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     align-items: center;
     flex:auto;
 }
@@ -143,7 +159,7 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#ECCAFF;
+    background-color:var(--c-1);
     text-align: center;
     color: #646e68;
 }
@@ -152,13 +168,24 @@ input {
     background-color:#E2C6FF ;
 }
 
+#cardbody {
+    border-radius: 0 0 10px 10px;
+    padding: 0;
+}
+
 #profileCards{
     display: flex;
     justify-content: space-evenly;
 }
 
 #cardButton{
-    background-color:tan;
+    background-color:var(--c-11);
+    transition: transform 600ms ease;
+}
+
+#cardButton:hover {
+    color: white;
+    transform: scale(1.1);
 }
 
 #loginNav{
@@ -190,7 +217,7 @@ input {
   margin: 5% auto;
   width: 600px;
   height: 400px;
-  background: #ECCAFF;
+  background: var(--c-1);
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -375,29 +402,30 @@ transition: 0.1s ease;
     opacity: 0.7;
     border-bottom: 1px solid black;
 }
-#logout{
-    color: tan;
+#logout {
+    color: black;
+    transition: 0.2s ease;
 }
 
 #logout:hover,
 #logout:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-  background-color: tan;
+  background-color: var(--c-10);
   color: white;
 }
 
 #frontendBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     width: 50%;
 }
+
 #backendBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     width: fit-content;
     height: fit-content;
 }
 #aboutBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
 }
 #simBox{
     background-color: tan;
