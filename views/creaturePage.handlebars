@@ -5,21 +5,48 @@
   <div id="creatureBox" class="active-creature-block container d-flex flex-wrap digital-background">
 
       <ul class="care-stats-bar col-4">
-        <li><p>Happiness: {{myCreature.carestat.happiness}}</p>
-          <span></span>
+
+        <li id="happinessState" value="{{myCreature.carestat.happiness}}">
+          <p>Happiness</p>
+          <span>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-heart"></i>
+          </span>
         </li>
         
-        <li><p>Hunger: {{myCreature.carestat.hunger}}</p>
-          <span></span>
+        <li id="hungerState" value="{{myCreature.carestat.hunger}}">
+          <p>Hunger</p>
+          <span>
+            <i class="fa-solid fa-lemon"></i>
+            <i class="fa-solid fa-lemon"></i>
+            <i class="fa-regular fa-lemon"></i>
+            <i class="fa-regular fa-lemon"></i>
+          </span>
         </li>
         
-        <li><p>Grooming: {{myCreature.carestat.grooming}}</p>
-          <span></span>
+        <li id="groomingState" value="{{myCreature.carestat.grooming}}">
+          <p>Grooming</p>
+          <span>
+            <i class="fa-solid fa-hand"></i>
+            <i class="fa-solid fa-hand"></i>
+            <i class="fa-regular fa-hand"></i>
+            <i class="fa-regular fa-hand"></i>
+          </span>
         </li>
         
-        <li><p>Energy: {{myCreature.carestat.energy}}</p>
-          <span></span>
+        <li id="energyState" value="{{myCreature.carestat.energy}}">
+          <p>Energy</p>
+          <span>
+            <i class="fa-solid fa-battery-empty"></i>
+            <i class="fa-solid fa-battery-quarter"></i>
+            <i class="fa-solid fa-battery-half"></i>
+            <i class="fa-solid fa-battery-three-quarters"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </span>
         </li>
+
       </ul>
 
       <div class="creature-pen col-8 bg-sky-day">
@@ -28,15 +55,17 @@
 
         <i id="icon" data-id="{{ myCreature.id }}" data-user="{{ userId }}" class="fab {{ myCreature.brand.icon }} fa-5x animate-rest"></i>
 
-        <div class="progress">
-          <div id="progress"class="progress-bar" role="progressbar" aria-valuenow="{{myCreature.exp}}" aria-valuemin="0" aria-valuemax="10"></div>
+        <div id="exp-progress" class="progress">
+          <span>EXP</span>
+          <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ myCreature.exp }}" aria-valuemin="0" aria-valuemax="10"></div>
         </div>
+
       </div>
 
       <div id="interaction-box" class="container">
-        <button id="feedBtn" class="button btn-primary p-1">Feed</button>
-        <button id="petBtn" class="button btn-primary p-1">Pet</button>
-        <button id="catchBtn" class="button btn-primary p-1">Play Catch</button>
+        <button id="feedBtn" class="button btn-primary p-1"><i class="fa-solid fa-cookie"></i> Feed</button>
+        <button id="petBtn" class="button btn-primary p-1"><i class="fa-solid fa-hand-sparkles"></i> Pet</button>
+        <button id="catchBtn" class="button btn-primary p-1"><i class="fa-solid fa-baseball"></i> Play</button>
       </div>
 
   </div>
