@@ -21,7 +21,9 @@ app.use(express.static('public'));
 
 const exphbs = require('express-handlebars');
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    helpers: require('./config/handlebars-helpers')
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
