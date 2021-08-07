@@ -43,13 +43,24 @@
     align-self: flex-end;
 }
 
-.care-stats-bar p{
-    font-size: 120%;
+.care-stats-bar{
+    padding-right: 10px;
+    text-shadow: 2px 2px 5px white;
 }
 
-.care-stats-car p span{
+.care-stats-bar li{
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.care-stats-bar li:last-child{
+    margin-bottom: 0px;
+}
+
+.care-stats-bar p,
+.care-stats-bar span {
+    font-size: 140%;
     display: block;
-    font-size: 150%;
 }
 
 #interaction-box {
@@ -57,9 +68,23 @@
     width: 100%;
 }
 
+#exp-progress{
+    position: absolute;
+    height: 8px;
+    width: calc(100% - 50px);
+    bottom: 2px;
+}
 
-
-
+#exp-progress span{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    top: 1px;
+    font-size: 10px;
+    line-height: 7px;
+    font-weight: 600;
+}
 
 
 
