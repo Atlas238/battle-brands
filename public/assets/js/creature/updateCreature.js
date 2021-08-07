@@ -14,6 +14,34 @@ const iconDiv = document.getElementById('icon-holder');
 const catchBtn = document.getElementById('catchBtn');
 const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
+//host
+const host = 'http://localhost:3001';
+
+const currentCreature = function(){
+    this.hunger = 0;
+    this.happiness = 0;
+    this.grooming = 0;
+    this.energy = 0;
+}
+
+const init = async () => {
+    try {
+        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
+        currentCreature.hunger = loadStats.hunger;
+        currentCreature.happiness = loadStats.happiness;
+        currentCreature.grooming = loadStats.grooming;
+        currentCreature.energy = loadStats.energy;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const startTime = async () => {
+    const updateInterval = setInterval(() => {
+        currentCreature.hunger++;
+        document.querySelector();
+    },1000);
+};
 
 // UPDATE ON PAGELOAD
 const updateCreatureStats = async (creatureID, userID) => {
@@ -28,7 +56,7 @@ const updateCreatureStats = async (creatureID, userID) => {
             const diffInTime = Math.round((currentTime - dbTime) / (1000 * 60 * 60));
 
             // Hunger...
-            const updatedCareStat = { 
+            const updatedCareStat = {
                 id: currentCare.id,
                 lastinteraction: new Date(),
             };
@@ -223,7 +251,7 @@ const petCreature = (id) => {
     } catch (error) { console.log(error) };
 };
 
-updateCreatureStats(updateCreatureId, userID);
+// updateCreatureStats(updateCreatureId, userID);
 
 // Interaction Event Listeners
 petBtn.addEventListener('click', (event) => {
@@ -241,3 +269,5 @@ catchBtn.addEventListener('click', (event) => {
     catchCreature(updateCreatureId);
     updateCreatureStats(updateCreatureId, userID);
 });
+
+init();

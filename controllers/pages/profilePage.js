@@ -4,7 +4,7 @@ const router = require("express").Router();
 /** MODEL INCLUSION **/
 const {Creature, Brand} = require("../../models");
 
-router.get("/profile", async (req,res) => {    
+router.get("/profile", async (req,res) => {
     if(req.session.logged_in){
         try {
             const creatureList = await Creature.findAll({
@@ -18,7 +18,7 @@ router.get("/profile", async (req,res) => {
                 const userCreatures = creatureList.map(creature=>{
                     return creature.get({plain:true});
                 });
-                
+
                 console.log(userCreatures);
                 const handleObj = {
                     user: req.session.logged_in,
