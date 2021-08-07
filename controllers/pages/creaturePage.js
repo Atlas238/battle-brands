@@ -17,7 +17,6 @@ router.get("/:id", async (req, res) => {
 
       if (singleCreature != null) {
         const myCreature = singleCreature.get({ plain: true });
-        console.log(myCreature);
 
         const handleObj = {
           user: req.session.logged_in,
@@ -44,6 +43,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/care/:id", async (req, res) => {
+    console.log("\nGetting Care Stats\n");
   if (req.session.logged_in) {
     try {
       const creatUpdate = await Creature.findOne({
@@ -122,7 +122,6 @@ router.post("/create", async (req, res) => {
     req.body.combatstatId = newCombat.id;
 
     const newCreature = await Creature.create(req.body);
-    console.log(newCreature);
     if (newCreature) {
       res.status(200).json(newCreature);
     } else {
@@ -194,6 +193,7 @@ router.put("/combat/:id", async (req, res) => {
 });
 
 router.put("/care/:id", async (req, res) => {
+    console.log("\Updating Care Stats\n");
   if (req.session.logged_in) {
     try {
       const creatUpdate = await Creature.findOne({
@@ -202,11 +202,12 @@ router.put("/care/:id", async (req, res) => {
           id: req.params.id,
         },
       });
+
       if (creatUpdate) {
         const statUpdate = await CareStats.update(req.body, {
           where: { id: creatUpdate.carestatId },
         });
-        res.status(200).json(statUpdate);
+        res.status(200).json({message: true, description: statUpdate});
       } else {
         console.log("They don't own this creature");
         res
