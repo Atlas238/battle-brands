@@ -35,17 +35,6 @@
             <i class="fa-regular fa-hand"></i>
           </span>
         </li>
-        
-        <li id="energyState" value="{{myCreature.carestat.energy}}">
-          <p>Energy</p>
-          <span>
-            <i class="fa-solid fa-battery-empty"></i>
-            <i class="fa-solid fa-battery-quarter"></i>
-            <i class="fa-solid fa-battery-half"></i>
-            <i class="fa-solid fa-battery-three-quarters"></i>
-            <i class="fa-solid fa-battery-full"></i>
-          </span>
-        </li>
 
       </ul>
 
@@ -63,6 +52,12 @@
       </div>
 
       <div id="interaction-box" class="container">
+        <div id="energyState" value="{{myCreature.carestat.energy}}">
+          <p class="battery-{{myCreature.carestat.energy}}">
+            Energy
+          </p>
+        </div>
+
         <button id="feedBtn" class="button btn-primary p-1"><i class="fa-solid fa-cookie"></i> Feed</button>
         <button id="petBtn" class="button btn-primary p-1"><i class="fa-solid fa-hand-sparkles"></i> Pet</button>
         <button id="catchBtn" class="button btn-primary p-1"><i class="fa-solid fa-baseball"></i> Play</button>

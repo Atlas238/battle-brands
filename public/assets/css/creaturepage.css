@@ -45,11 +45,13 @@
 
 .care-stats-bar{
     padding-right: 10px;
-    text-shadow: 2px 2px 5px white;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+    font-size: 140%;
 }
 
 .care-stats-bar li{
-    margin-bottom: 10px;
+    margin-bottom: 19px;
     white-space: nowrap;
 }
 
@@ -59,14 +61,80 @@
 
 .care-stats-bar p,
 .care-stats-bar span {
-    font-size: 140%;
     display: block;
 }
 
-#interaction-box {
-    padding-top: 20px;
-    width: 100%;
+.care-stats-bar p{
+    margin-bottom: 5px;
 }
+
+#interaction-box {
+    position: relative;
+    display: flex;
+    padding: 11px 0px 0px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+#interaction-box button {
+    width: 70px;
+    height: 35px;
+    margin: 0px 6px;
+
+    border-radius: 10px;
+    border: 2px solid #333333;
+    background-color: #666666;
+    box-shadow: 2px 2px 2px 0px #000000;
+
+    font-size: 125%;
+    white-space: nowrap;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+}
+
+#interaction-box button:hover {
+    border-color: #000000;
+    background-color: #444444;
+}
+
+#interaction-box button:active {
+    box-shadow: 0px 0px 1px 0px #000000;
+    transform: translateY(2px);
+}
+
+#interaction-box button i {
+    margin-right: 3px;
+}
+
+#interaction-box div#energyState {
+    position: absolute;
+    left:0px;
+    width: 100px;
+    height: 35px;
+    margin:0px;
+
+    font-size: 180%;
+    white-space: nowrap;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+}
+
+#interaction-box div#energyState p {
+}
+
+#interaction-box div#energyState p::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 5px;
+    padding-top: 3px;
+}
+
+#interaction-box div#energyState p.battery-0::before {content: "\f244"; color: rgb(255, 0, 0);}
+#interaction-box div#energyState p.battery-1::before {content: "\f243"; color: rgb(255, 180, 0);}
+#interaction-box div#energyState p.battery-2::before {content: "\f242"; color: rgb(255, 255, 0);}
+#interaction-box div#energyState p.battery-3::before {content: "\f241"; color: rgb(0, 255, 0);}
+#interaction-box div#energyState p.battery-4::before {content: "\1f50b"; color: rgb(0, 180, 255);}
 
 #exp-progress{
     position: absolute;
