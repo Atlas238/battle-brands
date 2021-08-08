@@ -1,5 +1,6 @@
 // Requirements...
 const socialLinkRouter = require('express').Router();
+const CreatureBuilder = require('../../helper/createCreature');
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
@@ -48,7 +49,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
     try {
         if (req.user) {
 
-            console.log('You made it!')
+            console.log('You made it!');
 
             try {
 
