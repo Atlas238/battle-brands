@@ -1,8 +1,11 @@
 <div>{{> navbar}}</div>
-<h1 class="display-3 text-center mt-5 mb-5"> Welcome back, {{username}}!</h1>
-
-<h4 class="display-5">Your Creatures: </h4>
-<div id="profileCards" class="d-flex flex-wrap flex-md-row flex-sm-column container">
+<div class="p-2">
+  <h1 class="display-3 text-center mt-5 mb-5"> Welcome back, {{username}}!</h1>
+</div>
+  <div>
+    <h4 class="display-5 mb-3">Your Creatures </h4>
+  </div>
+<div id="profileCards" class="d-flex flex-wrap flex-md-row flex-sm-column w-100">
 
     {{#each userCreatures}}
       {{> brand-card}}

@@ -12,6 +12,11 @@
     --c-7: #AFB1FF;
     --c-8: #A5ADFF;
     --c-9: #9BA9FF;
+    --c-10: #b970e9;
+    --c-11: #8c70bd;
+
+    --digital-dark: #445963;
+    --digital-light: #05879f;
 
     /* Setting standard rem */
     font-size: 16px;
@@ -50,6 +55,11 @@ body{
 .w-fit {
     width: fit-content;
 }
+
+.h-fit {
+    height: fit-content;
+}
+
 /* Color classes */
 .bg-color-1 {
     background-color: var(--c-1);
@@ -78,60 +88,20 @@ body{
 .bg-color-9 {
     background-color: var(--c-9);
 }
-
-/* Creature at rest (default) */
-.rest {
-    max-width:fit-content;
-    animation: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
+.bg-color-10 {
+    background-color: var(--c-10);
 }
-  
-/* Creature happy! */
-.creature-happy {
-    animation: bounce;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
-}
-  
-/* Creature Sad :( */
-.creature-sad {
-    animation: headShake;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
-}
-  
-/* Creature Hungry */
-    /* Icon animations... */
-.creature-hungry {
-    animation: rubberBand;
-    animation-duration: 1.5s;
-    animation-iteration-count:infinite;
-    transition: animation 500ms ease;
-}
-    /* After animations... */
-
-#icon-holder.creature-groomed::after {
-    content: "🎇";
-    position: absolute;
-    float: inline-end;
-    top:25%;
-    left:52%;
-    z-index:3 !important;
-    width:fit-content;
-    animation: fadeIn;
-    animation-direction: alternate;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
+.bg-color-11 {
+    background-color: var(--c-11);
 }
 
     /* PAGES STYLING */
 /* Main Layout Styling */
 #card {
-   max-width: fit-content; 
+   max-width: fit-content;
+   border: 2px inset var(--c-7);
+   border-radius: 10px; 
+   box-shadow: 0px 5px 8px 0px #444444;
 }
 
 #icon {
@@ -178,7 +148,7 @@ input {
     height: fit-content;
     margin: auto;
     margin-top: 20px;
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     align-items: center;
     flex:auto;
 }
@@ -189,7 +159,7 @@ input {
     position: relative;
 } */
 #nav{
-    background-color:#ECCAFF;
+    background-color:var(--c-1);
     text-align: center;
     color: #646e68;
 }
@@ -198,13 +168,24 @@ input {
     background-color:#E2C6FF ;
 }
 
+#cardbody {
+    border-radius: 0 0 10px 10px;
+    padding: 0;
+}
+
 #profileCards{
     display: flex;
     justify-content: space-evenly;
 }
 
 #cardButton{
-    background-color:tan;
+    background-color:var(--c-11);
+    transition: transform 600ms ease;
+}
+
+#cardButton:hover {
+    color: white;
+    transform: scale(1.1);
 }
 
 #loginNav{
@@ -236,8 +217,8 @@ input {
   position: relative;
   margin: 5% auto;
   width: 600px;
-  height: fit-content;
-  background: #ECCAFF;
+  height: 400px;
+  background: var(--c-1);
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -257,7 +238,15 @@ input {
 h1 {
   margin: 0 0 20px 0;
   font-weight: 300;
-  font-size: 28px;
+  font-size: 200%;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+h3{
+    font-size: 125%;
 }
 
 input[type="text"],
@@ -312,6 +301,13 @@ input[type="submit"]:active {
 }
 
 
+.digital-background {
+    background-color: var(--digital-light);
+    background-image: 
+    linear-gradient(transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px),
+    linear-gradient(90deg, transparent 11px, rgba(220,220,200,.8) 12px, transparent 12px);
+    background-size: 100% 12px, 12px 100%;
+  }
 
 .right {
   position: absolute;
@@ -407,29 +403,30 @@ transition: 0.1s ease;
     opacity: 0.7;
     border-bottom: 1px solid black;
 }
-#logout{
-    color: tan;
+#logout {
+    color: black;
+    transition: 0.2s ease;
 }
 
 #logout:hover,
 #logout:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.2s ease;
-  background-color: tan;
+  background-color: var(--c-10);
   color: white;
 }
 
 #frontendBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     width: 50%;
 }
+
 #backendBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
     width: fit-content;
     height: fit-content;
 }
 #aboutBox{
-    background-color: #ECCAFF;
+    background-color: var(--c-1);
 }
 #simBox{
     background-color: tan;
@@ -446,21 +443,12 @@ transition: 0.1s ease;
     height: fit-content;
 }
 
-#creatureBox{
+#linkBox{
     background-color: tan;
-    width: fit-content;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
 }
 
 #interactionbox{
     padding-top:10px;
-}
-
-#linkBox{
-    background-color: tan;
 }
 
 #lucioPic{

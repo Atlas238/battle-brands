@@ -1,9 +1,14 @@
+#creatureBox{
+    margin-top:50px;
+}
+
 .active-creature-block{
     margin: 5px;
     padding:15px;
     width: 400px;
-    border: 2px solid #E2C6FF;
+    border: 3px solid var(--digital-dark);
     border-radius: 10px;
+    box-shadow: 10px 10px 10px -3px rgba(0,0,0, .5);
     align-self: center;
 }
 
@@ -11,30 +16,198 @@
     display: flex;
     position: relative;
     margin: 0px;
-    padding: 10px;
+    padding: 15px;
     height: 200px;
-    border: 1px solid black;
+    border: 3px solid black;
+    border-radius: 3px;
     background: #aaaaaa;
-
     align-content: center;
     justify-content: center;
 }
 
+.creature-pen.bg-sky-day{
+    background-image: -webkit-radial-gradient(50% 100%, 60% 90%, #9fd1c8 10%, #55d4d4 30%, #1e95cf);
+    box-shadow: inset green 0px -35px 5px -5px;
+}
+
+.creature-pen h1,
+.creature-pen h2,
+.creature-pen h3 {
+    position: absolute;
+    top: 10px;
+    margin: 0px auto;
+}
+
 .creature-pen #icon{
     display: block;
-    /* align-self: flex-end; */
+    align-self: flex-end;
+}
+
+.care-stats-bar{
+    padding-right: 10px;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+    font-size: 140%;
+}
+
+.care-stats-bar li{
+    margin-bottom: 19px;
+    white-space: nowrap;
+}
+
+.care-stats-bar li:last-child{
+    margin-bottom: 0px;
+}
+
+.care-stats-bar p,
+.care-stats-bar span {
+    display: block;
 }
 
 .care-stats-bar p{
-    font-size: 120%;
+    margin-bottom: 5px;
 }
 
-.care-stats-car p span{
-    display: block;
-    font-size: 150%;
-}
-
-.creature-care-actions{
-    padding-top: 20px;
+#interaction-box {
+    position: relative;
+    display: flex;
+    padding: 11px 0px 0px;
     width: 100%;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+#interaction-box button {
+    width: 70px;
+    height: 35px;
+    margin: 0px 6px;
+
+    border-radius: 10px;
+    border: 2px solid #333333;
+    background-color: #666666;
+    box-shadow: 2px 2px 2px 0px #000000;
+
+    font-size: 125%;
+    white-space: nowrap;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+}
+
+#interaction-box button:hover {
+    border-color: #000000;
+    background-color: #444444;
+}
+
+#interaction-box button:active {
+    box-shadow: 0px 0px 1px 0px #000000;
+    transform: translateY(2px);
+}
+
+#interaction-box button i {
+    margin-right: 3px;
+}
+
+#interaction-box div#energyState {
+    position: absolute;
+    left:0px;
+    width: 100px;
+    height: 35px;
+    margin:0px;
+
+    font-size: 180%;
+    white-space: nowrap;
+    color: white;
+    text-shadow: 0px 0px 9px black;
+}
+
+#interaction-box div#energyState p {
+}
+
+#interaction-box div#energyState p::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 5px;
+    padding-top: 3px;
+}
+
+#interaction-box div#energyState p.battery-0::before {content: "\f244"; color: rgb(255, 0, 0);}
+#interaction-box div#energyState p.battery-1::before {content: "\f243"; color: rgb(255, 180, 0);}
+#interaction-box div#energyState p.battery-2::before {content: "\f242"; color: rgb(255, 255, 0);}
+#interaction-box div#energyState p.battery-3::before {content: "\f241"; color: rgb(0, 255, 0);}
+#interaction-box div#energyState p.battery-4::before {content: "\1f50b"; color: rgb(0, 180, 255);}
+
+#exp-progress{
+    position: absolute;
+    height: 8px;
+    width: calc(100% - 50px);
+    bottom: 2px;
+}
+
+#exp-progress span{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    top: 1px;
+    font-size: 10px;
+    line-height: 7px;
+    font-weight: 600;
+}
+
+
+
+
+/** **/
+.animate-bounce {
+
+}
+
+
+/* Creature at rest (default) */
+.animate-rest {
+    max-width:fit-content;
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature happy! */
+.creature-happy {
+    animation: bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Sad :( */
+.creature-sad {
+    animation: headShake;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transition: animation 500ms ease;
+}
+  
+/* Creature Hungry */
+    /* Icon animations... */
+.creature-hungry {
+    animation: rubberBand;
+    animation-duration: 1.5s;
+    animation-iteration-count:infinite;
+    transition: animation 500ms ease;
+}
+    /* After animations... */
+
+#icon-holder.creature-groomed::after {
+    content: "🎇";
+    position: absolute;
+    float: inline-end;
+    top:25%;
+    left:52%;
+    z-index:3 !important;
+    width:fit-content;
+    animation: fadeIn;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
