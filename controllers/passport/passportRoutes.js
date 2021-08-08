@@ -1,6 +1,6 @@
 // Requirements...
 const socialLinkRouter = require('express').Router();
-const CreatureBuilder = require('../../helper/createCreature');
+const CreatureBuilder = require('../../helper/CreatureBuilder');
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');

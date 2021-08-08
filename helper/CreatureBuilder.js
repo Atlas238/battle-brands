@@ -19,6 +19,7 @@ const CreatureBuilder = async (queryObj) => {
     queryObj.combatstatId = newCombat.id;
 
     const newCreature = await Creature.create(queryObj);
+    console.log(newCreature);
     if(newCreature){
         return true;
     } else {

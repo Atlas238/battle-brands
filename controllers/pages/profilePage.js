@@ -1,6 +1,7 @@
 /** ROUTER INCLUSION */
 const router = require("express").Router();
 
+const CreatureBuilder = require("../../helper/CreatureBuilder");
 /** MODEL INCLUSION **/
 const {Creature, Brand, CareStats} = require("../../models");
 
@@ -50,6 +51,30 @@ router.get("/profile", async (req,res) => {
               res.status(500).json(err);
           }
       }
-  })
+  });
+
+  router.get('/create/build-it', async (req,res) => {
+      try {
+        let tempCreature = {
+            user_id: req.session.user_id,
+            name: `newPet${req.session.user_id}`,
+            // FB BrandID
+            brand_id: 2,
+            type_id: 2,
+            combatstat_id: 3,
+            carestat_id: 1,
+            exp: 0,
+            currenthealth: 10,
+        };
+          const newCreature = await CreatureBuilder(tempCreature);
+          if(newCreature){
+              res.status(200).send("All Good");
+          } else {
+            res.status(404).send("Not Good");
+          }
+      } catch (error) {
+          
+      }
+  });
 
   module.exports = router;
