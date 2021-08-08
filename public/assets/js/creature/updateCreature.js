@@ -6,7 +6,7 @@ const numHoursEnergy = 1;
 
 // CreatureID, UserID
 const updateCreatureId = document.getElementById('icon').getAttribute('data-id')
-const userId = document.getElementById('icon').getAttribute('data-user');
+const userID = document.getElementById('icon').getAttribute('data-user');
 // Creature Icon and Holder
 const icon = document.getElementById('icon');
 const iconDiv = document.getElementById('icon-holder');
