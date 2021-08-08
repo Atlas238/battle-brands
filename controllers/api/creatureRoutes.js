@@ -1,5 +1,5 @@
 const creatureRouter = require("express").Router();
-const { User, Creature, CareStats, CombatStats, Type } = require("../../models");
+const { User, Creature, CareStats, CombatStats, Type, Brand } = require("../../models");
 
 creatureRouter.get("/creatures", async (req, res) => {
   try {
@@ -21,6 +21,20 @@ creatureRouter.get('/creature/types', async (req,res) => {
     const typeList = await Type.findAll();
     if(typeList){
       res.status(200).json(typeList);
+    } else {
+      res.status(404).send("Could not load the types");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Issue loading that data");
+  }
+});
+
+creatureRouter.get('/creature/brands', async (req,res) => {
+  try {
+    const brandList = await Brand.findAll();
+    if(brandList){
+      res.status(200).json(brandList);
     } else {
       res.status(404).send("Could not load the types");
     }

@@ -14,230 +14,165 @@ const iconDiv = document.getElementById('icon-holder');
 const catchBtn = document.getElementById('catchBtn');
 const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
+//host
+const host = 'http://localhost:3001';
+let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
+let previousSync = moment();
 
-// UPDATE ON PAGELOAD
-const updateCreatureStats = async (creatureID, userID) => {
-    // Get our data from the server
+const currentCreature = {
+    id: 0,
+    hunger: 0,
+    happiness: 0,
+    grooming: 0,
+    energy: 0,
+    lastinteraction: new Date(),
+};
+
+const init = async () => {
     try {
-        const currentCare = await fetch(`http://localhost:3001/creature/care/${creatureID}`, { method: 'GET' }).then((response) => response.json());
-            console.log(currentCare);
-            const dbTime = new Date(Date.parse(currentCare.lastinteraction)).getTime();
-            let currentTime = new Date().getTime();
+        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
+        adjustCreatureStats(loadStats);
+        currentCreature.id = loadStats.id;
+        currentCreature.happiness = loadStats.happiness;
+        currentCreature.hunger = loadStats.hunger;
+        currentCreature.grooming = loadStats.grooming;
+        currentCreature.energy = loadStats.energy;
+        currentCreature.lastinteraction = loadStats.lastinteraction; //last interaction is updated when one of the btns is pressed
+        console.log("Starting Stats Interval");
+        // updateStats();
+        console.log("Syncing with database")
+        // startDbAutoSync();
+        previousSync = moment();
+        renderMeters(happyMeter,currentCreature.happiness);
+        renderMeters(hungerMeter,currentCreature.hunger);
+        renderMeters(groomMeter,currentCreature.grooming);
+    } catch (err) {
+        console.log(err);
+    }
+};
 
-            // How long since last visit in hours?
-            const diffInTime = Math.round((currentTime - dbTime) / (1000 * 60 * 60));
+const adjustCreatureStats = () => {
+    const dbTime = moment(currentCreature.lastinteraction);
+    let currentTime = moment();
+    let diffInTime = currentTime.diff(dbTime,'hours');
+    diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
-            // Hunger...
-            const updatedCareStat = { 
-                id: currentCare.id,
-                lastinteraction: new Date(),
-            };
+    // Check and degrade values...
+    // Delete
+    if (diffInTime > numHoursHunger) {
+        const valueDecrease = Math.floor(diffInTime/numHoursHunger);
+        if(currentCreature.hunger - valueDecrease > 0) {
+            currentCreature.hunger -= valueDecrease;
+        } else {
+            currentCreature.hunger = 0;
+        }
+    }
+    if (diffInTime > numHoursHappiness) {
+        const valueDecrease = Math.floor(diffInTime/numHoursHappiness);
+        if(currentCreature.happiness - valueDecrease > 0) {
+            currentCreature.happiness -= valueDecrease;
+        } else {
+            currentCreature.happiness = 0;
+        }
+    }
+    if (diffInTime > numHoursGrooming) {
+        const valueDecrease = Math.floor(diffInTime/numHoursGrooming);
+        if(currentCreature.grooming - valueDecrease > 0) {
+            currentCreature.grooming -= valueDecrease;
+        } else {
+            currentCreature.grooming = 0;
+        }
+    }
+    if (diffInTime > numHoursEnergy) {
+        const valueDecrease = Math.floor(diffInTime/numHoursEnergy);
+        if(currentCreature.energy - valueDecrease > 0) {
+            currentCreature.energy -= valueDecrease;
+        } else {
+            currentCreature.energy = 0;
+        }
+    }
+};
 
-            // Check and degrade values...
-            // Dete
-            if (diffInTime > numHoursHunger) {
-                if(currentCare.hunger > 0) {
-                    updatedCareStat.hunger = currentCare.hunger--;
-                };
-            };
-            if (diffInTime > numHoursHappiness) {
-                if(currentCare.happiness > 0) {
-                    updatedCareStat.happiness = currentCare.happiness--;
-                };
-            };
-            if (diffInTime > numHoursGrooming) {
-                if(currentCare.grooming > 0) {
-                    updatedCareStat.grooming = currentCare.grooming--;
-                };
-            };
-            if (diffInTime > numHoursEnergy) {
-                if (currentCare.energy < 5) {
-                    updatedCareStat.energy = currentCare.energy++;
-                };
-            };
-            try {
-                // Post request to update creature stats
-                fetch(`http://localhost:3001/creature/care/${creatureID}`, {
-                    method: 'PUT',
-                    body: updatedCareStat
-                }).then((response) => {
-                    return response.json();
-                })
-            } catch (error) {
-                console.log(error);
-                console.log('Error when updating stats to database');
-            };
-        
-            // ANIMATIONS...
-            try {
-            const newPull = await fetch(`http://localhost:3001/creature/care/${creatureID}`, {
-                method: 'GET',
-            });
-            console.log(newPull.json());
-            const brandPull = await fetch(`http://localhost:3001/creature/?user=${userID}&creature=${creatureID}`, {
-                method: 'GET',
-            });
-            console.log(brandPull.json());
-            if (newPull.happiness > 3) {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
-                // Might need to move this statement to AFTER the animation class add (eg: happy)
-                void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x happy`);
-            } else if (newPull.hunger > 4) {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
-                void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x hungry`);
+const updateStats = async () => {
+    const updateInterval = setInterval(() => {
+        adjustCreatureStats(currentCreature);
+        console.log(currentCreature);
+        // Render Creature Stats
+    },1000*60*60);
+};
 
-                // COMMENTING OUT GROOMING FOR NOW (COMPLICATED ANIMATION CURRENTLY)
-
-                // } else if (newPull.grooming = 5) {
-                //     icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                //     iconDiv.setAttribute('class', '');
-                //     void icon.offsetWidth;
-                //     icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x groomed`);
-                //     iconDiv.setAttribute('class', 'creature-groomed');
-
-            } else {
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x`);
-                iconDiv.setAttribute('class', '');
-                void icon.offsetWidth;
-                icon.setAttribute('class', `fab ${brandPull[0].brand.icon} fa-8x rest`);
-            }
-        } catch (error) {
-            console.log(error);
-            console.log('Error setting animations');
-        };
-    } catch (error) {
-        console.log(error);
-        console.log('Error getting data from database');
-    };
+// Database gets updated every minute
+const startDbAutoSync = () => {
+    const syncInterval = setInterval(() => {
+        if(notSyncing){
+            console.log("Auto Sync");
+            updateDatabase();
+        }
+    },1000);
 }
 
-// CATCH WITH CREATURE
-const catchCreature = (id) => {
-    try {
-        fetch(`http://localhost:3001/creature/care/${id}`, {
-            method: 'GET',
-        }).then((response) => {
-           return response.json();
-        }).then((carestats) => {
-            // Now have our carestat obj...
-            if (carestats.energy > 0) {
-                let updatedHappinessVal = carestats.happiness++;
-                let updatedEnergyVal = carestats.energy--;
-                try {
-                    fetch(`http://localhost:3001/creature/care/${id}`, {
-                        method: 'PUT',
-                        body: {
-                            happiness: updatedHappinessVal,
-                            energy: updatedEnergyVal,
-                        }
-                    }).then((response) => {
-                        return response.json();
-                    }).then((data) => {
-                        console.log(data);
-                    });
-                } catch (error) {console.log(error)}
-            };
-        });
-    } catch (error) {console.log(error)};
+const renderMeters = (progObj,currValue) => {
+    const meterSpan = document.querySelector(`#${progObj.selector}`);
+    const meterList = progObj.getMeter(currValue);
+    meterSpan.textContent = '';
+    meterSpan.append(...meterList);
+}
+
+const updateDatabase = async () => {
+    // If id is 0 then the creature was not loaded properly
+    if(currentCreature.id !== 0){
+        console.log('Syncing now');
+        try{
+            const updateSql = await fetch(`${host}/creature/care/${updateCreatureId}`, {
+                method: 'PUT',
+                body: JSON.stringify(currentCreature),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const respData = await updateSql.json();
+
+            if(respData.message){
+                console.log("Data backed up on the super secret cloud");
+            } else {
+                console.log("Data not backed up... :'(");
+            }
+        } catch (error){
+            console.log(error);
+        }
+    } else {
+        // clearInterval(syncInterval);
+        console.log(currentCreature.id);
+    }
 };
-
-// FEED CREATURE SCRIPT
-const feedCreature = (id) => {
-
-    try {
-        fetch(`http://localhost:3001/creature/care/${id}`, {
-            method: 'GET'
-        })
-        .then((response) => {
-            return response.json()
-        })
-        .then((carestats) => {
-
-            console.log('Receieved Carestats for creature...');
-            console.log(carestats);
-
-            if(carestats.energy > 0) {
-                if (carestats.hunger < 4) {
-                    let newHungerVal = carestats.hunger + 1;
-                    let newEnergyVal = carestats.energy - 1;
-                    console.log('New Hunger and Energy Values...');
-                    console.log(newHungerVal);
-                    console.log(newEnergyVal);
-                    try {
-                        fetch(`http://localhost:3001/creature/care/${id}`, {
-                            method: 'PUT',
-                            body: {
-                                hunger: newHungerVal,
-                                energy: newEnergyVal,
-                            },
-                        }).then((response) => {
-                            return response.json()
-                        }).then((data) => {
-                            console.log('Creature carestats Updated');
-                            console.log(data);
-                        });
-                    } catch (error) {
-                        console.log('Error in updating carestats');
-                        console.log(error);
-                    };
-                };
-            };
-        });
-    } catch (error) { console.log('Error getting data from the database') };
-};
-
-// PET CREATURE
-const petCreature = (id) => {
-    try {
-        fetch(`http://localhost:3001/creature/care/${id}`, {
-            method: 'GET'
-        }).then((response) => {
-            console.log(response);
-            return response.json();
-        }).then((carestats) => {
-            console.log('Current carestats recieved...');
-            console.log(carestats);
-            // Now have carestat obj...
-            if (carestats.energy > 0) {
-
-                let updatedGroomingVal = carestats.grooming++;
-                let updatedEnergyVal = carestats.energy--;
-
-                try {
-                    fetch(`http://localhost:3001/creature/care/${id}`, {
-                        method: 'PUT',
-                        body: {
-                            grooming: updatedGroomingVal,
-                            energy: updatedEnergyVal,
-                        },
-                    }).then((response) => {
-                        return response.json();
-                    }).then((data) => console.log(data));
-                } catch (error) { console.log(error) };
-            };
-        });
-    } catch (error) { console.log(error) };
-};
-
-updateCreatureStats(updateCreatureId, userID);
 
 // Interaction Event Listeners
-petBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    petCreature(updateCreatureId);
-    updateCreature(updateCreatureId, userID);
-});
 feedBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    feedCreature(updateCreatureId);
-    updateCreature(updateCreatureId, userID);
+    if(currentCreature.hunger + 1 <= hungerMeter.maxValue){
+        currentCreature.hunger++;
+        currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
+        updateDatabase();
+        renderMeters(hungerMeter,currentCreature.hunger);
+    }
+});
+petBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    if(currentCreature.grooming + 1 <= groomMeter.maxValue){
+        currentCreature.grooming++;
+        currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
+        updateDatabase();
+        renderMeters(groomMeter,currentCreature.grooming);
+    }
 });
 catchBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    catchCreature(updateCreatureId);
-    updateCreatureStats(updateCreatureId, userID);
+    if(currentCreature.happiness + 1 <= happyMeter.maxValue){
+        currentCreature.happiness++;
+        currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
+        updateDatabase();
+        renderMeters(happyMeter,currentCreature.happiness);
+    }
 });
+
+init();

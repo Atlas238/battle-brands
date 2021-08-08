@@ -8,49 +8,40 @@
 
         <li id="happinessState" value="{{myCreature.carestat.happiness}}">
           <p>Happiness</p>
-          <span>
+          <span id="happy-meter">
             <i class="fa-solid fa-heart"></i>
             <i class="fa-solid fa-heart"></i>
             <i class="fa-regular fa-heart"></i>
             <i class="fa-regular fa-heart"></i>
           </span>
         </li>
-        
         <li id="hungerState" value="{{myCreature.carestat.hunger}}">
           <p>Hunger</p>
-          <span>
+          <span id="hunger-meter">
             <i class="fa-solid fa-lemon"></i>
             <i class="fa-solid fa-lemon"></i>
             <i class="fa-regular fa-lemon"></i>
             <i class="fa-regular fa-lemon"></i>
           </span>
         </li>
-        
         <li id="groomingState" value="{{myCreature.carestat.grooming}}">
           <p>Grooming</p>
-          <span>
+          <span id="groom-meter">
             <i class="fa-solid fa-hand"></i>
             <i class="fa-solid fa-hand"></i>
             <i class="fa-regular fa-hand"></i>
             <i class="fa-regular fa-hand"></i>
           </span>
         </li>
-
       </ul>
-
       <div class="creature-pen col-8 bg-sky-day">
-
         <h2 class="creature-name">{{ myCreature.name }}</h3>
-
         <i id="icon" data-id="{{ myCreature.id }}" data-user="{{ userId }}" class="fab {{ myCreature.brand.icon }} fa-5x animate-rest"></i>
-
         <div id="exp-progress" class="progress">
           <span>EXP</span>
           <div id="progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ myCreature.exp }}" aria-valuemin="0" aria-valuemax="10"></div>
         </div>
-
       </div>
-
       <div id="interaction-box" class="container">
         <div id="energyState" value="{{myCreature.carestat.energy}}">
           <p class="battery-{{myCreature.carestat.energy}}">
@@ -66,5 +57,6 @@
   </div>
 
 </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="../assets/js/creature/creatureHelper.js"></script>
     <script src="../assets/js/creature/updateCreature.js"></script>
