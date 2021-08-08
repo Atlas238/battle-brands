@@ -65,14 +65,14 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                     currenthealth: 10,
                 };
 
-                const creatureBuilt = await CreatureBuilder(newCreature);
-                console.log(creatureBuilt);
-                if(creatureBuilt){
-                    res.status(200).redirect('/profile');
+                const creature = await Creature.create(newCreature);
+                console.log(creature);
+                if(creature){
+                    req.session.connectedFacebook=true;
                 } else {
-                    console.error('Creature was not built');
-                    res.status(404).redirect('/profile');
+                    req.session.connectedFacebook=false;
                 }
+                res.status(200).redirect('/profile');
             } catch (error) {
                 res.status(500).json(error);
                 console.log(error);
@@ -107,7 +107,13 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             };
 
             try {
-                
+                const creature = await Creature.create(newCreature);
+                if(creature){
+                    req.session.connectedLinkedin=true;
+                } else {
+                    req.session.connectedLinkedin=false;
+                }
+                console.log(creature);
                 res.status(200).redirect('/profile');
             } catch (error) {
                 console.log(error);
