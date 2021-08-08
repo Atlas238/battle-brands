@@ -1,5 +1,6 @@
 // Requirements...
 const socialLinkRouter = require('express').Router();
+const CreatureBuilder = require('../../helper/createCreature');
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
@@ -48,7 +49,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
     try {
         if (req.user) {
 
-            console.log('You made it!')
+            console.log('You made it!');
 
             try {
 
@@ -64,9 +65,14 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
                     currenthealth: 10,
                 };
 
-                const creature = await Creature.create(newCreature);
-                console.log(creature);
-                res.status(200).redirect('/profile');
+                const creatureBuilt = await CreatureBuilder(newCreature);
+                console.log(creatureBuilt);
+                if(creatureBuilt){
+                    res.status(200).redirect('/profile');
+                } else {
+                    console.error('Creature was not built');
+                    res.status(404).redirect('/profile');
+                }
             } catch (error) {
                 res.status(500).json(error);
                 console.log(error);
@@ -101,8 +107,7 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             };
 
             try {
-                const creature = await Creature.create(newCreature);
-                console.log(creature);
+                
                 res.status(200).redirect('/profile');
             } catch (error) {
                 console.log(error);
