@@ -8,7 +8,7 @@
 
         <li id="happinessState" value="{{myCreature.carestat.happiness}}">
           <p>Happiness</p>
-          <span>
+          <span id="happy-meter">
             <i class="fa-solid fa-heart"></i>
             <i class="fa-solid fa-heart"></i>
             <i class="fa-regular fa-heart"></i>
@@ -17,7 +17,7 @@
         </li>
         <li id="hungerState" value="{{myCreature.carestat.hunger}}">
           <p>Hunger</p>
-          <span>
+          <span id="hunger-meter">
             <i class="fa-solid fa-lemon"></i>
             <i class="fa-solid fa-lemon"></i>
             <i class="fa-regular fa-lemon"></i>
@@ -26,7 +26,7 @@
         </li>
         <li id="groomingState" value="{{myCreature.carestat.grooming}}">
           <p>Grooming</p>
-          <span>
+          <span id="groom-meter">
             <i class="fa-solid fa-hand"></i>
             <i class="fa-solid fa-hand"></i>
             <i class="fa-regular fa-hand"></i>
@@ -35,7 +35,7 @@
         </li>
         <li id="energyState" value="{{myCreature.carestat.energy}}">
           <p>Energy</p>
-          <span>
+          <span id="energy-meter">
             <i class="fa-solid fa-battery-empty"></i>
             <i class="fa-solid fa-battery-quarter"></i>
             <i class="fa-solid fa-battery-half"></i>
@@ -61,5 +61,6 @@
   </div>
 
 </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="../assets/js/creature/creatureHelper.js"></script>
     <script src="../assets/js/creature/updateCreature.js"></script>
