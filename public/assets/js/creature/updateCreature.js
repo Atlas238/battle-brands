@@ -112,6 +112,7 @@ const startDbAutoSync = () => {
 }
 
 
+/** PRETTY PRETTY PET BOX! */
 const renderMeters = (progObj,currValue) => {
     const meterSpan = document.querySelector(`#${progObj.selector}`);
     const meterList = progObj.getMeter(currValue);
@@ -128,6 +129,47 @@ const renderAllMeters = () => {
     renderMeters(hungerMeter,currentCreature.hunger);
     renderMeters(groomMeter,currentCreature.grooming);
     adjustEnergy(currentCreature.energy);
+    animateCreature("none");
+}
+
+const animateCreature = async (reaction) => {
+    let feedButton = creatureBox.querySelector('#feedBtn'),
+        petButton = creatureBox.querySelector('#petBtn'),
+        playButton = creatureBox.querySelector('#catchBtn'),
+        energyAnimation = (currentCreature.energy > 0) ? "idle" : "rest";
+    
+    if(reaction != "none" && reaction != null){
+        // Disable for a few seconds
+        feedButton.setAttribute('disabled', true);
+        petButton.setAttribute('disabled', true);
+        playButton.setAttribute('disabled', true);
+
+        icon.classList.remove("animate-rest");
+        icon.classList.remove("animate-idle");
+        icon.classList.add(`animate-${reaction}`);
+        // eat
+        // eat-energize
+        // groom
+        // groom-happy
+        // play
+        // play-happy
+
+        setTimeout(function(){
+            feedButton.removeAttribute('disabled');
+            petButton.removeAttribute('disabled');
+            playButton.removeAttribute('disabled');
+
+            icon.classList.remove(`animate-${reaction}`);
+            icon.classList.add(`animate-${energyAnimation}`);
+        }, 2 * 1000)
+    }
+    else{
+        // Do nothing
+        console.log(`Creature is in ${energyAnimation} state...`)
+        icon.classList.remove("animate-rest");
+        icon.classList.remove("animate-idle");
+        icon.classList.add(`animate-${energyAnimation}`);
+    }
 }
 
 const updateDatabase = async () => {
@@ -163,10 +205,13 @@ const updateDatabase = async () => {
 /** FEEDING ('FEED') BUTTON **/
 feedBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    let animationType = "none";
+
     if(currentCreature.hunger + 1 <= hungerMeter.maxValue){
         console.log('Creature says: "Om nom nom..."');
         currentCreature.hunger++;
         renderMeters(hungerMeter,currentCreature.hunger);
+        animationType="eat";
 
         if(currentCreature.energy +1 <= energyMeter.maxValue){
             currentCreature.energy++;
@@ -174,6 +219,7 @@ feedBtn.addEventListener('click', (event) => {
             adjustEnergy(currentCreature.energy);
         }
         
+        animateCreature(animationType);
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
     }
@@ -187,6 +233,8 @@ feedBtn.addEventListener('click', (event) => {
 /** GROOMING ('PET') BUTTON **/
 petBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    let animationType = "none";
+
     if(currentCreature.grooming + 1 <= groomMeter.maxValue){
         console.log(`Creature lets you wipe it down`);
         currentCreature.grooming++;
@@ -198,6 +246,7 @@ petBtn.addEventListener('click', (event) => {
             renderMeters(happyMeter,currentCreature.happiness);
         }
 
+        animateCreature(animationType);
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
     }
@@ -210,6 +259,8 @@ petBtn.addEventListener('click', (event) => {
 /** CATCH ('PLAY') BUTTON **/
 catchBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    let animationType = "none";
+
     if(currentCreature.energy - 1 >= 0){
         console.log('Creature plays with you.')
         currentCreature.energy--;
@@ -220,7 +271,12 @@ catchBtn.addEventListener('click', (event) => {
             currentCreature.happiness++;
             renderMeters(happyMeter,currentCreature.happiness);
         }
+
+        // LUCIOWARE TODO: Increase EXP if hearts are full
+        // api/creature/exp/{amount}
+        // calculate and animate EXP bar
         
+        animateCreature(animationType);
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
     }
@@ -229,7 +285,7 @@ catchBtn.addEventListener('click', (event) => {
     }
 });
 
-/** LUCIOWARE DEBUG **
+/** LUCIOWARE DEBUG **/
 function resetTestCreatureDB(){
     currentCreature.happiness = 0;
     currentCreature.hunger = 0;
