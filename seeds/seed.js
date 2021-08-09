@@ -2,16 +2,10 @@ const allSeeds = require('./all-seeds.json');
 const fs = require('fs');
 
 const getCard = (type,brand,icon,name) => {
-    return `<button class="col-2 m-3 btn card" data-type="${type}" data-brand="${brand}">
-    <div class="d-flex flex-column align-items-center card-body">
-      <i
-        id="icon"
-        class="fab fa-solid ${icon} fa-8x"
-        aria-hidden="true"
-      ></i>
-      <h5 class="card-title mt-4">${name}</h5>
-    </div>
-  </button>
+    return `<div class="col-2 m-2 p-2 d-flex flex-column justify-content-center align-items-center card" data-type="${type}" data-brand="${brand}">
+    <i id="icon" class="fab ${icon} fa-8x" aria-hidden="true"></i>
+    <h5 class="card-title mt-4">${name}</h5>
+  </div>
   `;
 }
 
