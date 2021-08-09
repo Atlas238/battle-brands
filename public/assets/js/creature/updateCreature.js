@@ -4,23 +4,22 @@ const numHoursHappiness = 3;
 const numHoursGrooming = 5;
 const numHoursEnergy = 1;
 
-// CreatureID, UserID
-const updateCreatureId = document.getElementById('icon').getAttribute('data-id')
-const userID = document.getElementById('icon').getAttribute('data-user');
-// Creature Icon and Holder
+// Global vars
 const icon = document.getElementById('icon');
-const iconDiv = document.getElementById('icon-holder');
-// Buttons
+const updateCreatureId = icon.getAttribute('data-id')
+const userID = icon.getAttribute('data-user');
+const creatureBox = document.getElementById('creatureBox');
+
 const catchBtn = document.getElementById('catchBtn');
 const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
-//host
+
+// Host
 const host = 'http://localhost:3001';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
-let previousSync = moment();
 
 const currentCreature = {
-    id: 0,
+    id: updateCreatureId,
     hunger: 0,
     happiness: 0,
     grooming: 0,
@@ -28,28 +27,28 @@ const currentCreature = {
     lastinteraction: new Date(),
 };
 
+
+/** Check creatures stats on page load, without an additional DB ping **/
+const scanStats = () => {
+    currentCreature.happiness = Number(document.getElementById('happinessState').getAttribute('value'));
+    currentCreature.hunger = Number(document.getElementById('hungerState').getAttribute('value'));
+    currentCreature.grooming = Number(document.getElementById('groomingState').getAttribute('value'));
+    currentCreature.energy = Number(document.getElementById('energyState').getAttribute('value'));
+    currentCreature.lastinteraction = moment(document.getElementById('icon').getAttribute('data-action')).format('YYYY-MM-DDTHH:mm:ss');
+    console.log(currentCreature);
+}
+
+
 const init = async () => {
     try {
-        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
-        adjustCreatureStats(loadStats);
-        currentCreature.id = loadStats.id;
-        currentCreature.happiness = loadStats.happiness;
-        currentCreature.hunger = loadStats.hunger;
-        currentCreature.grooming = loadStats.grooming;
-        currentCreature.energy = loadStats.energy;
-        currentCreature.lastinteraction = loadStats.lastinteraction; //last interaction is updated when one of the btns is pressed
-        console.log("Starting Stats Interval");
-        // updateStats();
-        console.log("Syncing with database")
-        // startDbAutoSync();
-        previousSync = moment();
-        renderMeters(happyMeter,currentCreature.happiness);
-        renderMeters(hungerMeter,currentCreature.hunger);
-        renderMeters(groomMeter,currentCreature.grooming);
+        scanStats();
+        adjustCreatureStats(currentCreature);
+        renderAllMeters();
     } catch (err) {
         console.log(err);
     }
 };
+
 
 const adjustCreatureStats = () => {
     const dbTime = moment(currentCreature.lastinteraction);
@@ -93,13 +92,15 @@ const adjustCreatureStats = () => {
     }
 };
 
+
 const updateStats = async () => {
     const updateInterval = setInterval(() => {
         adjustCreatureStats(currentCreature);
         console.log(currentCreature);
         // Render Creature Stats
-    },1000*60*60);
+    },1000*60);
 };
+
 
 // Database gets updated every minute
 const startDbAutoSync = () => {
@@ -111,11 +112,23 @@ const startDbAutoSync = () => {
     },1000);
 }
 
+
 const renderMeters = (progObj,currValue) => {
     const meterSpan = document.querySelector(`#${progObj.selector}`);
     const meterList = progObj.getMeter(currValue);
     meterSpan.textContent = '';
     meterSpan.append(...meterList);
+}
+
+const adjustEnergy = (currValue) => {
+    document.getElementById(energyMeter.selector).className = `battery-${currValue}`;
+}
+
+const renderAllMeters = () => {
+    renderMeters(happyMeter,currentCreature.happiness);
+    renderMeters(hungerMeter,currentCreature.hunger);
+    renderMeters(groomMeter,currentCreature.grooming);
+    adjustEnergy(currentCreature.energy);
 }
 
 const updateDatabase = async () => {
@@ -146,33 +159,86 @@ const updateDatabase = async () => {
     }
 };
 
-// Interaction Event Listeners
+
+
+/** FEEDING ('FEED') BUTTON **/
 feedBtn.addEventListener('click', (event) => {
     event.preventDefault();
     if(currentCreature.hunger + 1 <= hungerMeter.maxValue){
+        console.log('Creature says: "Om nom nom..."');
         currentCreature.hunger++;
+        renderMeters(hungerMeter,currentCreature.hunger);
+
+        if(currentCreature.energy +1 <= energyMeter.maxValue){
+            currentCreature.energy++;
+            console.log('Creature looks more energetic!')
+            adjustEnergy(currentCreature.energy);
+        }
+        
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
-        renderMeters(hungerMeter,currentCreature.hunger);
+    }
+    else{
+        console.log('Creature is full');
+
     }
 });
+
+
+/** GROOMING ('PET') BUTTON **/
 petBtn.addEventListener('click', (event) => {
     event.preventDefault();
     if(currentCreature.grooming + 1 <= groomMeter.maxValue){
+        console.log(`Creature lets you wipe it down`);
         currentCreature.grooming++;
+        renderMeters(groomMeter,currentCreature.grooming);
+
+        if(currentCreature.happiness + 1 <= happyMeter.maxValue){
+            console.log('Creature *purrrrs* happily');
+            currentCreature.happiness++;
+            renderMeters(happyMeter,currentCreature.happiness);
+        }
+
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
-        renderMeters(groomMeter,currentCreature.grooming);
+    }
+    else{
+        console.log('Creature is already clean');
     }
 });
+
+
+/** CATCH ('PLAY') BUTTON **/
 catchBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    if(currentCreature.happiness + 1 <= happyMeter.maxValue){
-        currentCreature.happiness++;
+    if(currentCreature.energy - 1 >= 0){
+        console.log('Creature plays with you.')
+        currentCreature.energy--;
+        adjustEnergy(currentCreature.energy);
+
+        if(currentCreature.happiness + 1 <= happyMeter.maxValue){
+            console.log('Creature jumps with joy!');
+            currentCreature.happiness++;
+            renderMeters(happyMeter,currentCreature.happiness);
+        }
+        
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
-        renderMeters(happyMeter,currentCreature.happiness);
+    }
+    else{
+        console.log('Creature is tired...');
     }
 });
+
+/** LUCIOWARE DEBUG **
+function resetTestCreatureDB(){
+    currentCreature.happiness = 0;
+    currentCreature.hunger = 0;
+    currentCreature.grooming = 0;
+    currentCreature.energy = 4;
+    renderAllMeters();
+    updateDatabase();
+}
+/*****/
 
 init();

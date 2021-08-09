@@ -25,6 +25,7 @@
     justify-content: center;
 }
 
+/** LUCIOWARE TODO: CHANGE THIS BY TYPE? **/
 .creature-pen.bg-sky-day{
     background-image: -webkit-radial-gradient(50% 100%, 60% 90%, #9fd1c8 10%, #55d4d4 30%, #1e95cf);
     box-shadow: inset green 0px -35px 5px -5px;
@@ -62,6 +63,30 @@
 .care-stats-bar p,
 .care-stats-bar span {
     display: block;
+}
+
+.care-stats-bar span i {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/** ANIMATION FOR THE CARE STAT ICONS **/
+@keyframes fillup {
+	0% {
+		transform: scale(0.95);
+	}
+
+	70% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.care-stats-bar span i.fa-solid {
+    animation: fillup .5s;
 }
 
 .care-stats-bar p{
