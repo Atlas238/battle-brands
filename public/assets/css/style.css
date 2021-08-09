@@ -95,6 +95,10 @@ body{
     background-color: var(--c-11);
 }
 
+.linkBox{
+    background-color: tan;
+}
+
     /* PAGES STYLING */
 /* Main Layout Styling */
 #card {
@@ -445,10 +449,6 @@ transition: 0.1s ease;
     background-color: tan;
     width: fit-content;
     height: fit-content;
-}
-
-#linkBox{
-    background-color: tan;
 }
 
 #interactionbox{
