@@ -1,10 +1,9 @@
 // Requirements...
 const socialLinkRouter = require('express').Router();
-const CreatureBuilder = require('../../helper/createCreature');
+const CreatureBuilder = require('../../helper/CreatureBuilder');
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
-const { Creature } = require('../../models');
 
 // PASSPORT-FACEBOOK SETUP
 const FacebookStrategy = passportFacebook.Strategy;
@@ -50,32 +49,26 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
         if (req.user) {
 
             console.log('You made it!');
+            let newCreature = {
+                // LinkedIn BrandID
+                brand_id: 2,
+                type_id: 2,
+            };
 
             try {
-
-                let newCreature = {
-                    user_id: req.session.user_id,
-                    name: `newPet${req.session.user_id}`,
-                    // FB BrandID
-                    brand_id: 2,
-                    type_id: 2,
-                    combatstat_id: 3,
-                    carestat_id: 1,
-                    exp: 0,
-                    currenthealth: 10,
-                };
-
-                const creature = await Creature.create(newCreature);
-                console.log(creature);
-                if(creature){
+                const fbAdded = await CreatureBuilder(req.session.user_id,newCreature);
+                if(fbAdded){
                     req.session.connectedFacebook=true;
+                    res.status(200).redirect('/profile');
                 } else {
                     req.session.connectedFacebook=false;
+                    console.log("Creature Not Created");
+                    res.status(404).json({message:false,description: 'Creature was not created'});
                 }
                 res.status(200).redirect('/profile');
             } catch (error) {
-                res.status(500).json(error);
                 console.log(error);
+                res.status(500).json(error);
             }
         };
     } catch (error) {
@@ -95,26 +88,21 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
         if (req.user) {
             console.log('You made it!');
             let newCreature = {
-                user_id: req.session.user_id,
-                name: `newPet${req.session.user_id}`,
-                // FB BrandID
+                // LinkedIn BrandID
                 brand_id: 3,
                 type_id: 2,
-                combatstat_id: 4,
-                carestat_id: 2,
-                exp: 0,
-                currenthealth: 10,
             };
 
             try {
-                const creature = await Creature.create(newCreature);
-                if(creature){
+                const linkedInAdded = await CreatureBuilder(req.session.user_id,newCreature);
+                if(linkedInAdded){
                     req.session.connectedLinkedin=true;
+                    res.status(200).redirect('/profile');
                 } else {
                     req.session.connectedLinkedin=false;
+                    console.log("Creature Not Created");
+                    res.status(404).json({message:false,description: 'Creature was not created'});
                 }
-                console.log(creature);
-                res.status(200).redirect('/profile');
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);

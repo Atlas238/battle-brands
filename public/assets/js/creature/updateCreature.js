@@ -19,12 +19,12 @@ const host = 'http://localhost:3001';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
-    id: updateCreatureId,
-    hunger: 0,
-    happiness: 0,
-    grooming: 0,
-    energy: 0,
-    lastinteraction: new Date(),
+  id: 0,
+  hunger: 0,
+  happiness: 0,
+  grooming: 0,
+  energy: 0,
+  lastinteraction: moment(),
 };
 
 
@@ -51,45 +51,45 @@ const init = async () => {
 
 
 const adjustCreatureStats = () => {
-    const dbTime = moment(currentCreature.lastinteraction);
-    let currentTime = moment();
-    let diffInTime = currentTime.diff(dbTime,'hours');
-    diffInTime = diffInTime < 0 ? 0 : diffInTime;
+  const dbTime = moment(currentCreature.lastinteraction);
+  let currentTime = moment();
+  let diffInTime = currentTime.diff(dbTime, "hours");
+  diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
-    // Check and degrade values...
-    // Delete
-    if (diffInTime > numHoursHunger) {
-        const valueDecrease = Math.floor(diffInTime/numHoursHunger);
-        if(currentCreature.hunger - valueDecrease > 0) {
-            currentCreature.hunger -= valueDecrease;
-        } else {
-            currentCreature.hunger = 0;
-        }
+  // Check and degrade values...
+  // Delete
+  if (diffInTime > numHoursHunger) {
+    const valueDecrease = Math.floor(diffInTime / numHoursHunger);
+    if (currentCreature.hunger - valueDecrease > 0) {
+      currentCreature.hunger -= valueDecrease;
+    } else {
+      currentCreature.hunger = 0;
     }
-    if (diffInTime > numHoursHappiness) {
-        const valueDecrease = Math.floor(diffInTime/numHoursHappiness);
-        if(currentCreature.happiness - valueDecrease > 0) {
-            currentCreature.happiness -= valueDecrease;
-        } else {
-            currentCreature.happiness = 0;
-        }
+  }
+  if (diffInTime > numHoursHappiness) {
+    const valueDecrease = Math.floor(diffInTime / numHoursHappiness);
+    if (currentCreature.happiness - valueDecrease > 0) {
+      currentCreature.happiness -= valueDecrease;
+    } else {
+      currentCreature.happiness = 0;
     }
-    if (diffInTime > numHoursGrooming) {
-        const valueDecrease = Math.floor(diffInTime/numHoursGrooming);
-        if(currentCreature.grooming - valueDecrease > 0) {
-            currentCreature.grooming -= valueDecrease;
-        } else {
-            currentCreature.grooming = 0;
-        }
+  }
+  if (diffInTime > numHoursGrooming) {
+    const valueDecrease = Math.floor(diffInTime / numHoursGrooming);
+    if (currentCreature.grooming - valueDecrease > 0) {
+      currentCreature.grooming -= valueDecrease;
+    } else {
+      currentCreature.grooming = 0;
     }
-    if (diffInTime > numHoursEnergy) {
-        const valueDecrease = Math.floor(diffInTime/numHoursEnergy);
-        if(currentCreature.energy - valueDecrease > 0) {
-            currentCreature.energy -= valueDecrease;
-        } else {
-            currentCreature.energy = 0;
-        }
+  }
+  if (diffInTime > numHoursEnergy) {
+    const valueDecrease = Math.floor(diffInTime / numHoursEnergy);
+    if (currentCreature.energy - valueDecrease > 0) {
+      currentCreature.energy -= valueDecrease;
+    } else {
+      currentCreature.energy = 0;
     }
+  }
 };
 
 
@@ -104,13 +104,13 @@ const updateStats = async () => {
 
 // Database gets updated every minute
 const startDbAutoSync = () => {
-    const syncInterval = setInterval(() => {
-        if(notSyncing){
-            console.log("Auto Sync");
-            updateDatabase();
-        }
-    },1000);
-}
+  const syncInterval = setInterval(() => {
+    if (notSyncing) {
+      console.log("Auto Sync");
+      await updateDatabase();
+    }
+  }, 1000);
+};
 
 
 const renderMeters = (progObj,currValue) => {
@@ -145,18 +145,35 @@ const updateDatabase = async () => {
             });
             const respData = await updateSql.json();
 
-            if(respData.message){
-                console.log("Data backed up on the super secret cloud");
-            } else {
-                console.log("Data not backed up... :'(");
-            }
-        } catch (error){
-            console.log(error);
+const updateDatabase = async () => {
+  // If id is 0 then the creature was not loaded properly
+  if (currentCreature.id !== 0) {
+    console.log("Syncing now");
+    try {
+      const updateSql = await fetch(
+        `${host}/creature/care/${updateCreatureId}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(currentCreature),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-    } else {
-        // clearInterval(syncInterval);
-        console.log(currentCreature.id);
+      );
+      const respData = await updateSql.json();
+
+      if (respData.message) {
+        console.log("Data backed up on the super secret cloud");
+      } else {
+        console.log("Data not backed up... :'(");
+      }
+    } catch (error) {
+      console.log(error);
     }
+  } else {
+    // clearInterval(syncInterval);
+    console.log(currentCreature.id);
+  }
 };
 
 
@@ -174,7 +191,7 @@ feedBtn.addEventListener('click', (event) => {
             console.log('Creature looks more energetic!')
             adjustEnergy(currentCreature.energy);
         }
-        
+
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();
     }

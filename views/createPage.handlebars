@@ -6,18 +6,438 @@
         <h3>Link your Battle-Brands account to one of the following <br> Social Networks to unlock a new BB!</h3>
     </div>
 </div>
-<div class="container d-flex flex-column justify-content-center align-content-center align-items-center p-1">
+<div class="container d-flex flex-row justify-content-center align-content-center align-items-center p-1">
     <div id="linkBox" class="card text-center w-fit">
         <div class="button p-3 fs-1">
             <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
         </div>
         <div class="button p-3 fs-1">
-            <a id="twBtn" href="/passport/auth/twitter">Link to Twitter</a>
-        </div>
-        <div class="button p-3 fs-1">
             <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
         </div>
+        <button>Make a Creature</button>
     </div>
-        <button></button>
-    {{> select-type}}
+    {{!-- {{> selectType}} --}}
+    {{!-- {{> selectBrand}} --}}
+</div>
+<div id="creature-selector" class="d-flex flex-wrap p-2 vw-100 vh-75 overflow-scroll">
+    <button class="col-2 m-3 btn card" data-type="1" data-brand="1">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-dragon fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Battle Brands</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="2">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-amazon fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Amazon</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="3">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-apple fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Apple</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="4">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-google fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Google</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="5">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-microsoft fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Microsoft</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="6">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-stripe fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Stripe</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="1" data-brand="7">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-paypal fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">PayPal</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="8">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-internet-explorer fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Internet Explorer</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="9">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-firefox-browser fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Firefox</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="10">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-chrome fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Chrome</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="11">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-edge fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Edge</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="12">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-opera fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Opera</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="2" data-brand="13">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-safari fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Safari</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="14">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-whatsapp fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">WhatsApp</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="15">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-telegram-plane fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Telegram</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="16">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-snapchat fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Snapchat</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="17">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-discord fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Discord</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="18">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-slack fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Slack</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="19">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-discourse fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Discourse</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="20">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-facebook-messenger fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Messenger</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="3" data-brand="21">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-skype fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Skype</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="4" data-brand="22">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-twitch fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Twitch</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="4" data-brand="23">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-mixer fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Mixer</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="4" data-brand="24">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-vimeo fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Vimeo</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="4" data-brand="25">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-youtube fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Youtube</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="4" data-brand="26">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-dailymotion fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Dailymotion</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="5" data-brand="27">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-android fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Android</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="5" data-brand="28">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-app-store-ios fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">IOS</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="5" data-brand="29">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-ubuntu fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Ubuntu</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="5" data-brand="30">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-windows fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Windows</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="5" data-brand="31">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-blackberry fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Blackberry</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="6" data-brand="32">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-instagram fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Instagram</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="6" data-brand="33">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-pinterest fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Pinterest</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="6" data-brand="34">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-flickr fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Flickr</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="6" data-brand="35">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-vine fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Vine</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="6" data-brand="36">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-tiktok fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">TikTok</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="37">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-blogger fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Blogger</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="38">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-facebook fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Facebook</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="39">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-google-plus fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Google+</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="40">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-linkedin fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">LinkedIn</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="41">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-reddit fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Reddit</h5>
+        </div>
+      </button>
+      <button class="col-2 m-3 btn card" data-type="7" data-brand="42">
+        <div class="d-flex flex-column align-items-center card-body">
+          <i
+            id="icon"
+            class="fab fa-solid fa-tumblr fa-8x"
+            aria-hidden="true"
+          ></i>
+          <h5 class="card-title mt-4">Tumblr</h5>
+        </div>
+      </button>
 </div>
