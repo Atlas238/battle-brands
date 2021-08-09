@@ -19,8 +19,6 @@ router.get("/profile", async (req, res) => {
         const userCreatures = creatureList.map((creature) => {
           return creature.get({ plain: true });
         });
-
-        console.log(userCreatures);
         const handleObj = {
           user: req.session.logged_in,
           username: req.session.username,
@@ -43,7 +41,10 @@ router.get("/profile", async (req, res) => {
 router.get("/create", async (req, res) => {
   if (req.session.logged_in) {
     try {
-      res.render("createPage");
+      res.render("createPage", {
+        connectedFacebook: req.session.connectedFacebook,
+        connectedLinkedin: req.session.connectedLinkedin
+      });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

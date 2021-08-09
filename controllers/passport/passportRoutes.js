@@ -51,8 +51,8 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
             console.log('You made it!');
             let newCreature = {
                 // LinkedIn BrandID
-                brand_id: 2,
-                type_id: 2,
+                brand_id: 38,
+                type_id: 7,
             };
 
             try {
@@ -89,8 +89,8 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             console.log('You made it!');
             let newCreature = {
                 // LinkedIn BrandID
-                brand_id: 3,
-                type_id: 2,
+                brand_id: 40,
+                type_id: 7,
             };
 
             try {

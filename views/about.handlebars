@@ -1,62 +1,81 @@
 <div>
-        {{#if user}}
-        {{>navbar}}
-        {{/if}}
-        {{#unless user}}
-        {{>loginNav}}
-        {{/unless}}
-<section class="about-us">
+  {{#if user}}
+  {{>navbar}}
+  {{/if}}
+  {{#unless user}}
+  {{>loginNav}}
+  {{/unless}}
+  <section class="about-us">
     <h5 class="display-5 fs-1 text-center fw-bold m-1">Thanks for checking out Battle Brands!</h5>
-    <div id="aboutPage">
-    <div id="aboutBox" class="front-end container m-5 mx-auto border rounded w-50">
-        <h3 class="card-title text-center w-fit mx-auto m-2">About Battle Brands</h3>
-        <h4>Battle brands is a collection center for your favorite tech brands. With this application you will be able to take care of your favorite platform creatures by feeding, petting, or playing catch with them. The brands are categorized by type, like in pokemon, allowing you to build special collections. The collections are specific to each user and can only be viewed after logging in, so be sure to navigate to our login page to get signed up and start collecting.</h4>
-    </div>
-    <div class="team-box" >
-        <div id="frontendBox" class="front-end container m-5 mx-auto border rounded w-50">
+    <div id="aboutPage" class="d-flex justify-content-center">
+      <div id="aboutBox" class="front-end container m-5 border rounded w-50">
+        <h3 id="title" class="card-title text-center w-fit mx-auto m-2">About Battle Brands</h3>
+        <h4>Battle brands is a collection center for your favorite tech brands. With this application you will be able
+          to take care of your favorite platform creatures by feeding, petting, or playing catch with them. The brands
+          are categorized by type, like in pokemon, allowing you to build special collections. The collections are
+          specific to each user and can only be viewed after logging in, so be sure to navigate to our login page to get
+          signed up and start collecting.</h4>
+      </div>
+      <div id="teambox" class="d-flex flex-row justify-content-center team-box">
+        <div id="frontendBox" class="front-end container m-5 border rounded w-50">
           <h3 class="card-title text-center w-fit mx-auto m-2">Front-End Developers</h3>
-          <div class="d-flex justify-content-evenly w-50 mx-auto">
+          <div id="simJack" class="d-flex justify-content-evenly mx-auto">
             <div id="simBox" class="card m-1">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Simran</h4>
-                  <div class="fs-6 container mx-auto">
-                      <a href="https://github.com/kaursim000" target="_blank">Github</a>
+              <div class="card-body">
+                <h4 class="card-title mb-3">Simran</h4>
+                <div class="fs-6 container mx-auto">
+                  <img src="https://cdn.dribbble.com/users/3169872/screenshots/12099185/group_6_4x.png" alt="Simran">
+                  <div id="LINKS" class="fs-6 container">
+                    <a href="https://github.com/kaursim000" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/simran-kaur-020780208/" target="_blank">LinkedIn</a>
                   </div>
                 </div>
+              </div>
             </div>
             <div id="jackBox" class="card m-1">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Jack</h4>
-                  <div class="fs-6 container mx-auto">
-                      <a href="https://github.com/Atlas238" target="_blank">Github</a>
+              <div class="card-body">
+                <h4 class="card-title mb-3">Jack</h4>
+                <div class="fs-6 container mx-auto">
+                  <img src="https://i.natgeofe.com/n/ee9e96d7-da8c-471e-8ff7-fb28a42fc76c/orangutans_thumb.jpg"
+                    alt="Lucio">
+                  <div id="LINKS" class="fs-6 container">
+                    <a href="https://github.com/Atlas238" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/jack-bentsen/" target="_blank">LinkedIn</a>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-        <div id="backendBox" class="back-end container m-5 mx-auto m-2 border rounded w-50">
+        <div id="backendBox" class="back-end container m-5 border rounded w-50">
           <h3 class="card-title text-center w-fit mx-auto m-2">Back-End Developers</h3>
-          <div class="d-flex justify-content-evenly w-50 mx-auto">
+          <div id="lucioDerek" class="d-flex justify-content-evenly mx-auto">
             <div id="lucioBox" class="card m-1">
-                <div class="card-body">
+              <div class="card-body">
                 <h4 class="card-title mb-3">Lucio</h4>
-                {{!-- <img id="lucioPic" src="https://avatars.githubusercontent.com/u/3181447?v=4" alt="Lucio" style="width:100px;height:200px;"> --}}
-                  <div class="fs-6 container mx-auto">
+                <div class="fs-6 container mx-auto">
+                  <img src="https://avatars.githubusercontent.com/u/3181447?v=4" alt="Lucio">
+                  <div id="LINKS" class="fs-6 container">
                     <a href="https://github.com/davidlucio" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/davidlucio/" target="_blank">LinkedIn</a>
                   </div>
                 </div>
+              </div>
             </div>
             <div id="derekBox" class="card m-1">
-                <div class="card-body">
+              <div class="card-body">
                 <h4 class="card-title mb-3">Derek</h4>
-                  <div class="fs-6 container mx-auto">
-                    {{!-- <img id="derekPic" src="https://avatars.githubusercontent.com/u/19494177?v=4" alt="Derek" style="width:100px;height:200px;">  --}}
+                <div class="fs-6 container mx-auto">
+                  <img id="derekPic" src="https://www.placecage.com/gif/250/250" alt="Derek">
+                  <div id="LINKS" class="fs-6 container">
                     <a href="https://github.com/delizoderek" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/derek-delizo/" target="_blank">LinkedIn</a>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
-    </div>
-</section>
+  </section>
