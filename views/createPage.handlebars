@@ -18,18 +18,6 @@
     {{/if}}
   {{/if}}
 
-  {{!-- IF NEITHER --}}
-  {{#unless connectedFacebook}}
-    {{#unless connectedLinkedin}}
-      <div class="button m-2 p-3 fs-1 linkBox">
-          <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
-      </div>
-      <div class="button m-2 p-3 fs-1 linkBox">
-          <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
-      </div>
-    {{/unless}}
-  {{/unless}}
-
   {{#unless connectedFacebook}}
       <div class="button m-2 p-3 fs-1 linkBox">
           <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
