@@ -1,26 +1,26 @@
 [
     {
         "title": "Internet Explorer",
-        "fa-id": "fa-internet-explorer"
+        "icon": "fa-internet-explorer"
     },
     {
         "title": "Firefox",
-        "fa-id": "fa-firefox-browser"
+        "icon": "fa-firefox-browser"
     },
     {
         "title": "Chrome",
-        "fa-id": "fa-chrome"
+        "icon": "fa-chrome"
     },
     {
         "title": "Edge",
-        "fa-id": "fa-edge"
+        "icon": "fa-edge"
     },
     {
         "title": "Opera",
-        "fa-id": "fa-opera"
+        "icon": "fa-opera"
     },
     {
         "title": "Safari",
-        "fa-id": "fa-safari"
+        "icon": "fa-safari"
     }
 ]

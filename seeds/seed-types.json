@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "Business",
+        "weakness_id" : 7
+    },
+    {
+        "name" : "Browser",
+        "weakness_id" : 5
+    },
+    {
+        "name" : "Chat",
+        "weakness_id" :1
+    },
+    {
+        "name" : "Media",
+        "weakness_id" : 6
+    },
+    {
+        "name" : "OS",
+        "weakness_id" : 3
+    },
+    {
+        "name" : "Photo",
+        "weakness_id" : 2
+    },
+    {
+        "name" : "Social",
+        "weakness_id" : 4
+    }
+]

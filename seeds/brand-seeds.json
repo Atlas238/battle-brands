@@ -1,27 +1,31 @@
 [
     {
+        "title": "Battle Brands",
+        "icon": "fa-dragon"
+    },
+    {
         "title": "Amazon",
-        "fa-id": "fa-amazon"
+        "icon": "fa-amazon"
     },
     {
         "title": "Apple",
-        "fa-id": "fa-apple"
+        "icon": "fa-apple"
     },
     {
         "title": "Google",
-        "fa-id": "fa-google"
+        "icon": "fa-google"
     },
     {
         "title": "Microsoft",
-        "fa-id": "fa-microsoft"
+        "icon": "fa-microsoft"
     },
     {
         "title": "Stripe",
-        "fa-id": "fa-stripe"
+        "icon": "fa-stripe"
     },
     {
         "title": "PayPal",
-        "fa-id": "fa-paypal"
+        "icon": "fa-paypal"
     }
 
 ]

@@ -1,26 +1,26 @@
 [
     {
         "title": "Blogger",
-        "fa-id": "fa-blogger"
+        "icon": "fa-blogger"
     },
     {
         "title": "Facebook",
-        "fa-id": "fa-facebook"
+        "icon": "fa-facebook"
     },
     {
         "title": "Google+",
-        "fa-id": "fa-google-plus"
+        "icon": "fa-google-plus"
     },
     {
         "title": "LinkedIn",
-        "fa-id": "fa-linkedin"
+        "icon": "fa-linkedin"
     },
     {
         "title": "Reddit",
-        "fa-id": "fa-reddit"
+        "icon": "fa-reddit"
     },
     {
         "title": "Tumblr",
-        "fa-id": "fa-tumblr"
+        "icon": "fa-tumblr"
     }
 ]

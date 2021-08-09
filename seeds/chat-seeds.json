@@ -1,34 +1,34 @@
 [
     {
         "title": "WhatsApp",
-        "fa-id": "fa-whatsapp"
+        "icon": "fa-whatsapp"
     },
     {
         "title": "Telegram",
-        "fa-id": "fa-telegram-plane"
+        "icon": "fa-telegram-plane"
     },
     {
         "title": "Snapchat",
-        "fa-id": "fa-snapchat"
+        "icon": "fa-snapchat"
     },
     {
         "title": "Discord",
-        "fa-id": "fa-discord"
+        "icon": "fa-discord"
     },
     {
         "title": "Slack",
-        "fa-id": "fa-slack"
+        "icon": "fa-slack"
     },
     {
         "title": "Discourse",
-        "fa-id": "fa-discourse"
+        "icon": "fa-discourse"
     },
     {
         "title": "Messenger",
-        "fa-id": "fa-facebook-messenger"
+        "icon": "fa-facebook-messenger"
     },
     {
         "title": "Skype",
-        "fa-id": "fa-skype"
+        "icon": "fa-skype"
     }
 ]

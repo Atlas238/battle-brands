@@ -1,22 +1,22 @@
 [
     {
         "title": "Android",
-        "fa-id": "fa-android"
+        "icon": "fa-android"
     },
     {
         "title": "IOS",
-        "fa-id": "fa-app-store-ios"
+        "icon": "fa-app-store-ios"
     },
     {
         "title": "Ubuntu",
-        "fa-id": "fa-ubuntu"
+        "icon": "fa-ubuntu"
     },
     {
         "title": "Windows",
-        "fa-id": "fa-windows"
+        "icon": "fa-windows"
     },
     {
         "title": "Blackberry",
-        "fa-id": "fa-blackberry"
+        "icon": "fa-blackberry"
     }
 ]

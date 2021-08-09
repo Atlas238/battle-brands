@@ -1,22 +1,22 @@
 [
     {
         "title": "Twitch",
-        "fa-id": "fa-twitch"
+        "icon": "fa-twitch"
     },
     {
         "title": "Mixer",
-        "fa-id": "fa-mixer"
+        "icon": "fa-mixer"
     },
     {
         "title": "Vimeo",
-        "fa-id": "fa-vimeo"
+        "icon": "fa-vimeo"
     },
     {
         "title": "Youtube",
-        "fa-id": "fa-youtube"
+        "icon": "fa-youtube"
     },
     {
         "title": "Dailymotion",
-        "fa-id": "fa-dailymotion"
+        "icon": "fa-dailymotion"
     }
 ]
