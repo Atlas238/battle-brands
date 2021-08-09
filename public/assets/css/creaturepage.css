@@ -44,6 +44,38 @@
     align-self: flex-end;
 }
 
+#exp-progress{
+    position: absolute;
+    height: 8px;
+    width: calc(100% - 50px);
+    bottom: 2px;
+}
+
+#exp-progress span{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    top: 1px;
+    font-size: 10px;
+    line-height: 7px;
+    font-weight: 600;
+}
+
+span#petitem{
+    position: absolute;
+    z-index:1;
+}
+
+span#petitem:after{
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 30px;
+    color: white;
+}
+
+
+/** CARE STATS **/
 .care-stats-bar{
     padding-right: 10px;
     color: white;
@@ -109,7 +141,7 @@
 
     border-radius: 10px;
     border: 2px solid #333333;
-    background-color: #666666;
+    background-color: #2A3492;
     box-shadow: 2px 2px 2px 0px #000000;
 
     font-size: 125%;
@@ -120,12 +152,19 @@
 
 #interaction-box button:hover {
     border-color: #000000;
-    background-color: #444444;
+    background-color: #4354f7;
 }
 
 #interaction-box button:active {
     box-shadow: 0px 0px 1px 0px #000000;
     transform: translateY(2px);
+}
+
+#interaction-box button:disabled{
+    color: rgba(255,255,255,.5);
+    background-color: #666;
+    border-color: #666;
+    cursor: wait;
 }
 
 #interaction-box button i {
@@ -161,42 +200,110 @@
 #interaction-box div#energyState p.battery-3::before {content: "\f241"; color: rgb(0, 255, 0);}
 #interaction-box div#energyState p.battery-4::before {content: "\1f50b"; color: rgb(0, 180, 255);}
 
-#exp-progress{
-    position: absolute;
-    height: 8px;
-    width: calc(100% - 50px);
-    bottom: 2px;
+
+/** ANIMATION DECLARATIONS **/
+@keyframes idle {
+	0% {
+        transform: translateX(0%);
+        animation-timing-function: ease-in-out;
+	}
+	10% {
+        transform: translateX(20%);
+        animation-timing-function: ease-in-out;
+	}
+	20% {
+        transform: translateX(40%);
+        animation-timing-function: ease-in-out;
+	}
+	30% {
+        transform: translateX(40%) scale(-1, 1);
+        animation-timing-function: ease-in-out;
+	}
+	40% {
+        transform: translateX(20%) scale(-1, 1);
+        animation-timing-function: ease-in-out;
+	}
+	50% {
+        transform: translateX(0%) scale(-1, 1);
+        animation-timing-function: ease-in-out;
+	}
+	60% {
+        transform: translateX(-20%) scale(-1, 1);
+        animation-timing-function: ease-in-out;
+	}
+	70% {
+        transform: translateX(-40%) scale(-1, 1);
+        animation-timing-function: ease-in-out;
+	}
+	80% {
+        transform: translateX(-40%);
+        animation-timing-function: ease-in-out;
+	}
+	90% {
+        transform: translateX(-20%);
+        animation-timing-function: ease-in-out;
+	}
+    100%{
+        transform: translateX(0%);
+        animation-timing-function: ease-in-out;
+    }
 }
 
-#exp-progress span{
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    margin: 0px;
-    top: 1px;
-    font-size: 10px;
-    line-height: 7px;
-    font-weight: 600;
+@keyframes eating {
+	0% {
+        transform: rotate(0);
+        animation-timing-function: ease-in-out;
+	}
+    20%{
+        transform: rotate(40deg);
+        animation-timing-function: ease-in;
+    }
+    40%{
+        transform: rotate(30deg);
+        animation-timing-function: ease;
+    }
+    60%{
+        transform: rotate(40deg);
+        animation-timing-function: ease;
+    }
+    80%{
+        transform: rotate(30deg);
+        animation-timing-function: ease;
+    }
+    100%{
+        transform: rotate(0);
+        animation-timing-function: ease-in;
+    }
 }
-
-
-
-
-/** **/
-.animate-bounce {
-
-}
-
 
 /* Creature at rest (default) */
-.animate-rest {
-    max-width:fit-content;
-    animation: pulse;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
+.animate-rest{
+    animation: pulse 2s infinite;
+    transition: animation 1s ease;
 }
-  
+
+.animate-idle {
+    animation: idle 12s infinite;
+    transition: animation 1s ease-in-out;
+}
+
+.animate-eat {
+    animation: eating 2s;
+    transition: all 1s ease;
+}
+
+.animate-eat + span#petitem {
+    bottom: 20px;
+    left: calc(50% + 35px);
+    animation: pulse .5s infinite;
+    transition: animation .5s ease-in-out;
+}
+
+.animate-eat + span#petitem:after {
+    content: "\1f36a";
+    color: #926112;
+}
+
 /* Creature happy! */
 .creature-happy {
     animation: bounce;
@@ -214,28 +321,13 @@
 }
   
 /* Creature Hungry */
-    /* Icon animations... */
 .creature-hungry {
     animation: rubberBand;
     animation-duration: 1.5s;
     animation-iteration-count:infinite;
     transition: animation 500ms ease;
 }
-    /* After animations... */
 
-#icon-holder.creature-groomed::after {
-    content: "🎇";
-    position: absolute;
-    float: inline-end;
-    top:25%;
-    left:52%;
-    z-index:3 !important;
-    width:fit-content;
-    animation: fadeIn;
-    animation-direction: alternate;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-}
 
 #hunger-meter{
     color: #F6EB14;
@@ -245,8 +337,4 @@
 }
 #happy-meter{
     color: #EF4423;
-}
-
-#interaction-box button{
-background-color: #2A3492;
 }
