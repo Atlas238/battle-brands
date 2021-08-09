@@ -27,18 +27,18 @@
     </div>
     {{/unless}}
   {{/unless}}
-
-  {{#if connectedFacebook}}
+  
+  {{#unless connectedFacebook}}
     <div class="button m-2 p-3 fs-1 linkBox">
         <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
     </div>
-  {{/if}}
+  {{/unless}}
 
-  {{#if connectedLinkedin}}
+  {{#unless connectedLinkedin}}
     <div class="button m-2 p-3 fs-1 linkBox">
         <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
     </div>
-  {{/if}}
+  {{/unless}}
 </div>
 <h3 class="mx-3 fs-3 text-center">Select a creature to add</h3>
 <div
