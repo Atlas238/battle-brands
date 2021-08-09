@@ -43,21 +43,7 @@ router.get("/profile", async (req, res) => {
 router.get("/create", async (req, res) => {
   if (req.session.logged_in) {
     try {
-      const brandList = await Brand.findAll();
-      const selectBrand = brandList.map((data) => {
-        return {
-            id: data.id,
-            name: data.name,
-        };
-    });
-      const typeList = await Type.findAll();
-      const selectType = typeList.map((data) => {
-          return {
-              id: data.id,
-              name: data.name,
-          };
-      });
-      res.render("createPage", { selectType ,selectBrand});
+      res.render("createPage");
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
