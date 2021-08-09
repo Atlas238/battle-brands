@@ -1,4 +1,10 @@
-<div>{{> navbar}}</div>
+<div>
+        {{#if user}}
+        {{>navbar}}
+        {{/if}}
+        {{#unless user}}
+        {{>loginNav}}
+        {{/unless}}
 <section class="about-us">
     <h5 class="display-5 fs-1 text-center fw-bold m-1">Thanks for checking out Battle Brands!</h5>
     <div id="aboutPage">

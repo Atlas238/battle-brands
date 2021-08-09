@@ -236,3 +236,17 @@
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
 }
+
+#hunger-meter{
+    color: #F6EB14;
+}
+#groom-meter{
+    color: #FF9526;
+}
+#happy-meter{
+    color: #EF4423;
+}
+
+#interaction-box button{
+background-color: #2A3492;
+}
