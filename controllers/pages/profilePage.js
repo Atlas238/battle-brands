@@ -19,8 +19,6 @@ router.get("/profile", async (req, res) => {
         const userCreatures = creatureList.map((creature) => {
           return creature.get({ plain: true });
         });
-
-        console.log(userCreatures);
         const handleObj = {
           user: req.session.logged_in,
           username: req.session.username,
