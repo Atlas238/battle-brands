@@ -49,7 +49,7 @@ html {
 }
 
 body{
-    background-color: #8d80ad;
+    background-color: #74d1eef1;
 }
 /* Custom Utility Classes */
 .w-fit {
@@ -420,48 +420,62 @@ transition: 0.1s ease;
 }
 
 #frontendBox{
-    background-color: var(--c-1);
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ec98e5;
+    min-width: fit-content;
+    /* flex-wrap: wrap; */
+
 }
 
 #backendBox{
-    background-color: var(--c-1);
-    width: fit-content;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #91e598;
+    min-width: fit-content;
+    margin-left: 10%;
 }
 #aboutBox{
-    background-color: var(--c-1);
+    background-color: #eef58e;
+    color: #05879F;
+    height: fit-content;
+    padding-bottom: 5%;
 }
 #simBox{
-    background-color: tan;
+    background-color: #eef58e;
+    min-width: fit-content;
+    display: flex;
+ 
 }
 #jackBox{
-    background-color: tan;
+    background-color: #eef58e;
 }
 #derekBox{
-    background-color: tan;
+    background-color: #eef58e;
 }
 #lucioBox{
-    background-color: tan;
+    background-color: #eef58e;
     width: fit-content;
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 #linkBox{
-    background-color: tan;
+    background-color: #2A3492;
 }
 
 #interactionbox{
     padding-top:10px;
 }
 
-#lucioPic{
-    width: fit-content;
-}
 
 #aboutPage{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #about-us h5{
@@ -478,4 +492,50 @@ background: linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 50%, #4FA
     justify-content: right;
     max-width: min-content;
     align-content: flex-end;
+}
+
+.team-box{
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+
+#simJack{
+    display: flex;
+    flex-wrap: wrap;
+}
+#lucioDerek{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#title{
+    background: #EF4423;
+    background: -webkit-linear-gradient(to right, #EF4423 8%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #05879F 93%);
+    background: -moz-linear-gradient(to right, #EF4423 8%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #05879F 93%);
+    background: linear-gradient(to right, #EF4423 8%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #05879F 93%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#teambox{
+    flex-wrap: wrap;
+}
+
+#aboutPage img{
+    width: 300px;
+    height: 300px;
+}
+
+#LINKS{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
