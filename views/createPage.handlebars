@@ -8,13 +8,37 @@
       Social Networks to unlock a new BB!</h3>
   </div>
 </div>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center"></div>
+  {{#if connectedFacebook}}
+    {{#if connectedLinkedin}}
     <div class="button m-2 p-3 fs-1 linkBox">
-      <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
+      <p>You've already linked your account!</p>
+    </div>
+    {{/if}}
+  {{/if}}
+
+  {{#unless connectedFacebook}}
+    {{#unless connectedLinkedin}}
+    <div class="button m-2 p-3 fs-1 linkBox">
+        <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
     </div>
     <div class="button m-2 p-3 fs-1 linkBox">
-      <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
+        <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
     </div>
+    {{/unless}}
+  {{/unless}}
+
+  {{#if connectedFacebook}}
+    <div class="button m-2 p-3 fs-1 linkBox">
+        <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
+    </div>
+  {{/if}}
+      
+  {{#if connectedLinkedin}}
+    <div class="button m-2 p-3 fs-1 linkBox">
+        <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
+    </div>
+  {{/if}}
 </div>
 <h3 class="mx-3 fs-3">Select a creature to add</h3>
 <div
