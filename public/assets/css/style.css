@@ -152,7 +152,7 @@ input {
     height: fit-content;
     margin: auto;
     margin-top: 20px;
-    background-color: #2A3492;
+    background-color: #74d1eef1;
     align-items: center;
     flex:auto;
 }
@@ -213,7 +213,7 @@ input {
 #body {
   margin: 0;
   padding: 0;
-  background: #2A3492;
+  background: #74d1eef1;
   font-size: 16px;
   color: #222;
   font-family: 'Roboto', sans-serif;
@@ -542,4 +542,8 @@ background: linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 50%, #4FA
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#createCards{
+    min-width: 178px;
 }
