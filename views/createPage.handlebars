@@ -8,12 +8,38 @@
 </div>
 <div class="container d-flex flex-row justify-content-center align-content-center align-items-center p-1">
     <div id="linkBox" class="card text-center w-fit">
+
+      {{#if connectedFacebook}}
+        {{#if connectedLinkedin}}
+        <div class="p-3 fs-1">
+          <p>You've already linked your account!</p>
+        </div>
+        {{/if}}
+      {{/if}}
+
+      {{#unless connectedFacebook}}
+        {{#unless connectedLinkedin}}
         <div class="button p-3 fs-1">
             <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
         </div>
         <div class="button p-3 fs-1">
             <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
         </div>
+        {{/unless}}
+      {{/unless}}
+
+      {{#if connectedFacebook}}
+        <div class="button p-3 fs-1">
+            <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
+        </div>
+      {{/if}}
+      
+      {{#if connectedLinkedin}}
+        <div class="button p-3 fs-1">
+            <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
+        </div>
+      {{/if}}
+
         <button>Make a Creature</button>
     </div>
     {{!-- {{> selectType}} --}}
