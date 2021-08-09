@@ -20,12 +20,6 @@ const makeACreature = async (event) => {
                 },
             });
             const respData = await updateSql.json();
-
-            // if(respData.message){
-            //     console.log("Creature Added");
-            // } else {
-            //     console.log("Creature not added");
-            // }
         } catch (error){
             console.log(error);
         }
