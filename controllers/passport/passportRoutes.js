@@ -58,11 +58,14 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
             try {
                 const fbAdded = await CreatureBuilder(req.session.user_id,newCreature);
                 if(fbAdded){
+                    req.session.connectedFacebook=true;
                     res.status(200).redirect('/profile');
                 } else {
+                    req.session.connectedFacebook=false;
                     console.log("Creature Not Created");
                     res.status(404).json({message:false,description: 'Creature was not created'});
                 }
+                res.status(200).redirect('/profile');
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);
@@ -93,8 +96,10 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
             try {
                 const linkedInAdded = await CreatureBuilder(req.session.user_id,newCreature);
                 if(linkedInAdded){
+                    req.session.connectedLinkedin=true;
                     res.status(200).redirect('/profile');
                 } else {
+                    req.session.connectedLinkedin=false;
                     console.log("Creature Not Created");
                     res.status(404).json({message:false,description: 'Creature was not created'});
                 }
