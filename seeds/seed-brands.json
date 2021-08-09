@@ -1,7 +1,7 @@
 [
   {
     "name": "Battle Brands",
-    "icon": "fa-dragon",
+    "icon": "fa-solid fa-dragon",
     "base_hp": 11,
     "base_atk": 2,
     "base_def": 0
