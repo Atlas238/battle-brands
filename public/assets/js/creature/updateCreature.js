@@ -24,7 +24,7 @@ const currentCreature = {
     happiness: 0,
     grooming: 0,
     energy: 0,
-    lastinteraction: new Date(),
+    lastinteraction: moment(),
 };
 
 
@@ -34,8 +34,7 @@ const scanStats = () => {
     currentCreature.hunger = Number(document.getElementById('hungerState').getAttribute('value'));
     currentCreature.grooming = Number(document.getElementById('groomingState').getAttribute('value'));
     currentCreature.energy = Number(document.getElementById('energyState').getAttribute('value'));
-    currentCreature.lastinteraction = moment(document.getElementById('icon').getAttribute('data-action')).format('YYYY-MM-DDTHH:mm:ss');
-    console.log(currentCreature);
+    currentCreature.lastinteraction = moment(Date.parse(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
 }
 
 

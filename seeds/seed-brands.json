@@ -1,149 +1,296 @@
 [
-    {
-        "name" : "BattleBrands",
-        "icon" : "fa-solid fa-dragon",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name" : "Facebook",
-        "icon" : "fa-facebook",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name" : "LinkedIn",
-        "icon" : "fa-linkedin",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    },
-    {
-        "name" : "Twitter",
-        "icon" : "fa-twitter",
-        "base_hp" : 10,
-        "base_atk" : 4,
-        "base_def" : 0
-    },
-    {
-        "name": "Amazon",
-        "icon": "fa-amazon",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    },
-    {
-        "name": "Apple",
-        "icon": "fa-apple",
-        "base_hp" : 10,
-        "base_atk" : 0,
-        "base_def" : 4
-    },
-    {
-        "name": "Google",
-        "icon": "fa-google",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name": "Microsoft",
-        "icon": "fa-microsoft",
-        "base_hp" : 10,
-        "base_atk" : 3,
-        "base_def" : 1
-    },
-    {
-        "name": "Stripe",
-        "icon": "fa-stripe",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name": "PayPal",
-        "icon": "fa-paypal",
-        "base_hp" : 10,
-        "base_atk" : 4,
-        "base_def" : 0
-    },
-    {
-        "name": "Vine",
-        "icon": "fa-vine",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    },
-    {
-        "name" : "Reddit",
-        "icon" : "fa-reddit",
-        "base_hp" : 10,
-        "base_atk" : 4,
-        "base_def" : 0
-    },
-    {
-        "name": "Android",
-        "icon": "fa-android",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name": "IOS",
-        "icon": "fa-app-store-ios",
-        "base_hp" : 10,
-        "base_atk" : 3,
-        "base_def" : 1
-    },
-    {
-        "name": "Windows",
-        "icon": "fa-windows",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name": "Internet Explorer",
-        "icon": "fa-internet-explorer",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 0
-    },
-    {
-        "name": "Firefox",
-        "icon": "fa-firefox-browser",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    },
-    {
-        "name": "Chrome",
-        "icon": "fa-chrome",
-        "base_hp" : 10,
-        "base_atk" : 4,
-        "base_def" : 0
-    },
-    {
-        "name": "Youtube",
-        "icon" : "fa-youtube",
-        "base_hp" : 10,
-        "base_atk" : 2,
-        "base_def" : 2
-    },
-    {
-        "name": "Twitch",
-        "icon": "fa-twitch",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    },
-    {
-        "name": "Reddit",
-        "icon": "fa-reddit",
-        "base_hp" : 10,
-        "base_atk" : 1,
-        "base_def" : 3
-    }
+  {
+    "name": "Battle Brands",
+    "icon": "fa-solid fa-dragon",
+    "base_hp": 11,
+    "base_atk": 2,
+    "base_def": 0
+  },
+  {
+    "name": "Amazon",
+    "icon": "fa-amazon",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 1
+  },
+  {
+    "name": "Apple",
+    "icon": "fa-apple",
+    "base_hp": 10,
+    "base_atk": 2,
+    "base_def": 3
+  },
+  {
+    "name": "Google",
+    "icon": "fa-google",
+    "base_hp": 11,
+    "base_atk": 2,
+    "base_def": 1
+  },
+  {
+    "name": "Microsoft",
+    "icon": "fa-microsoft",
+    "base_hp": 10,
+    "base_atk": 2,
+    "base_def": 2
+  },
+  {
+    "name": "Stripe",
+    "icon": "fa-stripe",
+    "base_hp": 8,
+    "base_atk": 2,
+    "base_def": 2
+  },
+  {
+    "name": "PayPal",
+    "icon": "fa-paypal",
+    "base_hp": 10,
+    "base_atk": 3,
+    "base_def": 3
+  },
+  {
+    "name": "Internet Explorer",
+    "icon": "fa-internet-explorer",
+    "base_hp": 10,
+    "base_atk": 2,
+    "base_def": 0
+  },
+  {
+    "name": "Firefox",
+    "icon": "fa-firefox-browser",
+    "base_hp": 9,
+    "base_atk": 3,
+    "base_def": 0
+  },
+  {
+    "name": "Chrome",
+    "icon": "fa-chrome",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 0
+  },
+  {
+    "name": "Edge",
+    "icon": "fa-edge",
+    "base_hp": 9,
+    "base_atk": 1,
+    "base_def": 3
+  },
+  {
+    "name": "Opera",
+    "icon": "fa-opera",
+    "base_hp": 9,
+    "base_atk": 2,
+    "base_def": 2
+  },
+  {
+    "name": "Safari",
+    "icon": "fa-safari",
+    "base_hp": 9,
+    "base_atk": 3,
+    "base_def": 1
+  },
+  {
+    "name": "WhatsApp",
+    "icon": "fa-whatsapp",
+    "base_hp": 8,
+    "base_atk": 1,
+    "base_def": 3
+  },
+  {
+    "name": "Telegram",
+    "icon": "fa-telegram-plane",
+    "base_hp": 10,
+    "base_atk": 1,
+    "base_def": 3
+  },
+  {
+    "name": "Snapchat",
+    "icon": "fa-snapchat",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 2
+  },
+  {
+    "name": "Discord",
+    "icon": "fa-discord",
+    "base_hp": 9,
+    "base_atk": 2,
+    "base_def": 1
+  },
+  {
+    "name": "Slack",
+    "icon": "fa-slack",
+    "base_hp": 9,
+    "base_atk": 0,
+    "base_def": 3
+  },
+  {
+    "name": "Discourse",
+    "icon": "fa-discourse",
+    "base_hp": 10,
+    "base_atk": 1,
+    "base_def": 1
+  },
+  {
+    "name": "Messenger",
+    "icon": "fa-facebook-messenger",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 2
+  },
+  {
+    "name": "Skype",
+    "icon": "fa-skype",
+    "base_hp": 10,
+    "base_atk": 0,
+    "base_def": 2
+  },
+  {
+    "name": "Twitch",
+    "icon": "fa-twitch",
+    "base_hp": 11,
+    "base_atk": 0,
+    "base_def": 3
+  },
+  {
+    "name": "Mixer",
+    "icon": "fa-mixer",
+    "base_hp": 9,
+    "base_atk": 3,
+    "base_def": 2
+  },
+  {
+    "name": "Vimeo",
+    "icon": "fa-vimeo",
+    "base_hp": 11,
+    "base_atk": 2,
+    "base_def": 0
+  },
+  {
+    "name": "Youtube",
+    "icon": "fa-youtube",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 2
+  },
+  {
+    "name": "Dailymotion",
+    "icon": "fa-dailymotion",
+    "base_hp": 11,
+    "base_atk": 3,
+    "base_def": 1
+  },
+  {
+    "name": "Android",
+    "icon": "fa-android",
+    "base_hp": 9,
+    "base_atk": 1,
+    "base_def": 0
+  },
+  {
+    "name": "IOS",
+    "icon": "fa-app-store-ios",
+    "base_hp": 9,
+    "base_atk": 1,
+    "base_def": 1
+  },
+  {
+    "name": "Ubuntu",
+    "icon": "fa-ubuntu",
+    "base_hp": 9,
+    "base_atk": 1,
+    "base_def": 3
+  },
+  {
+    "name": "Windows",
+    "icon": "fa-windows",
+    "base_hp": 10,
+    "base_atk": 1,
+    "base_def": 1
+  },
+  {
+    "name": "Blackberry",
+    "icon": "fa-blackberry",
+    "base_hp": 11,
+    "base_atk": 3,
+    "base_def": 3
+  },
+  {
+    "name": "Instagram",
+    "icon": "fa-instagram",
+    "base_hp": 10,
+    "base_atk": 1,
+    "base_def": 3
+  },
+  {
+    "name": "Pinterest",
+    "icon": "fa-pinterest",
+    "base_hp": 8,
+    "base_atk": 0,
+    "base_def": 2
+  },
+  {
+    "name": "Flickr",
+    "icon": "fa-flickr",
+    "base_hp": 10,
+    "base_atk": 2,
+    "base_def": 3
+  },
+  {
+    "name": "Vine",
+    "icon": "fa-vine",
+    "base_hp": 10,
+    "base_atk": 2,
+    "base_def": 1
+  },
+  {
+    "name": "TikTok",
+    "icon": "fa-tiktok",
+    "base_hp": 8,
+    "base_atk": 3,
+    "base_def": 2
+  },
+  {
+    "name": "Blogger",
+    "icon": "fa-blogger",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 0
+  },
+  {
+    "name": "Facebook",
+    "icon": "fa-facebook",
+    "base_hp": 11,
+    "base_atk": 3,
+    "base_def": 0
+  },
+  {
+    "name": "Google+",
+    "icon": "fa-google-plus",
+    "base_hp": 10,
+    "base_atk": 1,
+    "base_def": 2
+  },
+  {
+    "name": "LinkedIn",
+    "icon": "fa-linkedin",
+    "base_hp": 11,
+    "base_atk": 2,
+    "base_def": 0
+  },
+  {
+    "name": "Reddit",
+    "icon": "fa-reddit",
+    "base_hp": 9,
+    "base_atk": 1,
+    "base_def": 2
+  },
+  {
+    "name": "Tumblr",
+    "icon": "fa-tumblr",
+    "base_hp": 11,
+    "base_atk": 1,
+    "base_def": 3
+  }
 ]

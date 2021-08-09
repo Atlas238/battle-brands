@@ -1,6 +1,7 @@
 /** ROUTER INCLUSION */
 const router = require("express").Router();
 
+const CreatureBuilder = require("../../helper/CreatureBuilder");
 /** MODEL INCLUSION **/
 const { Creature, Brand, CareStats, CombatStats } = require("../../models");
 
@@ -17,7 +18,7 @@ router.get("/:id", async (req, res) => {
 
       if (singleCreature != null) {
         const myCreature = singleCreature.get({ plain: true });
-
+        
         const handleObj = {
           user: req.session.logged_in,
           userId: req.session.user_id,
@@ -105,25 +106,9 @@ router.get("/combat/:id", async (req, res) => {
 
 router.post("/create", async (req, res) => {
   try {
-    const newCare = await CareStats.create({
-      happiness: 4,
-      hunger: 1,
-      grooming: 4,
-      energy: 4,
-    });
-    const newCombat = await CombatStats.create({
-      hp: 10,
-      atk: 1,
-      def: 3,
-    });
-    req.body.carestat_id = newCare.id;
-    req.body.carestatId = newCare.id;
-    req.body.combatstat_id = newCombat.id;
-    req.body.combatstatId = newCombat.id;
-
-    const newCreature = await Creature.create(req.body);
-    if (newCreature) {
-      res.status(200).json(newCreature);
+    const creatureBuilt = CreatureBuilder(req.session.user_id,req.body);
+    if (creatureBuilt) {
+      res.status(200).json({message:true,});
     } else {
       res
         .status(404)

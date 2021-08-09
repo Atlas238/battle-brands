@@ -95,6 +95,10 @@ body{
     background-color: var(--c-11);
 }
 
+.linkBox{
+    background-color: tan;
+}
+
     /* PAGES STYLING */
 /* Main Layout Styling */
 #card {
