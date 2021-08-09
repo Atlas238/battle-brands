@@ -23,7 +23,6 @@ Creature.init(
             allowNull: false,
             validate: {
                 len: [2,32],
-                isAlphanumeric: true
             }
         },
         brand_id: {

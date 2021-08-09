@@ -56,24 +56,17 @@ router.get("/profile", async (req,res) => {
   router.get('/create/build-it', async (req,res) => {
       try {
         let tempCreature = {
-            user_id: req.session.user_id,
-            name: `newPet${req.session.user_id}`,
-            // FB BrandID
             brand_id: 2,
             type_id: 2,
-            combatstat_id: 3,
-            carestat_id: 1,
-            exp: 0,
-            currenthealth: 10,
         };
-          const newCreature = await CreatureBuilder(tempCreature);
+          const newCreature = await CreatureBuilder(req.user_id,req.body);
           if(newCreature){
               res.status(200).send("All Good");
           } else {
             res.status(404).send("Not Good");
           }
       } catch (error) {
-          
+        res.status(500).send("Server Not Good");
       }
   });
 

@@ -4,7 +4,6 @@ const CreatureBuilder = require('../../helper/CreatureBuilder');
 const passport = require('passport');
 const passportFacebook = require('passport-facebook');
 const passportLinkedIn = require('passport-linkedin-oauth2');
-const { Creature } = require('../../models');
 
 // PASSPORT-FACEBOOK SETUP
 const FacebookStrategy = passportFacebook.Strategy;
