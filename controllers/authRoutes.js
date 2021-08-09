@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const {User} = require("../models");
-const testData = require('../seeds/test-data.json');
 
 router.post("/login", async (req, res) => {
   try {
@@ -36,11 +35,14 @@ router.post("/login", async (req, res) => {
 
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
-    req.session.logged_in = false;
-    req.session.email = '';
-    req.session.username = '';
-    req.session.password = '';
-    res.status(200).json({message: true,});
+    req.session.destroy((err) => {
+      if(err){
+        console.log(err);
+        return res.status(200).json(err);
+      } else {
+        return res.status(200).json({message:true,});
+      }
+    });
   } else {
     res.status(404).end();
   }
@@ -54,8 +56,6 @@ router.post("/", async (req, res) => {
         req.session.user_id = userData.id;
         req.session.username = userData.username;
         req.session.logged_in = true;
-
-        testData.username = req.session.username;
 
         res.status(200).json({message: true,});
       });
