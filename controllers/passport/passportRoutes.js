@@ -49,32 +49,23 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
         if (req.user) {
 
             console.log('You made it!');
+            let newCreature = {
+                // LinkedIn BrandID
+                brand_id: 2,
+                type_id: 2,
+            };
 
             try {
-
-                let newCreature = {
-                    user_id: req.session.user_id,
-                    name: `newPet${req.session.user_id}`,
-                    // FB BrandID
-                    brand_id: 2,
-                    type_id: 2,
-                    combatstat_id: 3,
-                    carestat_id: 1,
-                    exp: 0,
-                    currenthealth: 10,
-                };
-
-                const creatureBuilt = await CreatureBuilder(newCreature);
-                console.log(creatureBuilt);
-                if(creatureBuilt){
+                const fbAdded = await CreatureBuilder(req.session.user_id,newCreature);
+                if(fbAdded){
                     res.status(200).redirect('/profile');
                 } else {
-                    console.error('Creature was not built');
-                    res.status(404).redirect('/profile');
+                    console.log("Creature Not Created");
+                    res.status(404).json({message:false,description: 'Creature was not created'});
                 }
             } catch (error) {
-                res.status(500).json(error);
                 console.log(error);
+                res.status(500).json(error);
             }
         };
     } catch (error) {
@@ -94,20 +85,19 @@ socialLinkRouter.get('/passport/auth/linkedin/callback',
         if (req.user) {
             console.log('You made it!');
             let newCreature = {
-                user_id: req.session.user_id,
-                name: `newPet${req.session.user_id}`,
-                // FB BrandID
+                // LinkedIn BrandID
                 brand_id: 3,
                 type_id: 2,
-                combatstat_id: 4,
-                carestat_id: 2,
-                exp: 0,
-                currenthealth: 10,
             };
 
             try {
-                
-                res.status(200).redirect('/profile');
+                const linkedInAdded = await CreatureBuilder(req.session.user_id,newCreature);
+                if(linkedInAdded){
+                    res.status(200).redirect('/profile');
+                } else {
+                    console.log("Creature Not Created");
+                    res.status(404).json({message:false,description: 'Creature was not created'});
+                }
             } catch (error) {
                 console.log(error);
                 res.status(500).json(error);
