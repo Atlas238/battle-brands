@@ -8,8 +8,6 @@ const makeACreature = async (event) => {
     }
 
     if(card.dataset.type && card.dataset.brand){
-        console.log(card.dataset.type);
-        console.log(card.dataset.brand);
         try{
             const updateSql = await fetch(`https://battle-brands.herokuapp.com/creature/create`, {
                 method: 'POST',
@@ -23,11 +21,11 @@ const makeACreature = async (event) => {
             });
             const respData = await updateSql.json();
 
-            if(respData.message){
-                console.log("Creature Added");
-            } else {
-                console.log("Creature not added");
-            }
+            // if(respData.message){
+            //     console.log("Creature Added");
+            // } else {
+            //     console.log("Creature not added");
+            // }
         } catch (error){
             console.log(error);
         }
