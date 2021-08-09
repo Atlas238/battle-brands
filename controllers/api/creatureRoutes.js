@@ -95,8 +95,35 @@ creatureRouter.post("/creature/user/:userId", async (req, res) => {
       res.status(404).send("Could not find that user's creatures");
     }
   } catch (err) {
-      console.log(err);
+    console.log(err);
     res.status(500).send("Issue loading that data");
+  }
+});
+
+creatureRouter.put('/creature/exp', async (req,res) => {
+  if(req.session.logged_in){
+    try {
+      const creatureUpdate = await Creature.update({
+        exp:req.body.amount,
+      },
+      {
+        where:{
+          id: req.body.creature_id,
+          user_id: req.session.user_id,
+        }
+      });
+      if(creatureUpdate){
+        res.status(200).json({message:true,});
+      } else {
+        res.status(404).json({message:false,description:"Experience not updated"});
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
+  } else {
+    console.log("User not Logged In");
+    res.status(404).json({message:false,description:"Not Logged In"});
   }
 });
 

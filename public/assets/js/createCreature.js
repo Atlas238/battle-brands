@@ -11,7 +11,7 @@ const makeACreature = async (event) => {
         console.log(card.dataset.type);
         console.log(card.dataset.brand);
         try{
-            const updateSql = await fetch(`http://localhost:3001/creature/create`, {
+            const updateSql = await fetch(`https://battle-brands.herokuapp.com/creature/create`, {
                 method: 'POST',
                 body: JSON.stringify({
                     brand_id: card.dataset.brand,
