@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 
       if (singleCreature != null) {
         const myCreature = singleCreature.get({ plain: true });
-
+        
         const handleObj = {
           user: req.session.logged_in,
           userId: req.session.user_id,

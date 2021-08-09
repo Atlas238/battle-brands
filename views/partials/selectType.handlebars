@@ -1,5 +1,5 @@
 <select class="selectpicker" id="brand-type" data-live-search="true">
-    {{#each type}}
-        <option>{{.}}</option>
+    {{#each selectType}}
+        <option data-id={{this.id}}>{{this.name}}</option>
     {{/each}}
 </select>
