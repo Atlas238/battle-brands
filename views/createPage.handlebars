@@ -31,12 +31,12 @@
   {{/unless}}
   
   {{!-- IF FACEBOOK --}}
-    {{#if (ifFirst connectedFacebook connectedLinkedin)}}
+    {{#if ifFirst (connectedFacebook connectedLinkedin)}}
       <div class="button m-2 p-3 fs-1 linkBox">
         <a id="lkBtn" href="/passport/auth/linkedin">Link to LinkedIn</a>
       </div>
     {{/if}}
-    {{#if (ifSecond connectedFacebook connectedLinkedin)}}
+    {{#if ifSecond (connectedFacebook connectedLinkedin)}}
       <div class="button m-2 p-3 fs-1 linkBox">
         <a id="fbBtn" href="/passport/auth/facebook">Link to Facebook</a>
       </div>
