@@ -15,7 +15,8 @@ const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
 
 // Host
-const host = 'https://battle-brands.herokuapp.com';
+const host = 'http://localhost:3001';
+// const host = 'https://battle-brands.herokuapp.com';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
@@ -239,6 +240,7 @@ petBtn.addEventListener('click', (event) => {
         console.log(`Creature lets you wipe it down`);
         currentCreature.grooming++;
         renderMeters(groomMeter,currentCreature.grooming);
+        animationType="pet";
 
         if(currentCreature.happiness + 1 <= happyMeter.maxValue){
             console.log('Creature *purrrrs* happily');
@@ -265,6 +267,7 @@ catchBtn.addEventListener('click', (event) => {
         console.log('Creature plays with you.')
         currentCreature.energy--;
         adjustEnergy(currentCreature.energy);
+        animationType="play";
 
         if(currentCreature.happiness + 1 <= happyMeter.maxValue){
             console.log('Creature jumps with joy!');
