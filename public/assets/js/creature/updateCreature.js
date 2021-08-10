@@ -1,6 +1,6 @@
 /** DEMO VARIABLE **/
 const demoActive = true;
-const deployed = true;
+const deployed = false;
 
 // Time Variables For Depreciation
 const numHoursHappiness = 20;
@@ -51,7 +51,7 @@ const scanStats = () => {
 function timeHandler(timeToConvert){
     let parsedTime = new Date( Date.parse(timeToConvert) );
     let convertedTime = moment( parsedTime.toUTCString() ).format('YYYY-MM-DDTHH:mm:ss');
-    console.log(`Time converted to UTC: ${convertedTime}`);
+    //console.log(`Time converted to UTC: ${convertedTime}`);
     return( convertedTime );
 }
 
@@ -87,8 +87,9 @@ const init = async () => {
 const adjustCreatureStats = () => {
 
     const intervalSize = (demoActive) ? 'seconds' : 'minutes';
+
     const dbTime = moment(currentCreature.lastinteraction);
-    const currentTime = moment();
+    const currentTime = moment( timeHandler(new Date) );
 
     let diffInTime = currentTime.diff(dbTime,intervalSize);
     diffInTime = diffInTime < 0 ? 0 : diffInTime;
