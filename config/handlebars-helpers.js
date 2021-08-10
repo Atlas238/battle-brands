@@ -18,5 +18,15 @@ module.exports = {
         if(energy == 0) {
             return true
         }
+    },
+    ifFirst: function(v1, v2){
+        if(v1 == true && v2 == true){
+            return true
+        }
+    },
+    ifSecond: function(v1, v2){
+        if(v1 == false && v2 == true){
+            return true
+        }
     }
 }
