@@ -40,7 +40,18 @@ const scanStats = () => {
     currentCreature.hunger = Number(document.getElementById('hungerState').getAttribute('value'));
     currentCreature.grooming = Number(document.getElementById('groomingState').getAttribute('value'));
     currentCreature.energy = Number(document.getElementById('energyState').getAttribute('value'));
-    currentCreature.lastinteraction = moment(new Date(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
+
+    /** NEW TIME HANDLER **/
+    let unparsedInteraction = document.getElementById('icon').getAttribute('data-action');
+    currentCreature.lastinteraction = timeHandler( unparsedInteraction );
+}
+
+// Send a basic time, and get it back the way we want...
+function timeHandler(timeToConvert){
+    let parsedTime = new Date( Date.parse(timeToConvert) );
+    let convertedTime = moment( parsedTime.toUTCString() ).format('YYYY-MM-DDTHH:mm:ss');
+    console.log(`Time converted to UTC: ${convertedTime}`);
+    return( convertedTime );
 }
 
 
@@ -73,11 +84,12 @@ const init = async () => {
 /** **/
 
 const adjustCreatureStats = () => {
-    const dbTime = moment(currentCreature.lastinteraction);
-    const intervalSize = (demoActive) ? 'seconds' : 'minutes';
 
-    let currentTime = moment();
-    let diffInTime = currentTime.diff(dbTime,'seconds');
+    const intervalSize = (demoActive) ? 'seconds' : 'minutes';
+    const dbTime = moment(currentCreature.lastinteraction);
+    const currentTime = moment();
+
+    let diffInTime = currentTime.diff(dbTime,intervalSize);
     diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
     // Check and degrade values...
