@@ -1,6 +1,6 @@
 /** DEMO VARIABLE **/
-const demoActive = true;
-const deployed = false;
+const demoActive = false;
+const deployed = true;
 
 // Time Variables For Depreciation
 const numHoursHappiness = 20;
