@@ -40,7 +40,7 @@ const scanStats = () => {
     currentCreature.hunger = Number(document.getElementById('hungerState').getAttribute('value'));
     currentCreature.grooming = Number(document.getElementById('groomingState').getAttribute('value'));
     currentCreature.energy = Number(document.getElementById('energyState').getAttribute('value'));
-    currentCreature.lastinteraction = moment(Date.parse(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
+    currentCreature.lastinteraction = moment(new Date(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
 }
 
 
@@ -60,7 +60,7 @@ const adjustCreatureStats = () => {
     const intervalSize = (demoActive) ? 'seconds' : 'minutes';
 
     let currentTime = moment();
-    let diffInTime = currentTime.diff(dbTime,intervalSize);
+    let diffInTime = currentTime.diff(dbTime,'seconds');
     diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
     // Check and degrade values...
