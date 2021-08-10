@@ -1,4 +1,5 @@
 const creatureBox = document.querySelector('#creature-selector');
+const liveToaster = document.getElementById('liveToast')
 
 const makeACreature = async (event) => {
     event.preventDefault();
@@ -8,6 +9,8 @@ const makeACreature = async (event) => {
     }
 
     if(card.dataset.type && card.dataset.brand){
+        const toast = new bootstrap.Toast(liveToaster);
+                toast.show();
         try{
             const updateSql = await fetch(`https://battle-brands.herokuapp.com/creature/create`, {
                 method: 'POST',
@@ -20,12 +23,10 @@ const makeACreature = async (event) => {
                 },
             });
             const respData = await updateSql.json();
-
-            // if(respData.message){
-            //     console.log("Creature Added");
-            // } else {
-            //     console.log("Creature not added");
-            // }
+            if(respData.message){
+                const toast = new bootstrap.Toast(liveToaster);
+                toast.show();
+            }
         } catch (error){
             console.log(error);
         }

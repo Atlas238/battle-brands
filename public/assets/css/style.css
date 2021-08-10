@@ -99,6 +99,10 @@ body{
     background-color: tan;
 }
 
+.custom-btn{
+    color: #c0dcf9;
+}
+
     /* PAGES STYLING */
 /* Main Layout Styling */
 #card {
@@ -173,6 +177,7 @@ input {
     /* background-color:#05879F ; */
     background: rgb(5,135,159);
     background: radial-gradient(circle, rgba(5,135,159,1) 35%, rgba(183,213,219,1) 100%);
+    max-width: 1000px;
 }
 
 #cardbody {
