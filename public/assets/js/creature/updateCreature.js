@@ -28,6 +28,8 @@ const currentCreature = {
     lastinteraction: moment(),
 };
 
+let creatureExp = Number(document.getElementById('progress').getAttribute('value'));
+
 
 /** Check creatures stats on page load, without an additional DB ping **/
 const scanStats = () => {
@@ -43,7 +45,7 @@ const init = async () => {
     try {
         scanStats();
         adjustCreatureStats(currentCreature);
-        renderAllMeters();
+        renderAllMeters(true);
     } catch (err) {
         console.log(err);
     }
@@ -83,11 +85,11 @@ const adjustCreatureStats = () => {
         }
     }
     if (diffInTime > numHoursEnergy) {
-        const valueDecrease = Math.floor(diffInTime/numHoursEnergy);
-        if(currentCreature.energy - valueDecrease > 0) {
-            currentCreature.energy -= valueDecrease;
+        const valueIncrease = Math.floor(diffInTime/numHoursEnergy);
+        if(currentCreature.energy + valueIncrease <= energyMeter.maxValue) {
+            currentCreature.energy += valueIncrease;
         } else {
-            currentCreature.energy = 0;
+            // currentCreature.energy = 0;
         }
     }
 };
@@ -125,11 +127,12 @@ const adjustEnergy = (currValue) => {
     document.getElementById(energyMeter.selector).className = `battery-${currValue}`;
 }
 
-const renderAllMeters = () => {
+const renderAllMeters = (loadflag) => {
     renderMeters(happyMeter,currentCreature.happiness);
     renderMeters(hungerMeter,currentCreature.hunger);
     renderMeters(groomMeter,currentCreature.grooming);
     adjustEnergy(currentCreature.energy);
+    levelChecker(loadflag);
     animateCreature("none");
 }
 
@@ -148,12 +151,6 @@ const animateCreature = async (reaction) => {
         icon.classList.remove("animate-rest");
         icon.classList.remove("animate-idle");
         icon.classList.add(`animate-${reaction}`);
-        // eat
-        // eat-energize
-        // groom
-        // groom-happy
-        // play
-        // play-happy
 
         setTimeout(function(){
             feedButton.removeAttribute('disabled');
@@ -172,6 +169,38 @@ const animateCreature = async (reaction) => {
         icon.classList.add(`animate-${energyAnimation}`);
     }
 }
+
+const levelChecker = (loadflag) => {
+    const levelDisplay = document.getElementById('levelDisplay');
+    const expBar = document.getElementById('progress');
+    
+    let creatureLevel = 1;
+    creatureLevel = creatureLevel + ( Math.floor( creatureExp / 10 ) );
+    levelDisplay.innerHTML = creatureLevel;
+
+    let displayExpPercent = 0;
+    displayExpPercent = ( Math.floor( creatureExp % 10 ) );
+
+    if(displayExpPercent === 0 && creatureExp > 0 && !loadflag){
+        expBar.style.width = "100%";
+        levelDisplay.classList.add("levelup");
+
+        setTimeout(function(){
+            console.log("YOUR CREATURE LEVELED UP!");
+            expBar.style.width = `${ 10 * displayExpPercent}%`;
+            levelDisplay.classList.remove("levelup");
+        }, 2 * 1000);
+        // LUCIOWARE TODO: Add in level-up functionality!
+    }
+    else{
+        expBar.style.width = `${ 10 * displayExpPercent}%`;
+    }
+    
+
+    document.getElementById('progress').setAttribute('value', creatureExp);
+}
+
+
 
 const updateDatabase = async () => {
     // If id is 0 then the creature was not loaded properly
@@ -200,6 +229,37 @@ const updateDatabase = async () => {
         console.log(currentCreature.id);
     }
 };
+
+const updateExperience = async (increaseAmount) => {
+    // Increase Experience
+    creatureExp += increaseAmount;
+    if( currentCreature.id !== 0 || creatureExp != 0 ){
+        try{
+            const updateSql = await fetch(`${host}/api/creature/exp`, {
+                method: 'PUT',
+                body:JSON.stringify({
+                    creature_id: currentCreature.id,
+                    amount: creatureExp,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const respData = await updateSql.json();
+
+            if(respData.message){                
+                console.log('Creature has gained 1 EXP!');
+                levelChecker();
+            } else {
+                console.log("Error updating creature experience");
+            }
+        } catch (error){
+            console.log(error);
+        }
+    } else {
+        console.log("Something went wrong...");
+    }
+}
 
 
 
@@ -273,6 +333,9 @@ catchBtn.addEventListener('click', (event) => {
             console.log('Creature jumps with joy!');
             currentCreature.happiness++;
             renderMeters(happyMeter,currentCreature.happiness);
+        }
+        else if(currentCreature.happiness == happyMeter.maxValue){
+            updateExperience(1);
         }
 
         // LUCIOWARE TODO: Increase EXP if hearts are full
