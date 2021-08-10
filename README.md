@@ -19,9 +19,9 @@ This application requires a few node dependancies listed below:
 - Dotenv
 
 ## Contributors 
-- [David Lucio](https://www.github.com/)
-- [Derek DeLizo](https://www.github.com/)
-- [Simran Kaur](https://ww.github.com/)
+- [David Lucio](https://www.github.com/davidlucio)
+- [Derek DeLizo](https://www.github.com/delizoderek)
+- [Simran Kaur](https://ww.github.com/kaursim000)
 - [Jack Bentsen](https://www.github.com/Atlas238)
 
 ## License
