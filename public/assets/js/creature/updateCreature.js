@@ -15,8 +15,8 @@ const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
 
 // Host
-const host = 'http://localhost:3001';
-// const host = 'https://battle-brands.herokuapp.com';
+// const host = 'http://localhost:3001';
+const host = 'https://battle-brands.herokuapp.com';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
