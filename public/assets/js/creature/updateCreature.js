@@ -49,14 +49,19 @@ const scanStats = () => {
 
 // Send a basic time, and get it back the way we want...
 function timeHandler(timeToConvert){
-    let parsedTime = new Date( Date.parse(timeToConvert) );
-    let convertedTime = moment( parsedTime.toUTCString() ).format('YYYY-MM-DDTHH:mm:ss');
-    //console.log(`Time converted to UTC: ${convertedTime}`);
+
+    // document.getElementById('icon').getAttribute('data-action')
+
+    let parsedTime = (new Date( Date.parse(timeToConvert) )).toUTCString();
+    console.log(`parsedTime = ${parsedTime}`);
+
+    let convertedTime = moment.utc( parsedTime ).format('YYYY-MM-DDTHH:mm:ss');
+    console.log(`convertedTime = ${convertedTime}`);
+
     return( convertedTime );
+
 }
 
-
-/** **/
 const init = async () => {
     try {
         scanStats();
@@ -66,23 +71,6 @@ const init = async () => {
         console.log(err);
     }
 };
-/** **
-const init = async () => {
-    try {
-        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
-        adjustCreatureStats(loadStats);
-        currentCreature.id = loadStats.id;
-        currentCreature.happiness = loadStats.happiness;
-        currentCreature.hunger = loadStats.hunger;
-        currentCreature.grooming = loadStats.grooming;
-        currentCreature.energy = loadStats.energy;
-        currentCreature.lastinteraction = loadStats.lastinteraction;
-        renderAllMeters(true);
-    } catch (err) {
-        console.log(err);
-    }
-};
-/** **/
 
 const adjustCreatureStats = () => {
 
