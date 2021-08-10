@@ -2,10 +2,10 @@
 const demoActive = true;
 
 // Time Variables For Depreciation
-const numHoursHappiness = 10;
-const numHoursHunger = 20;
-const numHoursGrooming = 30;
-const numHoursEnergy = 20;
+const numHoursHappiness = 20;
+const numHoursHunger = 30;
+const numHoursGrooming = 40;
+const numHoursEnergy = 10;
 
 
 // Global vars
@@ -19,8 +19,8 @@ const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
 
 // Host
-// const host = 'http://localhost:3001';
-const host = 'https://battle-brands.herokuapp.com';
+const host = 'http://localhost:3001';
+// const host = 'https://battle-brands.herokuapp.com';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
@@ -43,6 +43,18 @@ const scanStats = () => {
     currentCreature.lastinteraction = moment(new Date(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
 }
 
+
+/** **/
+const init = async () => {
+    try {
+        scanStats();
+        adjustCreatureStats(currentCreature);
+        renderAllMeters(true);
+    } catch (err) {
+        console.log(err);
+    }
+};
+/** **
 const init = async () => {
     try {
         const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
@@ -58,7 +70,7 @@ const init = async () => {
         console.log(err);
     }
 };
-
+/** **/
 
 const adjustCreatureStats = () => {
     const dbTime = moment(currentCreature.lastinteraction);
