@@ -62,12 +62,12 @@
     font-weight: 600;
 }
 
-span#petitem{
+span#creatureitem{
     position: absolute;
     z-index:1;
 }
 
-span#petitem:after{
+span#creatureitem:after{
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     font-size: 30px;
@@ -276,57 +276,163 @@ span#petitem:after{
     }
 }
 
+@keyframes petting {
+    0% {
+        transform: translate(0px, 0px);
+        animation-timing-function: ease-in;
+	}
+    12%{
+        transform: translate(5px, -5px);
+        animation-timing-function: ease-in;
+    }
+    25%{
+        transform: translate(10px, -7px);
+        animation-timing-function: ease-in;
+    }
+    37%{
+        transform: translate(15px, -5px);
+        animation-timing-function: ease-in;
+    }
+    50%{
+        transform: translate(20px, 0px);
+        animation-timing-function: ease-in;
+    }
+    62%{
+        transform: translate(15px, -5px);
+        animation-timing-function: ease-in;
+    }
+    75%{
+        transform: translate(10px, -7px);
+        animation-timing-function: ease-in;
+    }
+    87%{
+        transform: translate(5px, -5px);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        animation-timing-function: ease-in;
+	}
+}
+
+@keyframes playing-creature {
+	0% {
+        transform: rotate(0);
+        animation-timing-function: ease;
+	}
+    30%{
+        transform: rotate(-20deg);
+        animation-timing-function: ease;
+    }
+    50%{
+        transform: rotate(30deg) translate(10px, -10px);
+    }
+    70%{
+        transform: rotate(-20deg);
+    }
+    100%{
+        transform: rotate(0);
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes playing-throw {
+    0%{
+        transform: scale(0);
+    }
+    1%{
+        transform: scale(1);
+    }
+    40%{
+        transform: translateX(-210%) translateY(70%);
+        animation-timing-function: ease;
+    }
+    80%{
+        transform: translateX(0%) translateY(0%);
+        animation-timing-function: linear;
+    }
+    81%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+
+@keyframes playing-ball {
+	0% {
+        transform: rotate(0deg);
+        animation-timing-function: linear;
+	}
+    100%{
+        transform: rotate(-360deg);
+        animation-timing-function: linear;
+    }
+}
+
 /* Creature at rest (default) */
 .animate-rest{
     animation: pulse 2s infinite;
     transition: animation 1s ease;
 }
-
 .animate-idle {
     animation: idle 12s infinite;
     transition: animation 1s ease-in-out;
 }
 
+
+/*eating*/
 .animate-eat {
     animation: eating 2s;
     transition: all 1s ease;
 }
-
-.animate-eat + span#petitem {
+.animate-eat + span#creatureitem {
     bottom: 20px;
     left: calc(50% + 35px);
     animation: pulse .5s infinite;
     transition: animation .5s ease-in-out;
 }
-
-.animate-eat + span#petitem:after {
+.animate-eat + span#creatureitem:after {
     content: "\1f36a";
     color: #926112;
 }
 
-/* Creature happy! */
-.creature-happy {
-    animation: bounce;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
+
+/*petting*/
+.animate-pet{
+    animation: shakeY 2s;
+    transition: all .5s ease;
 }
-  
-/* Creature Sad :( */
-.creature-sad {
-    animation: headShake;
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
-    transition: animation 500ms ease;
+.animate-pet + span#creatureitem {
+    top: calc(50% + 10px);
+    left: calc(50% - 25px);
+    animation: petting .7s infinite;
+    transition: animation .5s;
 }
-  
-/* Creature Hungry */
-.creature-hungry {
-    animation: rubberBand;
-    animation-duration: 1.5s;
-    animation-iteration-count:infinite;
-    transition: animation 500ms ease;
+.animate-pet + span#creatureitem:after {
+    content: "\270b";
+    color: white;
 }
+
+
+/*playing*/
+.animate-play{
+    animation: playing-creature 2s;
+    transition: all .5s ease;
+}
+.animate-play + span#creatureitem {
+    top: calc(25%);
+    right: 0px;
+    animation: playing-throw 2s 1;
+}
+.animate-play + span#creatureitem:after {
+    content: "\26be";
+    color: white;
+    animation: playing-ball 2s 1;
+}
+
+
+
 
 
 #hunger-meter{
