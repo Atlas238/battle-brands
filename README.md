@@ -6,6 +6,15 @@ Battle-Brands is a collect-em-all style digital pet application in which a user 
 ## Link
 [Battle-Brands](https://battle-brands.herokuapp.com/)
 
+## Installation Steps
+- Clone the repository from the following [link](https://www.github.com/Atlas238/collect-brand)
+- Ensure you have Node.js installed by running the command node -v. You should see a version number print out.
+- Open up a terminal in the root directory and run npm install to install all of our required node dependancies.
+- If working on the deployed version of the application, open up the public/assets/js/creature/updateCreature.js file and change the value of the root variable to represent the correct host (For our deploy, https://battle-brands.herokuapp.com)
+- If working locally, ensure that the host value is localhost:3001
+- Finally using the command node server.js will start up the server, and the application can be found live on the given host. 
+- If simply visiting the most updated version of the application, simply navigate to https://battle-brands.herokuapp.com/
+
 ## NPM Dependancies
 This application requires a few node dependancies listed below:
 - Express.js
@@ -15,8 +24,12 @@ This application requires a few node dependancies listed below:
 - Sequelize
 - Connect-session-sequelize
 - Passport.js
+- Passport-Facebook
+- Passport-LinkedIn
+- Passport-LinkedIn-Oauth2
 - Fontawesome
 - Dotenv
+- bcrypt
 
 ## Contributors 
 - [David Lucio](https://www.github.com/davidlucio)
