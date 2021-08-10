@@ -42,7 +42,7 @@ passport.deserializeUser(function(user, done) {
 // Facebook Routes
 socialLinkRouter.get('/passport/auth/facebook', passport.authenticate('facebook'));
 socialLinkRouter.get('/passport/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/create'}), async (req, res) => {
+  passport.authenticate('facebook', { failureRedirect: '/'}), async (req, res) => {
       console.log(req);
     //   CREATE FACEBOOK CREATURE FOR USER WITH GIVEN ID
     try {
@@ -80,7 +80,7 @@ socialLinkRouter.get('/passport/auth/facebook/callback',
 // // Linkedin Route
 socialLinkRouter.get('/passport/auth/linkedin', passport.authenticate('linkedin'));
 socialLinkRouter.get('/passport/auth/linkedin/callback',
-  passport.authenticate('linkedin', { failureRedirect: '/login' }), async (req, res) => {
+  passport.authenticate('linkedin', { failureRedirect: '/' }), async (req, res) => {
     // CREATE LINKEDIN CREATURE FOR USER WITH GIVEN ID
     console.log(req);
     try {
