@@ -1,8 +1,12 @@
-// Time Variables For Demo!
+/** DEMO VARIABLE **/
+const demoActive = true;
+
+// Time Variables For Depreciation
 const numHoursHappiness = 10;
 const numHoursHunger = 20;
 const numHoursGrooming = 30;
 const numHoursEnergy = 20;
+
 
 // Global vars
 const icon = document.getElementById('icon');
@@ -30,7 +34,6 @@ const currentCreature = {
 
 let creatureExp = Number(document.getElementById('progress').getAttribute('value'));
 
-
 /** Check creatures stats on page load, without an additional DB ping **/
 const scanStats = () => {
     currentCreature.happiness = Number(document.getElementById('happinessState').getAttribute('value'));
@@ -54,8 +57,10 @@ const init = async () => {
 
 const adjustCreatureStats = () => {
     const dbTime = moment(currentCreature.lastinteraction);
+    const intervalSize = (demoActive) ? 'seconds' : 'minutes';
+
     let currentTime = moment();
-    let diffInTime = currentTime.diff(dbTime,'seconds');
+    let diffInTime = currentTime.diff(dbTime,intervalSize);
     diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
     // Check and degrade values...
@@ -89,30 +94,11 @@ const adjustCreatureStats = () => {
         if(currentCreature.energy + valueIncrease <= energyMeter.maxValue) {
             currentCreature.energy += valueIncrease;
         } else {
-            // currentCreature.energy = 0;
+            currentCreature.energy = 4;
         }
     }
 };
 
-
-const updateStats = async () => {
-    const updateInterval = setInterval(() => {
-        adjustCreatureStats(currentCreature);
-        console.log(currentCreature);
-        // Render Creature Stats
-    },1000*60);
-};
-
-
-// Database gets updated every minute
-const startDbAutoSync = () => {
-    const syncInterval = setInterval(() => {
-        if(notSyncing){
-            console.log("Auto Sync");
-            updateDatabase();
-        }
-    },1000);
-}
 
 
 /** PRETTY PRETTY PET BOX! */
@@ -351,15 +337,18 @@ catchBtn.addEventListener('click', (event) => {
     }
 });
 
+
 /** LUCIOWARE DEBUG **/
 function resetTestCreatureDB(){
-    currentCreature.happiness = 0;
-    currentCreature.hunger = 0;
-    currentCreature.grooming = 0;
-    currentCreature.energy = 4;
-    renderAllMeters();
-    updateDatabase();
+    if(demoActive){
+        currentCreature.happiness = 0;
+        currentCreature.hunger = 0;
+        currentCreature.grooming = 0;
+        currentCreature.energy = 4;
+        renderAllMeters();
+        updateDatabase();
+    }
 }
-/*****/
+/*********************/
 
 init();
