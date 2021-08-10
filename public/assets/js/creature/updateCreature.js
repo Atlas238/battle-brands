@@ -19,8 +19,8 @@ const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
 
 // Host
-// const host = 'http://localhost:3001';
-const host = 'https://battle-brands.herokuapp.com';
+const host = 'http://localhost:3001';
+// const host = 'https://battle-brands.herokuapp.com';
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
@@ -43,11 +43,16 @@ const scanStats = () => {
     currentCreature.lastinteraction = moment(new Date(document.getElementById('icon').getAttribute('data-action'))).format('YYYY-MM-DDTHH:mm:ss');
 }
 
-
 const init = async () => {
     try {
-        scanStats();
-        adjustCreatureStats(currentCreature);
+        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
+        adjustCreatureStats(loadStats);
+        currentCreature.id = loadStats.id;
+        currentCreature.happiness = loadStats.happiness;
+        currentCreature.hunger = loadStats.hunger;
+        currentCreature.grooming = loadStats.grooming;
+        currentCreature.energy = loadStats.energy;
+        currentCreature.lastinteraction = loadStats.lastinteraction;
         renderAllMeters(true);
     } catch (err) {
         console.log(err);
@@ -233,7 +238,7 @@ const updateExperience = async (increaseAmount) => {
             });
             const respData = await updateSql.json();
 
-            if(respData.message){                
+            if(respData.message){
                 console.log('Creature has gained 1 EXP!');
                 levelChecker();
             } else {
@@ -265,7 +270,7 @@ feedBtn.addEventListener('click', (event) => {
             console.log('Creature looks more energetic!')
             adjustEnergy(currentCreature.energy);
         }
-        
+
         animateCreature(animationType);
         currentCreature.lastinteraction=moment().format('YYYY-MM-DDTHH:mm:ss');
         updateDatabase();

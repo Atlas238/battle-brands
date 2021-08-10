@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 
       if (singleCreature != null) {
         const myCreature = singleCreature.get({ plain: true });
-        
+
         const handleObj = {
           user: req.session.logged_in,
           userId: req.session.user_id,
@@ -180,6 +180,7 @@ router.put("/combat/:id", async (req, res) => {
 router.put("/care/:id", async (req, res) => {
     console.log("\Updating Care Stats\n");
   if (req.session.logged_in) {
+    console.log(req.body);
     try {
       const creatUpdate = await Creature.findOne({
         where: {
