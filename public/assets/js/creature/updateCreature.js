@@ -1,8 +1,8 @@
 // Time Variables For Demo!
-const numHoursHunger = 1;
-const numHoursHappiness = 3;
-const numHoursGrooming = 5;
-const numHoursEnergy = 1;
+const numHoursHappiness = 10;
+const numHoursHunger = 20;
+const numHoursGrooming = 30;
+const numHoursEnergy = 20;
 
 // Global vars
 const icon = document.getElementById('icon');
@@ -53,7 +53,7 @@ const init = async () => {
 const adjustCreatureStats = () => {
     const dbTime = moment(currentCreature.lastinteraction);
     let currentTime = moment();
-    let diffInTime = currentTime.diff(dbTime,'hours');
+    let diffInTime = currentTime.diff(dbTime,'seconds');
     diffInTime = diffInTime < 0 ? 0 : diffInTime;
 
     // Check and degrade values...
