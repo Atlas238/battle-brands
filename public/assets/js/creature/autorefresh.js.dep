@@ -17,3 +17,24 @@ const startDbAutoSync = () => {
         }
     },1000);
 }
+
+
+
+
+/** **
+const init = async () => {
+    try {
+        const loadStats = await fetch(`${host}/creature/care/${updateCreatureId}`,{method: 'GET',}).then(resp => resp.json());
+        adjustCreatureStats(loadStats);
+        currentCreature.id = loadStats.id;
+        currentCreature.happiness = loadStats.happiness;
+        currentCreature.hunger = loadStats.hunger;
+        currentCreature.grooming = loadStats.grooming;
+        currentCreature.energy = loadStats.energy;
+        currentCreature.lastinteraction = loadStats.lastinteraction;
+        renderAllMeters(true);
+    } catch (err) {
+        console.log(err);
+    }
+};
+/** **/
