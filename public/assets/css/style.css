@@ -493,6 +493,7 @@ background: -webkit-linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 5
 background: -moz-linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #2A3492 100%);
 background: linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #2A3492 100%);
 -webkit-background-clip: text;
+background-clip: text;
 -webkit-text-fill-color: transparent;
 }
 
@@ -523,6 +524,7 @@ background: linear-gradient(to right, #EF4423 0%, #FF9526 50%, #F6EB14 50%, #4FA
     background: -moz-linear-gradient(to right, #EF4423 8%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #05879F 93%);
     background: linear-gradient(to right, #EF4423 8%, #FF9526 50%, #F6EB14 50%, #4FAF44 50%, #05879F 93%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

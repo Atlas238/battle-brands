@@ -184,9 +184,6 @@ span#creatureitem:after{
     text-shadow: 0px 0px 9px black;
 }
 
-#interaction-box div#energyState p {
-}
-
 #interaction-box div#energyState p::before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
