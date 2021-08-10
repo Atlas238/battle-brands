@@ -1,5 +1,6 @@
 /** DEMO VARIABLE **/
 const demoActive = true;
+const deployed = true;
 
 // Time Variables For Depreciation
 const numHoursHappiness = 20;
@@ -19,8 +20,8 @@ const feedBtn = document.getElementById('feedBtn');
 const petBtn = document.getElementById('petBtn');
 
 // Host
-const host = 'http://localhost:3001';
-// const host = 'https://battle-brands.herokuapp.com';
+const host = deployed ? 'https://battle-brands.herokuapp.com' : 'http://localhost:3001';
+
 let notSyncing = true; //Is set to false when the player interacts with their creature, so the autosync will not run
 
 const currentCreature = {
